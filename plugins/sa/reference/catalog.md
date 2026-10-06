@@ -1,6 +1,6 @@
 # Judgement OS catalog
 
-*Built for Judgement OS: selfActual Edition 0.1.0. Don't edit by hand.*
+*Built for Judgement OS: selfActual Edition 0.1.1. Don't edit by hand.*
 
 ```
 Judgement OS: selfActual Edition.
@@ -32,7 +32,7 @@ make  v0.8.1
   /make:plan-review   A plan read against the real code, as a page in the house style - each claim marked correct, stale, risky or missing, the gaps, a file-by-file table and a better sequence, ending in approve, revise or reject.
   /make:project-recap A project recap for someone coming back to it, as a page in the house style - what it is, how it fits together, recent activity by theme, the current state, hot spots, the commands and files, and evidence-based next steps.
 
-comms  v0.6.1
+comms  v0.6.2
   /comms:forcc         FOR CC reminders, the tasks the user wants Claude to raise at every boot.
   /comms:humanify      HUMANIFY — de-tic pass for drafts written with AI in the room.
   /comms:messages      Read, send or mark vault messages and broadcasts (the payload rail).
@@ -40,7 +40,7 @@ comms  v0.6.1
   /comms:poll          Read the Slack channels you choose, say what's new since your last post, and draft replies.
   hook          Send gate: every outbound message is blocked until you type "send" yourself; one send per yes.
 
-day  v0.3.1
+day  v0.3.2
   /day:boot          A phased start to the day: a short brief, FOR CC reminders and the daily reading, one pick (style and energy, with the judges weighing in when the morning reads two ways), then one phase at a time, each skippable, ending with the day's phrase.
   /day:checkin       A check-in, mid-day or end-of-day: held items, habits still open, then tasks; at the end of the day, what carries to tomorrow and whether the reading and the phrase landed.
   /day:daily         A daily reading and a phrase in a language you're learning.

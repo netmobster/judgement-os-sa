@@ -12,7 +12,8 @@
 //
 // The pass lives in the settings' state folder (jos-settings: stateDir), as send-pass.json. The
 // guard plugin blocks Claude writing it by any route. The settings' sendGate.exempt lists the user's
-// OWN Slack user id and self-DM channel, the only sends that need no pass.
+// OWN Slack user id and self-DM channel; sendGate.standing lists channels approved once for a
+// scheduled post. Those are the only sends that need no pass.
 // Test: node send-gate.js --test
 
 const fs = require('fs');
@@ -41,6 +42,11 @@ function onPrompt(prompt, now = Date.now()) {
 // sends and broadcasts get no exemption.
 const SELF_SLACK = new Set((S.load().sendGate.exempt || []).map(String));
 
+// Standing publications: Slack channels the user approved once for a scheduled post (the morning
+// brief to #morning-intel). Other people read these, so they're a separate list from the self ids
+// above, and only a Slack channel post to an exact id passes. DMs, the message rail and email never do.
+const STANDING = new Set((S.load().sendGate.standing || []).map(String).filter(id => /^C/.test(id)));
+
 function onTool(input, now = Date.now()) {
   const tool = String(input.tool_name || '');
   if (!OUTBOUND.test(tool)) return null;
@@ -48,6 +54,7 @@ function onTool(input, now = Date.now()) {
   const ti = input.tool_input || {};
   const to = ti.channel_id || ti.to || ti.recipient || ti.toUsername || ti.username || '?';
   if (/^slack_(send|schedule)_message$/.test(verb) && SELF_SLACK.has(String(ti.channel_id || ''))) return null;
+  if (verb === 'slack_send_message' && !ti.thread_ts && STANDING.has(String(ti.channel_id || ''))) return null;
   const p = validPass(now);
   if (p) {
     try { fs.unlinkSync(PASS); } catch (e) {}          // single use
@@ -69,7 +76,7 @@ function emitTool(res) {
 if (process.argv[2] === '--test') {
   const tmp = path.join(os.tmpdir(), `send-pass-test-${process.pid}.json`);
   const settings = path.join(os.tmpdir(), `send-gate-settings-${process.pid}.json`);
-  fs.writeFileSync(settings, JSON.stringify({ sendGate: { exempt: ['U1SELF', 'D1SELF'] } }));   // never the operator's own
+  fs.writeFileSync(settings, JSON.stringify({ sendGate: { exempt: ['U1SELF', 'D1SELF'], standing: ['C1BRIEF', 'U1OTHER'] } }));   // never the operator's own
   const gate = require('child_process');
   let n = 0, fail = 0; const ok = (name, c) => { n++; if (!c) { fail++; console.log('FAIL ' + name); } };
   // Re-run this file's logic against a temp pass file and temp settings.
@@ -80,6 +87,11 @@ if (process.argv[2] === '--test') {
   ok('self-DM by channel passes', run([], { tool_name: 'mcp__x__slack_send_message', tool_input: { channel_id: 'D1SELF', message: 'metrics' } }) === '');
   ok('a team channel is still blocked', /"deny"/.test(run([], { tool_name: 'mcp__x__slack_send_message', tool_input: { channel_id: 'C0TEAM', message: 'x' } })));
   ok('a message-rail send to yourself is not exempt', /"deny"/.test(run([], { tool_name: 'mcp__x__send_message', tool_input: { toUsername: 'me', body: 'x' } })));
+  ok('a standing channel post passes', run([], { tool_name: 'mcp__x__slack_send_message', tool_input: { channel_id: 'C1BRIEF', message: 'brief' } }) === '');
+  ok('a reply in a standing channel thread is blocked', /"deny"/.test(run([], { tool_name: 'mcp__x__slack_send_message', tool_input: { channel_id: 'C1BRIEF', thread_ts: '1.2', message: 'x' } })));
+  ok('a scheduled post to a standing channel is blocked', /"deny"/.test(run([], { tool_name: 'mcp__x__slack_schedule_message', tool_input: { channel_id: 'C1BRIEF', message: 'x' } })));
+  ok('a user id on the standing list is ignored', /"deny"/.test(run([], { tool_name: 'mcp__x__slack_send_message', tool_input: { channel_id: 'U1OTHER', message: 'x' } })));
+  ok('a message-rail send is never standing', /"deny"/.test(run([], { tool_name: 'mcp__x__send_message', tool_input: { channel_id: 'C1BRIEF', body: 'x' } })));
   try { fs.unlinkSync(tmp); } catch (e) {}
   ok('no pass → deny', /"deny"/.test(run([], T)));
   ok('draft passes', run([], { tool_name: 'mcp__x__slack_send_message_draft', tool_input: {} }) === '');

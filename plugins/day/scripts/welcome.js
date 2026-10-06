@@ -35,8 +35,8 @@ WHAT = 'Judgement OS, the selfActual Edition, is a set of Claude Code plugins th
 const MESSAGE = [
   'Judgement OS was just installed or updated, and the user hasn\'t opened its field guide yet.',
   WHAT,
-  'Before other work this session, welcome them to it in one or two plain lines: what it is, and that their field',
-  'guide is opening. Then run /day:guide: it publishes the user\'s own copy of the field guide (one step per part,',
+  'Before other work this session, welcome them to it in one or two plain lines: what it is, that their field',
+  'guide is opening, and where to read the whole story: https://unstuck-games.com/judgement-os/ . Then run /day:guide: it publishes the user\'s own copy of the field guide (one step per part,',
   'with what to type and what they should see) and opens it. With no Artifact tool on this surface, it says where the',
   'page is instead. If the user\'s first message is already a task, do the task first, then give the welcome and offer',
   'the guide in one line at the end.',

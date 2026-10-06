@@ -652,6 +652,16 @@ button.ej-option:hover { background: var(--ej-surface-2); }
   .q > p + p { margin-top: var(--ej-space-2); }
   .q > .ej-input { margin: var(--ej-space-1) 0 var(--ej-space-3); }
   .ej-panel code { overflow-wrap: anywhere; }
+  .jos-brand { display: flex; align-items: center; gap: 12px; }
+  .jos-brand svg { flex: none; }
+  .jos-name { font-family: var(--ej-font-display); font-weight: 700; font-size: 26px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ej-fg); }
+  .jos-name sup { color: var(--ej-gold-text); font-size: 0.6em; }
+  .jos-tag { margin: 0; font-size: var(--ej-text-lead); line-height: 1.4; color: var(--ej-fg); }
+  .jos-fn { margin: 0; font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ej-fg-muted); }
+  .jos-fit { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: var(--ej-space-3); }
+  .jos-fit > div { min-width: 0; }
+  .jos-fit ul { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+  .jos-intro p { margin: 0; }
 </style>
 <script>
   // Restore the reader's theme and text-size choices before paint.
@@ -663,7 +673,7 @@ button.ej-option:hover { background: var(--ej-surface-2); }
   })();
 </script>
 
-<div class="ej-shell" data-key="jos-field-guide-1" data-copy-title="Judgement OS field guide">
+<div class="ej-shell" data-key="jos-field-guide-2" data-copy-title="Judgement OS field guide">
 
   <header class="ej-header">
     <div class="ej-header-row">
@@ -693,6 +703,49 @@ button.ej-option:hover { background: var(--ej-surface-2); }
   </section>
 
   <article class="ej-content">
+
+    <div class="ej-panel ej-stack jos-intro">
+      <div class="jos-brand"><svg width="40" height="40" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M19 31h26l13 29H6z" fill="#c2a46a" opacity=".2"></path><path d="M24 31h16l7 29H17z" fill="#c2a46a" opacity=".2"></path><path d="M32 2v17" stroke="#c2a46a" stroke-width="3.5" stroke-linecap="round"></path><path d="M13 26c0-10 38-10 38 0v3c0 4.5-38 4.5-38 0z" fill="#c2a46a"></path><circle cx="32" cy="50" r="4.5" fill="#c2a46a"></circle></svg><span class="jos-name">Judgement OS<sup>*</sup></span></div>
+      <p class="jos-tag">A second opinion for your Claude Code skills, only when they need one.</p>
+      <p class="jos-fn">*Not an operating system. The name is a joke; the plugins aren't.</p>
+    </div>
+
+    <div class="ej-section-head"><h2 class="ej-h2">What you just installed</h2><span class="ej-label">01 // Start here</span></div>
+    <p>Eight Claude Code plugins that work from your selfActual vault: your tasks, your gears, your messages and your profile. Once a month they check that your selfActual account answers.</p>
+    <ul>
+      <li><b>The judges.</b> Inside a skill, a rule makes the few calls that depend on you. When the rule can't tell, two judges read your profile and answer one small question. You only hear about it when both disagree with the rule.</li>
+      <li><b>Your day.</b> A short boot, check-ins, habits you set up once, and a daily reading and a phrase in a language you're learning.</li>
+      <li><b>Making things.</b> Pages in a house style, forms in the chat, decks and docs, from one front door: <code>/make</code>.</li>
+      <li><b>Thinking tools.</b> Gears, loops and modes through one router: "scout this", "grumpy on this", "root-cause it".</li>
+      <li><b>Hard rules.</b> Nothing you send leaves until you type send, and the guard asks before anything destructive.</li>
+    </ul>
+    <p>The whole story, with the install lines, is on <a href="https://unstuck-games.com/judgement-os/" target="_blank" rel="noopener">the Judgement OS page</a>.</p>
+
+    <div class="ej-panel ej-stack">
+      <span class="ej-label">PNL.00 // Is it for you</span>
+      <div class="jos-fit">
+        <div>
+          <span class="ej-label">Use it if</span>
+          <ul>
+            <li>you use Claude Code most days, and your skills keep hitting choices that depend on you</li>
+            <li>you'd rather write a skill as an objective than map every branch</li>
+            <li>you want a short daily loop from your own tasks</li>
+            <li>you want finished pages, and messages that wait for your yes</li>
+            <li>you have a selfActual account and want Claude Code working from your vault</li>
+          </ul>
+        </div>
+        <div>
+          <span class="ej-label">Don't use it if</span>
+          <ul>
+            <li>you want an agent that acts on its own: the judges recommend, they never authorise</li>
+            <li>you want a framework or an actual operating system</li>
+            <li>you don't use Claude Code: chat and the free plan can't run plugins</li>
+            <li>you need it battle-tested: it's young, in daily use since October 2026</li>
+            <li>you don't have a selfActual account: the General Edition is the one for you</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <div class="ej-panel ej-stack">
       <span class="ej-label">PNL.01 // Before you start</span>

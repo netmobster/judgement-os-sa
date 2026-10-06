@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Judgement OS, the selfActual Edition: everything in the General Edition, working from your selfActual vault, plus your gears, loops and modes through one router. A selfActual account is needed: selfactual.ai.",
-    "version": "0.1.0"
+    "version": "0.1.1"
   },
   "plugins": [
     {
@@ -36,13 +36,13 @@
       "name": "comms",
       "source": "./plugins/comms",
       "description": "The send gate, which stops every outbound message until you type send; humanify, a de-tic pass for drafts written with AI in the room; poll, which reads the Slack channels you choose and drafts replies that post only when you approve them; and your selfActual vault's messages, FOR CC reminders and /ping.",
-      "version": "0.6.1"
+      "version": "0.6.2"
     },
     {
       "name": "day",
       "source": "./plugins/day",
       "description": "A day loop for Claude Code: a short boot with the judges on the style pick, mid-day and end-of-day check-ins from your selfActual vault, habits you set up once, a daily reading and a phrase in a language you're learning, /flag for work you want to come back to, and a clock on every message.",
-      "version": "0.3.1"
+      "version": "0.3.2"
     },
     {
       "name": "dice",
