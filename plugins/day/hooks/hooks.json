@@ -1,0 +1,28 @@
+{
+  "description": "Stamps the time on every prompt and says when a check-in is due; opens the field guide in the first sessions after an install.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/clock.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/welcome.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

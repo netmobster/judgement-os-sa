@@ -1,0 +1,14 @@
+{
+  "name": "dice",
+  "version": "0.2.1",
+  "description": "Real dice for tabletop games: any notation, advantage and disadvantage, damage, ability scores. Never an invented roll.",
+  "author": {
+    "name": "Jay Wright"
+  },
+  "keywords": [
+    "dice",
+    "dnd",
+    "tabletop"
+  ],
+  "homepage": "https://netmobster.github.io/unstuck-games/judgement-os/"
+}

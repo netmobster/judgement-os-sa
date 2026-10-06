@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>selfActual — deck starter</title>
+<!-- Paths assume this file sits in templates/. Adjust ../styles.css and ../assets/ if you move it. -->
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html, body { height: 100%; margin: 0; background: var(--color-ink); }
+  .stage { height: 100%; display: grid; grid-template-rows: 1fr auto; }
+  .viewport { display: grid; place-items: center; overflow: hidden; padding: 16px; }
+  .frame { position: relative; }
+  .scaler { position: absolute; inset: 0; width: 1920px; height: 1080px; transform-origin: top left; }
+  .slide { width: 1920px; height: 1080px; display: none; }
+  .slide.is-active { display: flex; }
+  .controls { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 8px 16px 14px; font-family: var(--font-mono); font-size: 12px; color: var(--color-ink-dim); }
+
+  /* Slide-scale overrides: the component classes are UI-scale; slides never go below 24px. */
+  .slide .ev { font-size: 24px; }
+  .slide .ev-legend { font-size: 24px; gap: 8px 40px; }
+  .slide .ev-row { grid-template-columns: 190px 1fr 210px; gap: 22px; padding: 7px 26px; }
+  .slide .ev-row-figure { font-size: 32px; }
+  .slide .ev-row-claim { font-size: 25px; }
+  .slide .stack-row { grid-template-columns: 220px 300px 1fr; padding: 13px 26px; }
+  .slide .stack-row-label { font-size: 27px; }
+  .slide .stack-row-verb { font-size: 24px; }
+  .slide .stack-row-items { font-size: 25px; }
+  .slide .stack-row-keep { padding: 18px 26px; }
+  .slide .card-kicker { font-size: 24px; }
+  .slide .rule-note { font-size: 28px; }
+
+  @media print {
+    @page { size: 1920px 1080px; margin: 0; }
+    html, body { height: auto; background: #fff; }
+    .stage { display: block; }
+    .viewport { display: block; padding: 0; overflow: visible; }
+    .frame { width: auto !important; height: auto !important; }
+    .scaler { position: static; transform: none !important; width: auto; height: auto; }
+    .slide { display: flex !important; break-after: page; }
+    .controls { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="viewport" id="viewport">
+    <div class="frame" id="frame">
+      <div class="scaler" id="scaler">
+
+        <section class="slide slide-ink is-active" data-label="01 · Cover">
+          <div class="slide-head">
+            <img src="../assets/selfactual-logo.png" alt="" style="height:60px;width:auto">
+            <span class="slide-date">Internal · 7 Sept 2026</span>
+          </div>
+          <div>
+            <h1 class="slide-display">Choose your AI.<br><span class="hl">Keep yourself.</span></h1>
+            <p class="slide-lead" style="margin-top:36px;max-width:46ch">Use whatever models, tools, agents and infrastructure you want. selfActual is the operator layer that stays yours.</p>
+          </div>
+          <div class="slide-foot" style="border-top:1px solid var(--color-ink-line);padding-top:26px">
+            <div class="ev-legend">
+              <span class="ev ev-shipped">shipped</span>
+              <span class="ev ev-measured">measured</span>
+              <span class="ev ev-building">building</span>
+              <span class="ev ev-hypothesis">hypothesis</span>
+            </div>
+            <span class="slide-number">01</span>
+          </div>
+        </section>
+
+        <section class="slide" data-label="02 · The problem">
+          <div class="slide-head">
+            <span class="slide-kicker">02 · The problem</span>
+            <span class="slide-date">7 Sept 2026</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:88px">
+            <div style="flex:1">
+              <h1 class="slide-title">Every time your AI changes,<br><span class="hl">you start over.</span></h1>
+              <p class="slide-lead" style="margin-top:36px;max-width:40ch">New model, new tool, new agent, new teammate. Each one begins with you re-explaining how you think, how you work and how you fail.</p>
+              <p style="font-size:34px;line-height:1.4;margin:28px 0 0;font-weight:700">The switching cost of AI isn't the model. It's you.</p>
+            </div>
+            <div style="flex:0 0 600px">
+              <div class="panel">
+                <div class="card-kicker">Every new window</div>
+                <div style="margin:28px 0 26px;display:flex;flex-direction:column;gap:14px">
+                  <div style="height:14px;border-radius:999px;background:var(--color-neutral-400);width:100%"></div>
+                  <div style="height:14px;border-radius:999px;background:var(--color-neutral-400);width:76%"></div>
+                  <div style="height:14px;border-radius:999px;background:var(--color-neutral-400);width:48%"></div>
+                </div>
+                <div style="font-size:29px;color:var(--color-neutral-700);font-style:italic">"So — tell me about yourself."</div>
+              </div>
+            </div>
+          </div>
+          <div class="slide-foot">
+            <img class="slide-logo" src="../assets/selfactual-logo.png" alt="">
+            <span class="slide-number">02</span>
+          </div>
+        </section>
+
+        <section class="slide" data-label="03 · The evidence ledger">
+          <div class="slide-head">
+            <span class="slide-kicker">03 · The evidence ledger</span>
+            <span class="slide-date">7 Sept 2026</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;align-items:baseline;gap:70px">
+              <h1 class="slide-title" style="flex:1;font-size:54px">Small numbers. All of them true.</h1>
+              <p class="slide-lead" style="flex:0 0 44%;font-size:28px">The bigger the claim on the cover, the smaller the numbers underneath have to be allowed to look.</p>
+            </div>
+            <div>
+              <div class="ev-row">
+                <div class="ev-row-figure">3</div>
+                <div class="ev-row-claim">Live transports on one page — artifact, web, ChatGPT — zero logic rewritten</div>
+                <span class="ev ev-shipped">shipped</span>
+              </div>
+              <div class="ev-row">
+                <div class="ev-row-figure">7 of 7</div>
+                <div class="ev-row-claim">Heartbeat end to end on staging; 80 tests, 33 of 34 planted defects caught</div>
+                <span class="ev ev-measured">measured · staging</span>
+              </div>
+              <div class="ev-row">
+                <div class="ev-row-figure">206→150</div>
+                <div class="ev-row-claim">P0/P1 board in one triage pass — 69 decisions, 69/69 writes, 0 failures</div>
+                <span class="ev ev-measured">measured</span>
+              </div>
+              <div class="ev-row ev-row-open">
+                <div class="ev-row-figure">Local</div>
+                <div class="ev-row-claim">Whether vault and model on one desk run the same page unchanged. Nobody has done it yet</div>
+                <span class="ev ev-hypothesis">hypothesis</span>
+              </div>
+            </div>
+          </div>
+          <div class="slide-foot">
+            <img class="slide-logo" src="../assets/selfactual-logo.png" alt="">
+            <span class="slide-number">03</span>
+          </div>
+        </section>
+
+        <section class="slide slide-ink" data-label="04 · Close">
+          <div class="slide-head">
+            <img src="../assets/selfactual-logo.png" alt="" style="height:60px;width:auto">
+            <span class="slide-date">7 Sept 2026</span>
+          </div>
+          <div>
+            <h1 class="slide-display">Choose your AI.<br><span class="hl">Keep yourself.</span></h1>
+          </div>
+          <div class="slide-foot" style="border-top:1px solid var(--color-ink-line);padding-top:26px">
+            <span></span>
+            <span class="slide-number">04</span>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+  <div class="controls on-ink">
+    <button class="btn btn-secondary" type="button" id="prev">Prev</button>
+    <span id="counter">01 / 04</span>
+    <button class="btn btn-primary" type="button" id="next">Next</button>
+  </div>
+</div>
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const viewport = document.getElementById('viewport'), frame = document.getElementById('frame'), scaler = document.getElementById('scaler');
+  const prev = document.getElementById('prev'), next = document.getElementById('next'), counter = document.getElementById('counter');
+  const KEY = 'sa-deck-starter-slide';
+  let i = Math.min(slides.length - 1, Number(localStorage.getItem(KEY) || 0));
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+    counter.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+    prev.disabled = i === 0; next.disabled = i === slides.length - 1;
+    localStorage.setItem(KEY, i);
+  }
+  function fit() {
+    const r = viewport.getBoundingClientRect();
+    const s = Math.min((r.width - 32) / 1920, (r.height - 32) / 1080);
+    frame.style.width = 1920 * s + 'px'; frame.style.height = 1080 * s + 'px';
+    scaler.style.transform = 'scale(' + s + ')';
+  }
+  prev.addEventListener('click', () => show(i - 1));
+  next.addEventListener('click', () => show(i + 1));
+  addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === ' ') show(i + 1); if (e.key === 'ArrowLeft') show(i - 1); });
+  addEventListener('resize', fit);
+  fit(); show(i);
+</script>
+</body>
+</html>

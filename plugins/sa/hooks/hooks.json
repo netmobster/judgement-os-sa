@@ -1,0 +1,21 @@
+{
+  "description": "Checks once a month that a selfActual account is connected, and routes a prompt that starts with :: to the CUE menu.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/sa-gate.js\" hook",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/cue-hook.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ECHO-JAY — blocks, light and dark</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 20px; background: var(--ej-desk); }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 16px; align-items: start; }
+  .col { background: var(--ej-bg); color: var(--ej-fg); border: 1px solid var(--ej-line-strong); box-shadow: var(--ej-shadow-frame); padding: 20px; display: flex; flex-direction: column; gap: 28px; }
+  .blk { display: flex; flex-direction: column; gap: 10px; }
+  .blk > .ej-label { color: var(--ej-steel-text); }
+  .slide-preview { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--ej-line-strong); }
+  .slide-preview .ej-slide { position: absolute; left: 0; top: 0; transform-origin: top left; transform: scale(var(--s, 0.25)); }
+</style>
+</head>
+<body>
+<div class="cols">
+<div class="col" id="light" data-theme="light">
+
+<div class="blk"><span class="ej-label">01 // Callout</span>
+  <div class="ej-callout"><span class="ej-label">05 // Note</span><div class="ej-callout-title">A note that must land</div><div class="ej-callout-body">One or two sentences that say what to know.</div></div>
+  <div class="ej-callout ej-callout-warning"><span class="ej-label">Warning</span><div class="ej-callout-title">Something went wrong</div><div class="ej-callout-body">What happened, and how often, as a count.</div></div>
+  <div class="ej-callout ej-callout-decision"><span class="ej-label">06 // Decision</span><div class="ej-callout-title">The decision, in one line</div><div class="ej-callout-body">What it means for the reader, in one sentence.</div><div class="ej-callout-actions"><button type="button" class="ej-btn ej-btn-secondary ej-btn-sm">Open the link</button></div></div>
+</div>
+
+<div class="blk"><span class="ej-label">02 // Stat row</span>
+  <div class="ej-stats" style="--n:3"><div class="ej-stat"><span class="ej-stat-figure">14</span><span class="ej-label">Label</span><span class="ej-stat-sub">Detail</span></div><div class="ej-stat ej-stat-hi"><span class="ej-stat-figure">0</span><span class="ej-label">Label</span></div><div class="ej-stat"><span class="ej-stat-figure">2</span><span class="ej-label">Label</span><span class="ej-stat-sub">Thu · Fri</span></div></div>
+</div>
+
+<div class="blk"><span class="ej-label">03 // Timeline</span>
+  <ol class="ej-timeline">
+    <li class="ej-tl-item ej-tl-done"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">Step one done</div><div class="ej-tl-line">What happened, in one line.</div></div></li>
+    <li class="ej-tl-item ej-tl-done"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">Step two done</div><div class="ej-tl-line">What it changed, in one line.</div></div></li>
+    <li class="ej-tl-item ej-tl-next"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">The next step</div><div class="ej-tl-line">What it will change.</div></div></li>
+    <li class="ej-tl-item ej-tl-open"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">A later step</div><div class="ej-tl-line">Not started yet.</div></div></li>
+  </ol>
+  <ol class="ej-timeline ej-timeline-h" style="margin-top:8px">
+    <li class="ej-tl-item ej-tl-done"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">One</div></div></li>
+    <li class="ej-tl-item ej-tl-done"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">Two</div></div></li>
+    <li class="ej-tl-item ej-tl-next"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">Next</div></div></li>
+    <li class="ej-tl-item ej-tl-open"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">Later</div></div></li>
+  </ol>
+</div>
+
+<div class="blk"><span class="ej-label">04 // Step list</span>
+  <ol class="ej-steps">
+    <li class="ej-step ej-step-done"><span class="ej-step-num"></span><div class="ej-step-title">Step one</div><span class="ej-tag ej-tag-steel">done</span><div class="ej-step-note">A note, if the step needs one.</div></li>
+    <li class="ej-step ej-step-done"><span class="ej-step-num"></span><div class="ej-step-title">Step two</div><span class="ej-tag ej-tag-steel">done</span></li>
+    <li class="ej-step ej-step-next"><span class="ej-step-num"></span><div class="ej-step-title">Step three</div><span class="ej-tag ej-tag-gold">next</span><div class="ej-step-note">What to do next.</div></li>
+    <li class="ej-step ej-step-blocked"><span class="ej-step-num"></span><div class="ej-step-title">Step four</div><span class="ej-tag ej-tag-alert">blocked</span><div class="ej-step-note">What it waits on.</div></li>
+  </ol>
+</div>
+
+<div class="blk"><span class="ej-label">05 // Comparison</span>
+  <div class="ej-compare">
+    <div class="ej-compare-side"><div class="ej-label-row"><span class="ej-label">A // Before</span></div><div class="ej-compare-title">The old way</div><div class="ej-compare-body">What it was, and the count that mattered.</div></div>
+    <div class="ej-compare-side ej-compare-chosen"><div class="ej-label-row"><span class="ej-label">B // After</span><span class="ej-label">chosen</span></div><div class="ej-compare-title">The new way</div><div class="ej-compare-body">What changed, and the count that decided it.</div></div>
+  </div>
+</div>
+
+<div class="blk"><span class="ej-label">06 // Question panel</span>
+  <div class="ej-question"><span class="ej-label">Q.01 // Decision</span><div class="ej-question-title">Which option should we take?</div>
+    <ul class="ej-options">
+      <li><div class="ej-option"><span class="ej-option-mark"></span><span class="ej-option-name">Option one</span><span class="ej-option-meaning">What it means, in one line.</span></div></li>
+      <li><div class="ej-option ej-option-rec"><span class="ej-option-mark"></span><span class="ej-option-name">Option two</span><span class="ej-label">recommended</span><span class="ej-option-meaning">What it means, in one line.</span></div></li>
+      <li><div class="ej-option"><span class="ej-option-mark"></span><span class="ej-option-name">Option three</span><span class="ej-option-meaning">What it means, in one line.</span></div></li>
+    </ul>
+    <div class="ej-note"><span class="ej-label">Note</span>What we already know that bears on it.</div>
+  </div>
+</div>
+
+<div class="blk"><span class="ej-label">07 // Quote</span>
+  <figure class="ej-quote"><blockquote class="ej-quote-text">A line someone said, in their words.</blockquote><figcaption class="ej-quote-cite"><b>Name</b> · Source, MM.DD</figcaption></figure>
+</div>
+
+<div class="blk"><span class="ej-label">08 // Figure</span>
+  <figure class="ej-fig">
+    <div class="ej-fig-head"><span class="ej-label">FIG.01 // Series</span><span class="ej-label">Detail</span></div>
+    <div class="ej-fig-body"><div class="ej-chart"><div class="ej-chart-y"><span>10</span><span>0</span></div><div class="ej-bars"><div class="ej-bar" style="--v:20%"></div><div class="ej-bar" style="--v:30%"></div><div class="ej-bar" style="--v:20%"></div><div class="ej-bar" style="--v:60%"></div><div class="ej-bar" style="--v:40%"></div><div class="ej-bar" style="--v:30%"></div><div class="ej-bar" style="--v:70%"></div><div class="ej-bar" style="--v:50%"></div><div class="ej-bar" style="--v:60%"></div><div class="ej-bar" style="--v:80%"></div><div class="ej-bar" style="--v:70%"></div><div class="ej-bar" style="--v:90%"></div><div class="ej-bar" style="--v:80%"></div><div class="ej-bar ej-bar-hi" style="--v:100%"></div></div><div class="ej-bars-axis"><span>MM.DD</span><span>MM.DD</span></div></div></div>
+    <figcaption class="ej-fig-caption"><b>One sentence that states the figure's point.</b> A second, if it needs one.</figcaption>
+  </figure>
+</div>
+
+<div class="blk"><span class="ej-label">09 // Charts · line and small multiples</span>
+  <div class="ej-chart"><div class="ej-chart-y"><span>9</span><span>0</span></div>
+    <div class="ej-line ej-line-values"><div class="ej-line-plot">
+      <svg class="ej-line-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline class="ej-line-path" vector-effect="non-scaling-stroke" points="0,77.8 16.7,66.7 33.3,77.8 50,33.3 66.7,55.6 83.3,22.2 100,0"/></svg>
+      <span class="ej-line-pt" style="--x:0%;--y:77.8%"></span><span class="ej-line-val" style="--x:0%;--y:77.8%">2</span>
+      <span class="ej-line-pt" style="--x:16.7%;--y:66.7%"></span><span class="ej-line-val" style="--x:16.7%;--y:66.7%">3</span>
+      <span class="ej-line-pt" style="--x:33.3%;--y:77.8%"></span><span class="ej-line-val" style="--x:33.3%;--y:77.8%">2</span>
+      <span class="ej-line-pt" style="--x:50%;--y:33.3%"></span><span class="ej-line-val" style="--x:50%;--y:33.3%">6</span>
+      <span class="ej-line-pt" style="--x:66.7%;--y:55.6%"></span><span class="ej-line-val" style="--x:66.7%;--y:55.6%">4</span>
+      <span class="ej-line-pt" style="--x:83.3%;--y:22.2%"></span><span class="ej-line-val" style="--x:83.3%;--y:22.2%">7</span>
+      <span class="ej-line-pt ej-line-pt-hi" style="--x:100%;--y:0%"></span><span class="ej-line-val ej-line-val-hi" style="--x:100%;--y:0%">9</span>
+    </div></div>
+    <div class="ej-bars-axis"><span>Mon</span><span>Sun</span></div>
+  </div>
+  <div class="ej-multiples" style="--n:3">
+    <div class="ej-multiple ej-multiple-hi"><div class="ej-label-row"><span class="ej-label">One</span><span class="ej-multiple-count">9</span></div><div class="ej-bars"><div class="ej-bar" style="--v:33%"></div><div class="ej-bar" style="--v:44%"></div><div class="ej-bar" style="--v:56%"></div><div class="ej-bar" style="--v:67%"></div><div class="ej-bar ej-bar-hi" style="--v:100%"></div></div></div>
+    <div class="ej-multiple"><div class="ej-label-row"><span class="ej-label">Two</span><span class="ej-multiple-count">4</span></div><div class="ej-bars"><div class="ej-bar" style="--v:11%"></div><div class="ej-bar" style="--v:22%"></div><div class="ej-bar" style="--v:22%"></div><div class="ej-bar" style="--v:33%"></div><div class="ej-bar" style="--v:44%"></div></div></div>
+    <div class="ej-multiple"><div class="ej-label-row"><span class="ej-label">Three</span><span class="ej-multiple-count">1</span></div><div class="ej-bars"><div class="ej-bar" style="--v:2%"></div><div class="ej-bar" style="--v:11%"></div><div class="ej-bar" style="--v:11%"></div><div class="ej-bar" style="--v:2%"></div><div class="ej-bar" style="--v:11%"></div></div></div>
+  </div>
+</div>
+
+<div class="blk"><span class="ej-label">10 // Diagrams · sequence and layers</span>
+  <div class="ej-seq" style="--n:3">
+    <div class="ej-seq-actor" style="grid-column:1"><div class="ej-node"><div class="ej-node-title">Client</div><div class="ej-node-sub">asks</div></div></div>
+    <div class="ej-seq-actor" style="grid-column:2"><div class="ej-node"><div class="ej-node-title">Service</div><div class="ej-node-sub">does the work</div></div></div>
+    <div class="ej-seq-actor" style="grid-column:3"><div class="ej-node ej-node-well"><div class="ej-node-title">Store</div><div class="ej-node-sub">data</div></div></div>
+    <div class="ej-seq-msg" style="grid-column:1 / 3;grid-row:2;--k:2"><span class="ej-seq-label">sends request</span><div class="ej-seq-arrow"></div></div>
+    <div class="ej-seq-msg" style="grid-column:2 / 4;grid-row:3;--k:2"><span class="ej-seq-label">reads record</span><div class="ej-seq-arrow"></div></div>
+    <div class="ej-seq-msg ej-seq-msg-back ej-seq-msg-dashed" style="grid-column:2 / 4;grid-row:4;--k:2"><span class="ej-seq-label">returns record</span><div class="ej-seq-arrow"></div></div>
+    <div class="ej-seq-msg ej-seq-msg-back ej-seq-msg-hi" style="grid-column:1 / 3;grid-row:5;--k:2"><span class="ej-seq-label">renders result</span><div class="ej-seq-arrow"></div></div>
+  </div>
+  <div class="ej-layers" style="margin-top:12px">
+    <div class="ej-layer"><span class="ej-label">Surface</span><div class="ej-layer-items"><div class="ej-node"><div class="ej-node-title">Page</div><div class="ej-node-sub">what people see</div></div><div class="ej-node"><div class="ej-node-title">Command line</div><div class="ej-node-sub">for builders</div></div></div></div>
+    <div class="ej-layer-via"><span class="ej-arrow">↓</span>renders</div>
+    <div class="ej-layer ej-layer-hi"><span class="ej-label">Logic</span><div class="ej-layer-items"><div class="ej-node"><div class="ej-node-title">Service</div><div class="ej-node-sub">does the work</div></div><div class="ej-node"><div class="ej-node-title">Rules</div><div class="ej-node-sub">decides</div></div></div></div>
+    <div class="ej-layer-via"><span class="ej-arrow">↓</span>reads · writes</div>
+    <div class="ej-layer"><span class="ej-label">Store</span><div class="ej-layer-items"><div class="ej-node ej-node-well"><div class="ej-node-title">Database</div><div class="ej-node-sub">records</div></div><div class="ej-node ej-node-well"><div class="ej-node-title">Log</div><div class="ej-node-sub">events</div></div></div></div>
+  </div>
+</div>
+
+<div class="blk"><span class="ej-label">11 // Slide frame · 1920×1080</span>
+  <div class="slide-preview"><section class="ej-slide">
+    <div class="ej-slide-head"><span class="ej-nameplate">FOR NAME</span><span class="ej-label">02 // Section</span></div>
+    <h1 class="ej-slide-title">A plain statement,<br><span class="ej-hl">then its turn.</span></h1>
+    <div class="ej-slide-body"><div class="ej-slide-cols">
+      <p>One or two plain sentences that carry the argument.</p>
+      <div style="display:flex;flex-direction:column;gap:40px">
+        <div class="ej-stats" style="--n:3"><div class="ej-stat"><span class="ej-stat-figure">14</span><span class="ej-label">Label</span></div><div class="ej-stat ej-stat-hi"><span class="ej-stat-figure">0</span><span class="ej-label">Label</span></div><div class="ej-stat"><span class="ej-stat-figure">2</span><span class="ej-label">Label</span></div></div>
+        <ol class="ej-timeline ej-timeline-h">
+          <li class="ej-tl-item ej-tl-done"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">One</div></div></li>
+          <li class="ej-tl-item ej-tl-done"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">Two</div></div></li>
+          <li class="ej-tl-item ej-tl-next"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">Next</div></div></li>
+          <li class="ej-tl-item ej-tl-open"><span class="ej-tl-date">MM.DD</span><span class="ej-tl-mark"></span><div class="ej-tl-body"><div class="ej-tl-title">Later</div></div></li>
+        </ol>
+      </div>
+    </div></div>
+    <footer class="ej-slide-foot"><span>ECHO-JAY // Deck</span><span>02</span></footer>
+  </section></div>
+</div>
+
+</div>
+<div class="col" id="dark" data-theme="dark"></div>
+</div>
+<script>
+  document.getElementById('dark').innerHTML = document.getElementById('light').innerHTML;
+  function fit() { document.querySelectorAll('.slide-preview').forEach(function (p) { p.style.setProperty('--s', (p.clientWidth / 1920).toFixed(4)); }); }
+  addEventListener('resize', fit); fit();
+</script>
+</body>
+</html>

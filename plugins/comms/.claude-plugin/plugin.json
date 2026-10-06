@@ -1,0 +1,16 @@
+{
+  "name": "comms",
+  "version": "0.6.1",
+  "description": "The send gate, which stops every outbound message until you type send; humanify, a de-tic pass for drafts written with AI in the room; poll, which reads the Slack channels you choose and drafts replies that post only when you approve them; and your selfActual vault's messages, FOR CC reminders and /ping.",
+  "author": {
+    "name": "Jay Wright"
+  },
+  "keywords": [
+    "send-gate",
+    "humanify",
+    "messages",
+    "vault",
+    "slack"
+  ],
+  "homepage": "https://netmobster.github.io/unstuck-games/judgement-os/"
+}

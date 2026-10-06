@@ -1,0 +1,27 @@
+/* selfActual — space, radius, elevation. A true 4px scale; square geometry; shallow ink-tinted shadows. */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #16181d 12%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #16181d 14%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #16181d 18%, transparent);
+  --shadow-window: 0 30px 80px color-mix(in srgb, #101418 28%, transparent);
+
+  --slide-w: 1920px;
+  --slide-h: 1080px;
+  --slide-pad-y: 92px;
+  --slide-pad-x: 116px;
+  --slide-gap: 70px;
+
+  --focus-ring: 2px solid var(--color-accent);
+}

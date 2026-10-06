@@ -1,0 +1,29 @@
+/* ECHO-JAY — base element styles. Plain CSS on plain HTML; the root font-size is the A−/A+ control. */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 15px; }
+html[data-size="-1"] { font-size: 14px; }
+html[data-size="1"] { font-size: 16px; }
+body { margin: 0; background: var(--ej-bg); color: var(--ej-fg); font-family: var(--ej-font-body); font-size: var(--ej-text-body); line-height: var(--ej-leading-body); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); line-height: 1.05; letter-spacing: var(--ej-tracking-title); margin: 0 0 var(--ej-space-2); text-wrap: pretty; }
+h1 { font-size: var(--ej-text-title); line-height: var(--ej-leading-title); }
+h2 { font-size: var(--ej-text-h2); }
+h3 { font-size: var(--ej-text-h3); }
+h4 { font-size: var(--ej-text-body); letter-spacing: 0.04em; text-transform: uppercase; }
+p { margin: 0 0 var(--ej-space-3); text-wrap: pretty; }
+ul, ol { margin: 0 0 var(--ej-space-3); padding-left: 1.2em; }
+li + li { margin-top: var(--ej-space-1); }
+a { color: var(--ej-steel-text); text-decoration: none; text-underline-offset: 3px; }
+a:hover { color: var(--ej-gold-text); text-decoration: underline; }
+strong, b { font-weight: 700; }
+code, kbd, samp, pre { font-family: var(--ej-font-mono); }
+code { font-size: 0.933em; color: var(--ej-steel-text); }
+img { display: block; max-width: 100%; }
+hr { height: 1px; border: 0; margin: var(--ej-space-4) 0; background: var(--ej-line); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--ej-gold); outline-offset: 2px; }
+::selection { background: var(--ej-gold-tint); color: var(--ej-fg); }
+
+@keyframes ej-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+@keyframes ej-pulse { 0%, 100% { text-shadow: 0 0 3px var(--ej-glow); } 50% { text-shadow: 0 0 12px var(--ej-glow); } }
+@media (prefers-reduced-motion: reduce) { .ej-blink, .ej-pulse, .ej-dot, .ej-readout-live { animation: none; } }

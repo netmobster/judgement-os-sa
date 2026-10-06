@@ -1,0 +1,3 @@
+import * as React from 'react';
+export interface DialogProps { open?: boolean; title?: React.ReactNode; /** Buttons, right-aligned. */ actions?: React.ReactNode; onClose?: () => void; /** Position the backdrop absolutely inside a relative parent instead of fixed to the viewport. */ inline?: boolean; className?: string; style?: React.CSSProperties; children?: React.ReactNode; }
+export declare function Dialog(props: DialogProps): JSX.Element | null;

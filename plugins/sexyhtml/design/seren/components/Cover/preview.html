@@ -1,0 +1,52 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="en">
+<head><link rel="stylesheet" href="../../styles.css">
+<meta charset="utf-8">
+<title>Seren</title>
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--ink); color:var(--bone); overflow:hidden; }
+  .cover { position:relative; height:288px; overflow:hidden; }
+  .art { position:absolute; top:0; left:480px; width:480px; height:288px; overflow:hidden; }
+  .art svg { display:block; width:480px; height:288px; }
+  .copper { fill:var(--copper); }
+  .verdigris { fill:var(--verdigris); }
+  .dust { fill:var(--dust); }
+  .oxblood { fill:var(--oxblood); }
+  .ring { fill:none; stroke:var(--edge-soft); stroke-width:1; }
+  .orbit { fill:none; stroke:var(--bone); stroke-width:1; stroke-dasharray:35 49; }
+  .sat { fill:var(--verdigris); }
+  .r { rx:var(--radius); }
+  .words { position:absolute; left:24px; bottom:24px; max-width:440px; }
+  .name { margin:0; font-family:var(--font-serif); font-weight:300; font-size:120px; line-height:.94; letter-spacing:-0.032em; color:var(--bone); }
+  .tagline { margin:12px 0 0 4px; font-family:var(--font-sans); font-weight:300; font-size:14px; line-height:20px; color:var(--dust); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  blocks      copper 192×256 (the one accent, largest, bled off the bottom) · verdigris 96×120 (live, bled off the top) · dust 64×112 (relief, bled off the bottom) · oxblood 64×48 (a state: it stays small, bled off the right) — about a third of 960×288
+  arrangement one tall slab with satellites, square corners (radius 2px), 16px gutters
+  pattern     the orbit, Seren's mark, as hairline rings: two edge-soft rings and one dashed orbit in bone at the mark's 2.4/3.4 rhythm, with a verdigris satellite: "a literal motif → arcs built from radii", and the mark is the most Seren thing there is
+  scales      radius 2px · gutter 44 (the slab sits two gutters plus 8 from the box edge) · rings at 48, 96 and 144
+-->
+<rect class="dust r" x="16" y="176" width="64" height="128"/>
+<rect class="copper r" x="96" y="36" width="192" height="268"/>
+<rect class="verdigris r" x="304" y="-16" width="96" height="136"/>
+<rect class="oxblood r" x="416" y="208" width="80" height="48"/>
+<circle class="ring" cx="192" cy="164" r="48"/>
+<circle class="orbit" cx="192" cy="164" r="96"/>
+<circle class="ring" cx="192" cy="164" r="144"/>
+<circle class="sat" cx="275.1" cy="116.0" r="7"/>
+</svg>
+</div>
+<div class="words">
+<p class="name">Seren</p>
+<p class="tagline">You bring one character. It brings everyone else.</p>
+</div>
+</div>
+</body>
+</html>

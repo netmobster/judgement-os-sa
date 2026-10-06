@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>selfActual — page starter</title>
+<!-- Paths assume this file sits in templates/. Adjust ../styles.css and ../assets/ if you move it. -->
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* Layout only. Everything visual comes from styles.css. */
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 var(--space-6); }
+  .section { padding: 80px 0; }
+  .hero { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); gap: 64px; align-items: center; }
+  .ledger-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-6); margin-bottom: var(--space-4); }
+  .close { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: end; }
+  @media (max-width: 800px) { .hero, .close { grid-template-columns: 1fr; } .section { padding: 56px 0; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-brand"><img src="../assets/selfactual-logo.png" alt="selfActual" style="height:22px;width:auto"></span>
+  <a href="#" aria-current="page">Ledger</a>
+  <a href="#">Mirror</a>
+  <a href="#">Manifest</a>
+  <button class="btn btn-primary" type="button">Join the alpha</button>
+</nav>
+
+<main>
+  <section class="section">
+    <div class="wrap hero">
+      <div>
+        <h1>Choose your AI.<br><span class="hl">Keep yourself.</span></h1>
+        <p style="font-size:18px;line-height:1.5;color:var(--color-neutral-700);max-width:44ch;margin:var(--space-4) 0 0">Use whatever models, tools, agents and infrastructure you want. selfActual is the operator layer that stays yours.</p>
+        <div style="display:flex;gap:var(--space-2);margin-top:var(--space-6)">
+          <button class="btn btn-primary" type="button">Join the alpha</button>
+          <button class="btn btn-ghost" type="button">See the manifest</button>
+        </div>
+      </div>
+      <div class="console">
+        <div class="console-head">
+          <div class="console-brand">selfactual <em>insights</em></div>
+          <div class="console-status"><span class="console-dot"></span>heartbeat · 3 windows open</div>
+        </div>
+        <div class="console-insight">
+          <div class="console-label">Insight</div>
+          <div class="console-text">You moved <b>SA-212</b> to Monday in ChatGPT two minutes ago. Claude and the web already show it.</div>
+          <div class="console-actions">
+            <button type="button" class="console-chip console-chip-primary">Open the ledger</button>
+            <button type="button" class="console-chip">Undo</button>
+          </div>
+        </div>
+        <div class="console-section">Mirror · what this AI loaded<span>14 of 35</span></div>
+        <div class="console-row"><span class="console-key">working-rhythm</span><span class="console-val">Bursts, then long tails. Never schedule the tail.</span><span class="console-state">core</span></div>
+        <div class="console-row"><span class="console-key">failure-modes</span><span class="console-val">Says yes to adjacent problems. Flag scope drift.</span><span class="console-state">on demand</span></div>
+        <div class="console-row console-row-locked"><span class="console-key">finances</span><span class="console-val">Gated — opens only on your spoken phrase</span><span class="console-state">locked</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="ledger-head">
+        <h2 style="margin:0">Small numbers. <span class="hl">All of them true.</span></h2>
+        <div class="ev-legend">
+          <span class="ev ev-shipped">shipped</span>
+          <span class="ev ev-measured">measured</span>
+          <span class="ev ev-building">building</span>
+          <span class="ev ev-hypothesis">hypothesis</span>
+        </div>
+      </div>
+      <div class="ev-row" style="grid-template-columns:140px 1fr 160px">
+        <div class="ev-row-figure">3</div>
+        <div class="ev-row-claim">Live transports on one page — artifact, web, ChatGPT — zero logic rewritten</div>
+        <span class="ev ev-shipped">shipped</span>
+      </div>
+      <div class="ev-row" style="grid-template-columns:140px 1fr 160px">
+        <div class="ev-row-figure">7 of 7</div>
+        <div class="ev-row-claim">Heartbeat end to end on staging; 80 tests, 33 of 34 planted defects caught</div>
+        <span class="ev ev-measured">measured · staging</span>
+      </div>
+      <div class="ev-row" style="grid-template-columns:140px 1fr 160px">
+        <div class="ev-row-figure">206→150</div>
+        <div class="ev-row-claim">P0/P1 board in one triage pass — 69 decisions, 69/69 writes, 0 failures</div>
+        <span class="ev ev-measured">measured</span>
+      </div>
+      <div class="ev-row ev-row-open" style="grid-template-columns:140px 1fr 160px">
+        <div class="ev-row-figure">Local</div>
+        <div class="ev-row-claim">Whether vault and model on one desk run the same page unchanged. Nobody has done it yet</div>
+        <span class="ev ev-hypothesis">hypothesis</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-ink section">
+    <div class="wrap close">
+      <div>
+        <h2 style="font-size:40px;margin:0">Export is a zip file. <span class="hl">This is a thing that's on.</span></h2>
+        <div class="rule-note" style="margin-top:var(--space-6);color:var(--color-ink-muted)">Heartbeat pushes, gates hold, and every insight ends in a button because the profile said so.</div>
+      </div>
+      <div style="display:flex;gap:var(--space-2);justify-content:flex-end">
+        <button class="btn btn-secondary" type="button">See the manifest</button>
+        <button class="btn btn-primary" type="button">Join the alpha</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap" style="display:flex;justify-content:space-between;align-items:center;padding:var(--space-6)">
+  <img src="../assets/selfactual-logo.png" alt="selfActual" style="height:22px;width:auto">
+  <span class="mono text-muted" style="font-size:12px">Internal · 7 Sept 2026</span>
+</footer>
+
+</body>
+</html>

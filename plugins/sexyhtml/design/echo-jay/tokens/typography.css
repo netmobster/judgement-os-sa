@@ -1,0 +1,32 @@
+/* ECHO-JAY — type tokens. Barlow Condensed for titles and the nameplate, Source Sans 3 for reading, Share Tech Mono for readouts, keys and labels. Sizes are rem on a 15px root so the A−/A+ control rescales everything. */
+:root {
+  --ej-font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --ej-font-body: "Source Sans 3", system-ui, sans-serif;
+  --ej-font-mono: "Share Tech Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ej-text-title: 2.333rem;   /* 35px — the artifact title */
+  --ej-text-h2: 1.6rem;        /* 24px — section heads, big figures */
+  --ej-text-h3: 1.2rem;        /* 18px — nameplate, sub-heads */
+  --ej-text-lead: 1.133rem;    /* 17px — subtitle */
+  --ej-text-body: 1rem;        /* 15px */
+  --ej-text-sm: 0.933rem;      /* 14px — tables, nodes */
+  --ej-text-btn: 0.867rem;     /* 13px — button labels */
+  --ej-text-stamp: 0.8rem;     /* 12px — receipt stamp */
+  --ej-text-label: 0.733rem;   /* 11px — mono labels, readouts. The floor. */
+
+  --ej-leading-title: 1.02;
+  --ej-leading-lead: 1.45;
+  --ej-leading-body: 1.6;
+  --ej-leading-table: 1.4;
+
+  --ej-tracking-title: -0.005em;
+  --ej-tracking-wordmark: 0.1em;
+  --ej-tracking-label: 0.12em;
+  --ej-tracking-readout: 0.1em;
+  --ej-tracking-mono: 0.08em;
+  --ej-tracking-btn: 0.08em;
+
+  --ej-weight-display: 600;
+  --ej-weight-wordmark: 700;
+  --ej-weight-btn: 700;
+}

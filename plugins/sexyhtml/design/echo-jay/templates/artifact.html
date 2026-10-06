@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>ECHO-JAY — artifact starter</title>
+<!-- Paths assume this file sits in templates/. If you copy it elsewhere, fix ../styles.css. Pin a ground with <html data-theme="light|dark">; leave it off to follow the host. -->
+<link rel="stylesheet" href="../styles.css">
+<script>
+  // Restore the reader's theme and text-size choices before paint.
+  (function () {
+    try {
+      var t = localStorage.getItem('ej-theme'); if (t) document.documentElement.setAttribute('data-theme', t);
+      var s = localStorage.getItem('ej-size'); if (s) document.documentElement.setAttribute('data-size', s);
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+<div class="ej-shell">
+
+  <header class="ej-header">
+    <div class="ej-header-row">
+      <div class="ej-header-meta">
+        <span class="ej-nameplate">FOR NAME</span>
+        <span class="ej-label">01 // Label</span>
+      </div>
+      <div class="ej-controls">
+        <button type="button" class="ej-ctl" id="ej-size-down" aria-label="Smaller text">A−</button>
+        <button type="button" class="ej-ctl" id="ej-size-up" aria-label="Larger text">A+</button>
+        <button type="button" class="ej-ctl" id="ej-theme">DARK</button>
+      </div>
+    </div>
+    <div class="ej-readout">
+      <span><span class="ej-dot"></span>SYS.ECHO</span>
+      <span class="ej-readout-sep">//</span>
+      <span class="ej-readout-live" id="ej-clock">00:00:00</span>
+    </div>
+  </header>
+
+  <section class="ej-titleblock">
+    <h1 class="ej-title">Title</h1>
+    <p class="ej-subtitle">Subtitle: one to three plain sentences.</p>
+    <div class="ej-byline"><span>Byline</span><span>YYYY.MM.DD</span></div>
+  </section>
+
+  <article class="ej-content">
+    <p>Paragraph: body text in the owner's words.</p>
+
+    <div class="ej-panel ej-stack">
+      <label class="ej-label" for="input">02 // Input</label>
+      <div class="ej-inline">
+        <input id="input" class="ej-input" placeholder="Placeholder">
+        <button type="button" class="ej-btn ej-btn-primary">Run</button>
+      </div>
+    </div>
+
+    <div class="ej-panel ej-panel-list">
+      <span class="ej-label">03 // Settings</span>
+      <div class="ej-switch-list">
+        <div class="ej-switch-row"><span>Setting one</span><label class="ej-switch"><input type="checkbox" checked><span class="ej-switch-state"></span><span class="ej-switch-track"></span></label></div>
+        <div class="ej-switch-row"><span>Setting two</span><label class="ej-switch"><input type="checkbox"><span class="ej-switch-state"></span><span class="ej-switch-track"></span></label></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="ej-label-row"><span class="ej-label">TBL.01 // Table</span><span class="ej-label">2 rows</span></div>
+      <div class="ej-table-wrap">
+        <table class="ej-table">
+          <thead><tr><th>Key</th><th>Value</th><th>Note</th></tr></thead>
+          <tbody>
+            <tr><td class="ej-key">Row one</td><td class="ej-muted">Value</td><td>Note</td></tr>
+            <tr><td class="ej-key">Row two</td><td class="ej-muted">Value</td><td>Note</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ej-panel">
+      <div class="ej-panel-head"><span class="ej-label">FIG.01 // Series</span><span class="ej-figure">12</span></div>
+      <div class="ej-bars">
+        <div class="ej-bar" style="--v:20%"></div><div class="ej-bar" style="--v:35%"></div><div class="ej-bar" style="--v:25%"></div><div class="ej-bar" style="--v:60%"></div><div class="ej-bar" style="--v:40%"></div><div class="ej-bar" style="--v:30%"></div><div class="ej-bar" style="--v:70%"></div><div class="ej-bar" style="--v:55%"></div><div class="ej-bar" style="--v:65%"></div><div class="ej-bar" style="--v:80%"></div><div class="ej-bar" style="--v:75%"></div><div class="ej-bar" style="--v:90%"></div><div class="ej-bar" style="--v:85%"></div><div class="ej-bar ej-bar-hi" style="--v:100%"></div>
+      </div>
+      <div class="ej-bars-axis"><span>MM.DD</span><span>MM.DD</span></div>
+    </div>
+
+    <div class="ej-receipt">
+      <div>
+        <div class="ej-label">Receipt // verified</div>
+        <div class="ej-receipt-body">What was done, in one line.</div>
+      </div>
+      <span class="ej-receipt-stamp">CC · MM.DD</span>
+    </div>
+
+    <div class="ej-btn-row">
+      <button type="button" class="ej-btn ej-btn-primary">Copy text</button>
+      <button type="button" class="ej-btn ej-btn-secondary">Open link</button>
+    </div>
+  </article>
+
+  <footer class="ej-footer"><span>ECHO-JAY // Footer</span><span>END OF FILE</span></footer>
+</div>
+
+<script>
+  // Controls: theme (light / dark / follow host) and text size (−1 / 0 / +1). Both persist.
+  (function () {
+    var root = document.documentElement, themeBtn = document.getElementById('ej-theme');
+    var isDark = function () { var t = root.getAttribute('data-theme'); return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
+    var paint = function () { themeBtn.textContent = isDark() ? 'LIGHT' : 'DARK'; };
+    themeBtn.addEventListener('click', function () { var next = isDark() ? 'light' : 'dark'; root.setAttribute('data-theme', next); try { localStorage.setItem('ej-theme', next); } catch (e) {} paint(); });
+    var size = function (d) { var n = Math.max(-1, Math.min(1, Number(root.getAttribute('data-size') || 0) + d)); root.setAttribute('data-size', String(n)); try { localStorage.setItem('ej-size', String(n)); } catch (e) {} };
+    document.getElementById('ej-size-down').addEventListener('click', function () { size(-1); });
+    document.getElementById('ej-size-up').addEventListener('click', function () { size(1); });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);
+    paint();
+    // Live readout clock
+    var clock = document.getElementById('ej-clock'), p = function (n) { return String(n).padStart(2, '0'); };
+    var tick = function () { var d = new Date(); clock.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds()); };
+    tick(); setInterval(tick, 1000);
+  })();
+</script>
+</body>
+</html>

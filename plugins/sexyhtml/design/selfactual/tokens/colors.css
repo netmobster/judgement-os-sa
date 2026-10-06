@@ -1,0 +1,84 @@
+/* selfActual — color tokens. Two grounds (paper + ink), two accents, a console family, and the evidence vocabulary. */
+:root {
+  --color-bg: #fafaf7;
+  --color-surface: #f1f0ec;
+  --color-text: #16181d;
+  --color-accent: #2563eb;
+  --color-accent-2: #06b6d4;
+  --color-divider: color-mix(in srgb, #16181d 14%, transparent);
+  --color-white: #ffffff;
+
+  --color-neutral-100: #f7f7f4;
+  --color-neutral-200: #efeee9;
+  --color-neutral-300: #e5e4de;
+  --color-neutral-400: #c9c8c2;
+  --color-neutral-500: #9a9994;
+  --color-neutral-600: #74736e;
+  --color-neutral-700: #4b4b47;
+  --color-neutral-800: #2a2a28;
+  --color-neutral-900: #16181d;
+
+  --color-accent-100: #eef4ff;
+  --color-accent-200: #dbe8ff;
+  --color-accent-300: #bfd5fd;
+  --color-accent-400: #7ea8f8;
+  --color-accent-500: #3b82f6;
+  --color-accent-600: #2563eb;
+  --color-accent-700: #1d4ed8;
+  --color-accent-800: #1e3a8a;
+  --color-accent-900: #172554;
+
+  --color-accent-2-100: #ecfeff;
+  --color-accent-2-200: #cffafe;
+  --color-accent-2-300: #a5f3fc;
+  --color-accent-2-400: #67e8f9;
+  --color-accent-2-500: #22d3ee;
+  --color-accent-2-600: #06b6d4;
+  --color-accent-2-700: #0e7490;
+  --color-accent-2-800: #155e75;
+  --color-accent-2-900: #083344;
+
+  /* Ink — a second ground, not a dark mode. */
+  --color-ink: #101418;
+  --color-ink-surface: #1c222b;
+  --color-ink-line: #1c222b;
+  --color-ink-text: #f7f8fa;
+  --color-ink-muted: #c2c8d2;
+  --color-ink-dim: #8b919c;
+  --color-ink-faint: #6d737d;
+  --color-ink-accent: #38bdf8;
+  --color-ink-accent-2: #67e8f9;
+
+  /* Console — the product's own window. Real screens only. */
+  --color-console-bg: #18242a;
+  --color-console-panel: #1f2e35;
+  --color-console-line: #26363d;
+  --color-console-line-soft: #1e2c32;
+  --color-console-text: #e4edf0;
+  --color-console-body: #b4c6cd;
+  --color-console-muted: #8199a3;
+  --color-console-accent: #79b8d1;
+  --color-console-edge: #3d6b7c;
+  --color-console-alert: #e8635a;
+
+  /* Evidence — measured and hypothesis share a hue on purpose. */
+  --color-evidence-shipped: var(--color-accent-2-700);
+  --color-evidence-measured: var(--color-accent-700);
+  --color-evidence-building: var(--color-neutral-600);
+  --color-evidence-hypothesis: var(--color-accent-700);
+  --color-evidence-open: var(--color-accent-700);
+  --color-evidence-shipped-ink: var(--color-ink-accent-2);
+  --color-evidence-measured-ink: var(--color-ink-muted);
+  --color-evidence-building-ink: var(--color-ink-dim);
+  --color-evidence-hypothesis-ink: var(--color-ink-accent);
+
+  /* Semantic aliases */
+  --surface-page: var(--color-bg);
+  --surface-card: var(--color-white);
+  --surface-panel: var(--color-surface);
+  --text-body-color: var(--color-neutral-700);
+  --text-heading-color: var(--color-text);
+  --text-muted-color: var(--color-neutral-600);
+  --text-highlight: var(--color-accent-700);
+  --border-default: var(--color-divider);
+}

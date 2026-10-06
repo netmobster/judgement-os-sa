@@ -1,0 +1,16 @@
+{
+  "name": "day",
+  "version": "0.3.1",
+  "description": "A day loop for Claude Code: a short boot with the judges on the style pick, mid-day and end-of-day check-ins from your selfActual vault, habits you set up once, a daily reading and a phrase in a language you're learning, /flag for work you want to come back to, and a clock on every message.",
+  "author": {
+    "name": "Jay Wright"
+  },
+  "keywords": [
+    "boot",
+    "checkin",
+    "daily",
+    "tasks",
+    "selfactual"
+  ],
+  "homepage": "https://netmobster.github.io/unstuck-games/judgement-os/"
+}

@@ -1,0 +1,60 @@
+{
+  "name": "judgement-os-sa",
+  "owner": {
+    "name": "Jay Wright"
+  },
+  "metadata": {
+    "description": "Judgement OS, the selfActual Edition: everything in the General Edition, working from your selfActual vault, plus your gears, loops and modes through one router. A selfActual account is needed: selfactual.ai.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "labs",
+      "source": "./plugins/labs",
+      "description": "The Judgement OS core: two judges consulted at marked decisions inside skills, the recorder that checks every answer and combines the two, the append-only log, /labs:profile, the one file the judges read about you, and /labs:try, which puts both judges on a morning blind so you can see which one you trust.",
+      "version": "0.8.1"
+    },
+    {
+      "name": "guard",
+      "source": "./plugins/guard",
+      "description": "Hard rules as hooks: deploys are printed for you to run, destructive commands and secrets ask first, state files change only through their scripts, writes to someone else's vault ask, and a session is archived only when you say so.",
+      "version": "0.2.2"
+    },
+    {
+      "name": "sexyhtml",
+      "source": "./plugins/sexyhtml",
+      "description": "House styles for finished HTML pages. /sexyhtml picks the style (ECHO-JAY by default, selfActual for work, Seren for games) and the shape, with the Judgement OS weighing in when a request reads two ways; or name one: /sexyhtml:jay, /sexyhtml:sa, /sexyhtml:seren, /sexyhtml:judgement-os.",
+      "version": "0.15.2"
+    },
+    {
+      "name": "make",
+      "source": "./plugins/make",
+      "description": "Say what you want made, and it lands in the right place, in your look: a page, a form or card in the chat, a deck, a design, a living doc, a file or a design system. /make picks where it lands, with the Judgement OS weighing in when a request reads two ways, then hands it to the right maker. Pages go to sexyhtml, selfActual work in the selfActual design system.",
+      "version": "0.8.1"
+    },
+    {
+      "name": "comms",
+      "source": "./plugins/comms",
+      "description": "The send gate, which stops every outbound message until you type send; humanify, a de-tic pass for drafts written with AI in the room; poll, which reads the Slack channels you choose and drafts replies that post only when you approve them; and your selfActual vault's messages, FOR CC reminders and /ping.",
+      "version": "0.6.1"
+    },
+    {
+      "name": "day",
+      "source": "./plugins/day",
+      "description": "A day loop for Claude Code: a short boot with the judges on the style pick, mid-day and end-of-day check-ins from your selfActual vault, habits you set up once, a daily reading and a phrase in a language you're learning, /flag for work you want to come back to, and a clock on every message.",
+      "version": "0.3.1"
+    },
+    {
+      "name": "dice",
+      "source": "./plugins/dice",
+      "description": "Real dice for tabletop games: any notation, advantage and disadvantage, damage, ability scores. Never an invented roll.",
+      "version": "0.2.1"
+    },
+    {
+      "name": "sa",
+      "source": "./plugins/sa",
+      "description": "selfActual in Claude Code: your gears, loops and modes, fetched from your vault through one router, with the General Edition's set as files for when the vault isn't there, and the vault session commands: open, close, board and task.",
+      "version": "0.3.1"
+    }
+  ]
+}

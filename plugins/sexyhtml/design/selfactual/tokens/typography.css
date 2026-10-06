@@ -1,0 +1,34 @@
+/* selfActual — type tokens. Caprasimo heads, Figtree reads, IBM Plex Mono is the machine's voice. */
+:root {
+  --font-heading: "Caprasimo", system-ui, sans-serif;
+  --font-heading-weight: 400;
+  --font-body: "Figtree", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* UI scale */
+  --text-ui-h1: 44px;
+  --text-ui-h2: 33px;
+  --text-ui-h3: 25px;
+  --text-ui-h4: 20px;
+  --text-ui-body: 15px;
+  --text-ui-sm: 14px;
+  --text-ui-xs: 13px;
+  --text-ui-label: 11px;
+  --leading-heading: 1.06;
+  --leading-body: 1.55;
+  --tracking-heading: -0.02em;
+  --tracking-label: 0.08em;
+  --tracking-kicker: 0.14em;
+
+  /* Slide scale — literal px at 1920×1080. 24px is the floor. */
+  --text-display: 132px;
+  --text-slide-title: 76px;
+  --text-slide-title-sm: 62px;
+  --text-card-title: 44px;
+  --text-lead: 30px;
+  --text-body: 27px;
+  --text-body-sm: 25px;
+  --text-kicker: 26px;
+  --text-tag: 24px;
+  --text-min: 24px;
+}

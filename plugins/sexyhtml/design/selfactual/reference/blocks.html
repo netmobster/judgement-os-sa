@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>selfActual — additions, on paper and on ink</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--color-neutral-200); }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 16px; align-items: start; }
+  .col { padding: 24px; border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 28px; }
+  .blk { display: flex; flex-direction: column; gap: 10px; }
+  .lbl { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-neutral-600); }
+</style>
+</head>
+<body>
+<div class="cols">
+<div class="col on-light" id="paper">
+
+<div class="blk"><p class="lbl">01 · Timeline</p>
+  <ol class="tl">
+    <li class="tl-row"><span class="tl-date">Mon YYYY</span><div><div class="tl-title">Step one, shipped</div><div class="tl-line">What shipped, in one line.</div></div><span class="ev ev-shipped">shipped</span></li>
+    <li class="tl-row"><span class="tl-date">Mon YYYY</span><div><div class="tl-title">Step two, measured</div><div class="tl-line">The count behind it, as N of M.</div></div><span class="ev ev-measured">measured · context</span></li>
+    <li class="tl-row turn"><span class="tl-date">Now</span><div><div class="tl-title">The step in flight</div><div class="tl-line">What it will change.</div></div><span class="ev ev-building">building</span></li>
+    <li class="tl-row tl-open"><span class="tl-date">Later</span><div><div class="tl-title">A later step</div><div class="tl-line">A claim, honestly labelled.</div></div><span class="ev ev-hypothesis">hypothesis</span></li>
+  </ol>
+</div>
+
+<div class="blk"><p class="lbl">02 · Step list</p>
+  <ol class="steps">
+    <li class="step"><span class="step-num"></span><div><div class="step-title">Step one</div><div class="step-note">A note, if the step needs one.</div></div><span class="ev ev-shipped">shipped</span></li>
+    <li class="step"><span class="step-num"></span><div><div class="step-title">Step two</div><div class="step-note">The count behind it, as N of M.</div></div><span class="ev ev-measured">measured</span></li>
+    <li class="step"><span class="step-num"></span><div><div class="step-title">Step three</div></div><span class="ev ev-building">building</span></li>
+    <li class="step step-open"><span class="step-num"></span><div><div class="step-title">Step four</div><div class="step-note">Why it is still a hypothesis.</div></div><span class="ev ev-hypothesis">hypothesis</span></li>
+  </ol>
+</div>
+
+<div class="blk"><p class="lbl">03 · Comparison</p>
+  <div class="compare">
+    <div class="card"><div class="card-kicker">Before</div><div class="card-title">The old way</div><p class="card-body">What it was, and the count that mattered.</p><div class="card-meta"><span class="ev ev-measured">measured · N of M</span></div></div>
+    <div class="card turn"><div class="card-kicker">After</div><div class="card-title">The new way</div><p class="card-body">What changed, and the count that decided it.</p><div class="card-meta"><span class="ev ev-shipped">shipped</span></div></div>
+  </div>
+</div>
+
+<div class="blk"><p class="lbl">04 · Question panel</p>
+  <div class="panel qp">
+    <div class="card-kicker">Decision · 01</div>
+    <div class="qp-title">Which option should we take?</div>
+    <div class="qp-options">
+      <div class="qp-option qp-option-open"><div class="qp-option-name">Option one</div><div class="qp-option-meaning">What it means, in one line.</div><div class="qp-option-tags"><span class="ev ev-hypothesis">hypothesis</span></div></div>
+      <div class="qp-option qp-option-rec"><div class="qp-option-name">Option two</div><div class="qp-option-meaning">What it means, in one line.</div><div class="qp-option-tags"><span class="qp-rec">Recommended</span><span class="ev ev-shipped">shipped</span></div></div>
+      <div class="qp-option"><div class="qp-option-name">Option three</div><div class="qp-option-meaning">What it means, in one line.</div><div class="qp-option-tags"><span class="ev ev-building">building</span></div></div>
+    </div>
+    <div class="rule-note qp-note">What we already know that bears on it. <b>The line that decides it.</b></div>
+  </div>
+</div>
+
+<div class="blk"><p class="lbl">05 · Figure</p>
+  <figure class="fig">
+    <div class="fig-head"><span class="fig-num">Fig. 01</span><span>Series · context</span></div>
+    <div class="fig-body">
+      <div class="bars"><div class="bar" style="--v:82%"></div><div class="bar" style="--v:88%"></div><div class="bar" style="--v:85%"></div><div class="bar" style="--v:91%"></div><div class="bar" style="--v:97%"></div><div class="bar" style="--v:94%"></div><div class="bar" style="--v:97%"></div><div class="bar" style="--v:97%"></div><div class="bar" style="--v:100%"></div><div class="bar bar-hi" style="--v:97%"></div></div>
+      <div class="chart-axis"><span>Run 01</span><span>Run 10</span></div>
+    </div>
+    <figcaption class="fig-caption"><span class="fig-claim"><b>33 of 34</b>: one sentence that states the figure's point.</span><span class="ev ev-measured">measured · context</span></figcaption>
+  </figure>
+</div>
+
+<div class="blk"><p class="lbl">06 · Charts</p>
+  <div>
+    <div class="chart-head"><span class="chart-figure">7 of 7</span><span class="chart-label">what was counted</span><span class="ev ev-measured">measured</span></div>
+    <div class="line"><div class="line-plot">
+      <svg class="line-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline class="line-path" vector-effect="non-scaling-stroke" points="0,57.1 16.7,28.6 33.3,28.6 50,14.3 66.7,0 83.3,0 100,0"/></svg>
+      <span class="line-pt" style="--x:0%;--y:57.1%"></span><span class="line-pt" style="--x:16.7%;--y:28.6%"></span><span class="line-pt" style="--x:33.3%;--y:28.6%"></span><span class="line-pt" style="--x:50%;--y:14.3%"></span><span class="line-pt" style="--x:66.7%;--y:0%"></span><span class="line-pt" style="--x:83.3%;--y:0%"></span><span class="line-pt line-pt-hi" style="--x:100%;--y:0%"></span>
+    </div></div>
+    <div class="chart-axis"><span>Mon</span><span>Sun</span></div>
+  </div>
+  <div class="multiples" style="--n:3">
+    <div class="multiple"><div class="chart-head"><span class="multiple-label">One</span><span class="chart-figure">14 of 35</span><span class="ev ev-measured">measured</span></div><div class="bars"><div class="bar" style="--v:71%"></div><div class="bar" style="--v:86%"></div><div class="bar" style="--v:93%"></div><div class="bar" style="--v:100%"></div><div class="bar bar-hi" style="--v:100%"></div></div></div>
+    <div class="multiple"><div class="chart-head"><span class="multiple-label">Two</span><span class="chart-figure">12 of 35</span><span class="ev ev-measured">measured</span></div><div class="bars"><div class="bar" style="--v:57%"></div><div class="bar" style="--v:64%"></div><div class="bar" style="--v:79%"></div><div class="bar" style="--v:86%"></div><div class="bar bar-hi" style="--v:86%"></div></div></div>
+    <div class="multiple"><div class="chart-head"><span class="multiple-label">Three</span><span class="chart-figure">0 of 35</span><span class="ev ev-hypothesis">hypothesis</span></div><div class="bars"><div class="bar" style="--v:2%"></div><div class="bar" style="--v:2%"></div><div class="bar" style="--v:2%"></div><div class="bar" style="--v:2%"></div><div class="bar" style="--v:2%"></div></div></div>
+  </div>
+</div>
+
+<div class="blk"><p class="lbl">07 · Diagrams</p>
+  <div class="flow flow-vertical">
+    <div class="flow-node"><div class="flow-node-sub">Source</div><div class="flow-node-title">Input</div></div>
+    <div class="flow-arrow"><span class="flow-arrow-glyph">↓</span>dispatches</div>
+    <div class="flow-node"><div class="flow-node-sub">Step</div><div class="flow-node-title">Process</div><span class="ev ev-shipped">shipped</span></div>
+    <div class="flow-arrow"><span class="flow-arrow-glyph">↓</span>reports</div>
+    <div class="flow-node turn"><div class="flow-node-sub">Result</div><div class="flow-node-title">Output</div>What comes out, in one line<span class="ev ev-shipped">shipped</span></div>
+  </div>
+  <div class="layers" style="margin-top:8px">
+    <div class="layer"><div class="layer-label">Layer one<span class="layer-verb">What swaps</span></div><div class="layer-items"><span class="layer-item">Item one <span class="ev ev-shipped">shipped</span></span><span class="layer-item">Item two <span class="ev ev-measured">measured</span></span><span class="layer-item">Item three <span class="ev ev-hypothesis">hypothesis</span></span></div></div>
+    <div class="layer-via"><span class="layer-via-glyph">↓</span>swaps freely</div>
+    <div class="layer"><div class="layer-label">Layer two<span class="layer-verb">What swaps</span></div><div class="layer-items"><span class="layer-item">Item one <span class="ev ev-shipped">shipped</span></span><span class="layer-item">Item two <span class="ev ev-building">building</span></span></div></div>
+    <div class="layer-via"><span class="layer-via-glyph">↓</span>swaps freely</div>
+    <div class="layer"><div class="layer-label">Layer three<span class="layer-verb">What swaps</span></div><div class="layer-items"><span class="layer-item">Item one <span class="ev ev-shipped">shipped</span></span><span class="layer-item">Item two <span class="ev ev-measured">measured</span></span></div></div>
+    <div class="layer-via"><span class="layer-via-glyph">↓</span>all of them run on</div>
+    <div class="layer turn"><div class="layer-label">The constant<span class="layer-verb">What stays</span></div><div class="layer-items"><span class="layer-item">What it holds</span><span class="layer-item">The line that stays</span></div></div>
+  </div>
+</div>
+
+</div>
+<div class="col on-ink" id="ink"></div>
+</div>
+<script>document.getElementById('ink').innerHTML = document.getElementById('paper').innerHTML;</script>
+</body>
+</html>

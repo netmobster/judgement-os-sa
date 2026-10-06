@@ -1,0 +1,1037 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Judgement OS field guide</title>
+<style>
+/* ECHO-JAY — webfonts. Served from Google Fonts; no binaries supplied. Barlow Condensed (display), Source Sans 3 (body), Share Tech Mono (readouts). */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+
+/* ECHO-JAY — color tokens. Light is the default ground (cool steel white); dark is a second ground, switched with data-theme="dark" on <html> or any container; data-theme="light" pins a light island. Gold is attention and liveness; steel blue is data and structure. */
+:root, [data-theme="light"] {
+  --ej-desk: #d6dde5;
+  --ej-bg: #eef2f6;
+  --ej-surface: #ffffff;
+  --ej-surface-2: #f5f7fa;
+  --ej-line: #c8d3de;
+  --ej-line-strong: #94a6b8;
+  --ej-fg: #0f1720;
+  --ej-fg-muted: #4f6076;
+  --ej-fg-faint: #627186;
+  --ej-gold-100: #fbf3d7;
+  --ej-gold-200: #f5e5a8;
+  --ej-gold-300: #ecc84a;
+  --ej-gold-400: #c9a227;
+  --ej-gold-500: #a7841c;
+  --ej-gold-600: #7a5c0e;
+  --ej-gold-700: #574108;
+  --ej-steel-100: #e1ebf5;
+  --ej-steel-200: #c3d6ea;
+  --ej-steel-300: #6f9fd0;
+  --ej-steel-400: #3f6b96;
+  --ej-steel-500: #2b5276;
+  --ej-steel-600: #1d3a55;
+  --ej-ok: #2e7d4f;
+  --ej-ok-tint: #e3f3ea;
+  --ej-alert: #b3261e;
+  --ej-alert-tint: #fbe6e4;
+  --ej-grid: rgba(63,107,150,.09);
+  --ej-scan: rgba(15,23,32,.045);
+  --ej-glow: rgba(236,200,74,.55);
+  --ej-shadow-raise: 0 1px 2px rgba(15,23,32,.08), 0 12px 28px -14px rgba(43,82,118,.5);
+  --ej-shadow-inset: inset 0 2px 5px rgba(15,23,32,.14);
+  --ej-shadow-frame: 0 32px 70px -26px rgba(15,23,32,.6), 0 2px 6px rgba(15,23,32,.12);
+  --ej-shadow-header: inset 0 1px 0 rgba(255,255,255,.8), 0 8px 18px -10px rgba(15,23,32,.4);
+  --ej-shadow-footer: 0 -8px 18px -12px rgba(15,23,32,.35);
+  --ej-bevel: inset 0 1px 0 rgba(255,255,255,.8);
+  --ej-bevel-gold: inset 0 1px 0 rgba(255,255,255,.38), inset 0 -2px 0 rgba(0,0,0,.2);
+
+  /* Semantic aliases — write these in components; the ramps above are the source. */
+  --ej-gold: var(--ej-gold-400);          /* fills: nameplate, primary button, live bar */
+  --ej-gold-bright: var(--ej-gold-300);   /* hover, glow source */
+  --ej-gold-text: var(--ej-gold-600);     /* gold as text — readable on the ground */
+  --ej-gold-tint: var(--ej-gold-100);     /* receipt ground, focus halo */
+  --ej-gold-edge: var(--ej-gold-500);     /* pressed state */
+  --ej-on-gold: #1a1300;                  /* text on a gold fill, both grounds */
+  --ej-steel: var(--ej-steel-400);        /* data bars, node brackets, hover borders */
+  --ej-steel-text: var(--ej-steel-500);   /* readout text, table heads, links */
+  --ej-steel-tint: var(--ej-steel-100);   /* readout strip, table head */
+  --ej-steel-bright: var(--ej-steel-300);
+  --ej-surface-page: var(--ej-bg);
+  --ej-surface-card: var(--ej-surface);
+  --ej-surface-well: var(--ej-surface-2);
+  --ej-text-body-color: var(--ej-fg);
+  --ej-text-muted-color: var(--ej-fg-muted);
+  --ej-text-label-color: var(--ej-fg-faint);
+  --ej-border-default: var(--ej-line);
+  --ej-border-strong: var(--ej-line-strong);
+}
+
+[data-theme="dark"] {
+  --ej-desk: #06090d;
+  --ej-bg: #0d1319;
+  --ej-surface: #131b24;
+  --ej-surface-2: #182230;
+  --ej-line: #26333f;
+  --ej-line-strong: #44566a;
+  --ej-fg: #e7edf3;
+  --ej-fg-muted: #a9b6c4;
+  --ej-fg-faint: #7a8aa0;
+  --ej-gold-100: #2a2410;
+  --ej-gold-200: #4a3d12;
+  --ej-gold-300: #ffd45e;
+  --ej-gold-400: #e2b93b;
+  --ej-gold-500: #f0c75e;
+  --ej-gold-600: #f0c75e;
+  --ej-gold-700: #f7dd8a;
+  --ej-steel-100: #15283a;
+  --ej-steel-200: #1f3a52;
+  --ej-steel-300: #8fb8e8;
+  --ej-steel-400: #6f9fd0;
+  --ej-steel-500: #9dc0e6;
+  --ej-steel-600: #bcd6f2;
+  --ej-ok: #5fcf8a;
+  --ej-ok-tint: #10281a;
+  --ej-alert: #ff7b72;
+  --ej-alert-tint: #3a1512;
+  --ej-grid: rgba(111,159,208,.12);
+  --ej-scan: rgba(255,255,255,.035);
+  --ej-glow: rgba(255,212,94,.6);
+  --ej-shadow-raise: 0 1px 2px rgba(0,0,0,.45), 0 12px 28px -14px rgba(0,0,0,.8);
+  --ej-shadow-inset: inset 0 2px 6px rgba(0,0,0,.55);
+  --ej-shadow-frame: 0 32px 70px -26px rgba(0,0,0,.95), 0 0 0 1px rgba(255,255,255,.03);
+  --ej-shadow-header: inset 0 1px 0 rgba(255,255,255,.06), 0 8px 18px -10px rgba(0,0,0,.7);
+  --ej-shadow-footer: 0 -8px 18px -12px rgba(0,0,0,.6);
+  --ej-bevel: inset 0 1px 0 rgba(255,255,255,.06);
+  --ej-bevel-gold: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -2px 0 rgba(0,0,0,.28);
+  /* Aliases repeated so they re-resolve against the dark ramps on this element (var() resolves where it is declared). */
+  --ej-gold: var(--ej-gold-400); --ej-gold-bright: var(--ej-gold-300); --ej-gold-text: var(--ej-gold-600); --ej-gold-tint: var(--ej-gold-100); --ej-gold-edge: var(--ej-gold-500);
+  --ej-steel: var(--ej-steel-400); --ej-steel-text: var(--ej-steel-500); --ej-steel-tint: var(--ej-steel-100); --ej-steel-bright: var(--ej-steel-300);
+  --ej-surface-page: var(--ej-bg); --ej-surface-card: var(--ej-surface); --ej-surface-well: var(--ej-surface-2);
+  --ej-text-body-color: var(--ej-fg); --ej-text-muted-color: var(--ej-fg-muted); --ej-text-label-color: var(--ej-fg-faint);
+  --ej-border-default: var(--ej-line); --ej-border-strong: var(--ej-line-strong);
+}
+
+/* ECHO-JAY — follow the host. With no data-theme attribute set, a dark host gets the dark ground. data-theme="light" pins light. The values mirror the dark block in colors.css. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ej-desk: #06090d;
+    --ej-bg: #0d1319;
+    --ej-surface: #131b24;
+    --ej-surface-2: #182230;
+    --ej-line: #26333f;
+    --ej-line-strong: #44566a;
+    --ej-fg: #e7edf3;
+    --ej-fg-muted: #a9b6c4;
+    --ej-fg-faint: #7a8aa0;
+    --ej-gold-100: #2a2410;
+    --ej-gold-200: #4a3d12;
+    --ej-gold-300: #ffd45e;
+    --ej-gold-400: #e2b93b;
+    --ej-gold-500: #f0c75e;
+    --ej-gold-600: #f0c75e;
+    --ej-gold-700: #f7dd8a;
+    --ej-steel-100: #15283a;
+    --ej-steel-200: #1f3a52;
+    --ej-steel-300: #8fb8e8;
+    --ej-steel-400: #6f9fd0;
+    --ej-steel-500: #9dc0e6;
+    --ej-steel-600: #bcd6f2;
+    --ej-ok: #5fcf8a;
+    --ej-ok-tint: #10281a;
+    --ej-alert: #ff7b72;
+    --ej-alert-tint: #3a1512;
+    --ej-grid: rgba(111,159,208,.12);
+    --ej-scan: rgba(255,255,255,.035);
+    --ej-glow: rgba(255,212,94,.6);
+    --ej-shadow-raise: 0 1px 2px rgba(0,0,0,.45), 0 12px 28px -14px rgba(0,0,0,.8);
+    --ej-shadow-inset: inset 0 2px 6px rgba(0,0,0,.55);
+    --ej-shadow-frame: 0 32px 70px -26px rgba(0,0,0,.95), 0 0 0 1px rgba(255,255,255,.03);
+    --ej-shadow-header: inset 0 1px 0 rgba(255,255,255,.06), 0 8px 18px -10px rgba(0,0,0,.7);
+    --ej-shadow-footer: 0 -8px 18px -12px rgba(0,0,0,.6);
+    --ej-bevel: inset 0 1px 0 rgba(255,255,255,.06);
+    --ej-bevel-gold: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -2px 0 rgba(0,0,0,.28);
+    /* Aliases repeated so they re-resolve against the dark ramps on this element (var() resolves where it is declared). */
+      --ej-gold: var(--ej-gold-400); --ej-gold-bright: var(--ej-gold-300); --ej-gold-text: var(--ej-gold-600); --ej-gold-tint: var(--ej-gold-100); --ej-gold-edge: var(--ej-gold-500);
+    --ej-steel: var(--ej-steel-400); --ej-steel-text: var(--ej-steel-500); --ej-steel-tint: var(--ej-steel-100); --ej-steel-bright: var(--ej-steel-300);
+    --ej-surface-page: var(--ej-bg); --ej-surface-card: var(--ej-surface); --ej-surface-well: var(--ej-surface-2);
+    --ej-text-body-color: var(--ej-fg); --ej-text-muted-color: var(--ej-fg-muted); --ej-text-label-color: var(--ej-fg-faint);
+    --ej-border-default: var(--ej-line); --ej-border-strong: var(--ej-line-strong);
+  }
+}
+
+/* ECHO-JAY — type tokens. Barlow Condensed for titles and the nameplate, Source Sans 3 for reading, Share Tech Mono for readouts, keys and labels. Sizes are rem on a 15px root so the A−/A+ control rescales everything. */
+:root {
+  --ej-font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --ej-font-body: "Source Sans 3", system-ui, sans-serif;
+  --ej-font-mono: "Share Tech Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ej-text-title: 2.333rem;   /* 35px — the artifact title */
+  --ej-text-h2: 1.6rem;        /* 24px — section heads, big figures */
+  --ej-text-h3: 1.2rem;        /* 18px — nameplate, sub-heads */
+  --ej-text-lead: 1.133rem;    /* 17px — subtitle */
+  --ej-text-body: 1rem;        /* 15px */
+  --ej-text-sm: 0.933rem;      /* 14px — tables, nodes */
+  --ej-text-btn: 0.867rem;     /* 13px — button labels */
+  --ej-text-stamp: 0.8rem;     /* 12px — receipt stamp */
+  --ej-text-label: 0.733rem;   /* 11px — mono labels, readouts. The floor. */
+
+  --ej-leading-title: 1.02;
+  --ej-leading-lead: 1.45;
+  --ej-leading-body: 1.6;
+  --ej-leading-table: 1.4;
+
+  --ej-tracking-title: -0.005em;
+  --ej-tracking-wordmark: 0.1em;
+  --ej-tracking-label: 0.12em;
+  --ej-tracking-readout: 0.1em;
+  --ej-tracking-mono: 0.08em;
+  --ej-tracking-btn: 0.08em;
+
+  --ej-weight-display: 600;
+  --ej-weight-wordmark: 700;
+  --ej-weight-btn: 700;
+}
+
+/* ECHO-JAY — geometry. A 4px scale, no radii (chamfers and brackets instead), one artifact width. Shadows live with the colors because they change per ground. */
+:root {
+  --ej-space-1: 4px;
+  --ej-space-2: 8px;
+  --ej-space-3: 12px;
+  --ej-space-4: 16px;
+  --ej-space-5: 20px;
+  --ej-space-6: 24px;
+  --ej-space-8: 32px;
+
+  --ej-artifact-width: 500px;  /* the sidebar */
+  --ej-pad-x: 20px;            /* content gutter inside the shell */
+  --ej-pad-chrome: 16px;       /* header, readout, footer gutter */
+
+  --ej-radius: 0;              /* nothing is rounded */
+  --ej-chamfer-sm: 5px;        /* tags, controls, switch */
+  --ej-chamfer: 8px;           /* primary button */
+  --ej-chamfer-lg: 10px;       /* nameplate */
+  --ej-bracket: 12px;          /* panel corner brackets */
+  --ej-bracket-weight: 2px;
+  --ej-hairline: 1px;
+
+  --ej-slide-w: 1920px;        /* slides: literal px, 24px text floor */
+  --ej-slide-h: 1080px;
+  --ej-slide-pad-x: 96px;
+  --ej-slide-pad-y: 56px;
+
+  --ej-blink: 2s;
+  --ej-pulse: 3s;
+  --ej-ease: ease-in-out;
+  --ej-fast: 0.15s;
+}
+
+/* ECHO-JAY — base element styles. Plain CSS on plain HTML; the root font-size is the A−/A+ control. */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 15px; }
+html[data-size="-1"] { font-size: 14px; }
+html[data-size="1"] { font-size: 16px; }
+body { margin: 0; background: var(--ej-bg); color: var(--ej-fg); font-family: var(--ej-font-body); font-size: var(--ej-text-body); line-height: var(--ej-leading-body); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); line-height: 1.05; letter-spacing: var(--ej-tracking-title); margin: 0 0 var(--ej-space-2); text-wrap: pretty; }
+h1 { font-size: var(--ej-text-title); line-height: var(--ej-leading-title); }
+h2 { font-size: var(--ej-text-h2); }
+h3 { font-size: var(--ej-text-h3); }
+h4 { font-size: var(--ej-text-body); letter-spacing: 0.04em; text-transform: uppercase; }
+p { margin: 0 0 var(--ej-space-3); text-wrap: pretty; }
+ul, ol { margin: 0 0 var(--ej-space-3); padding-left: 1.2em; }
+li + li { margin-top: var(--ej-space-1); }
+a { color: var(--ej-steel-text); text-decoration: none; text-underline-offset: 3px; }
+a:hover { color: var(--ej-gold-text); text-decoration: underline; }
+strong, b { font-weight: 700; }
+code, kbd, samp, pre { font-family: var(--ej-font-mono); }
+code { font-size: 0.933em; color: var(--ej-steel-text); }
+img { display: block; max-width: 100%; }
+hr { height: 1px; border: 0; margin: var(--ej-space-4) 0; background: var(--ej-line); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--ej-gold); outline-offset: 2px; }
+::selection { background: var(--ej-gold-tint); color: var(--ej-fg); }
+
+@keyframes ej-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+@keyframes ej-pulse { 0%, 100% { text-shadow: 0 0 3px var(--ej-glow); } 50% { text-shadow: 0 0 12px var(--ej-glow); } }
+@media (prefers-reduced-motion: reduce) { .ej-blink, .ej-pulse, .ej-dot, .ej-readout-live { animation: none; } }
+
+/* ECHO-JAY — the class layer. The React components in components/ render exactly these classes; plain HTML uses them directly. */
+
+/* Shell — the artifact. Fills the host pane by default; .ej-shell-framed previews it at 500px on a desk. */
+.ej-shell { display: flex; flex-direction: column; width: 100%; min-height: 100vh; background: var(--ej-bg); color: var(--ej-fg); font-family: var(--ej-font-body); }
+.ej-shell-framed { width: var(--ej-artifact-width); max-width: 100%; min-height: 0; margin: 24px auto; border: 1px solid var(--ej-line-strong); box-shadow: var(--ej-shadow-frame); }
+.ej-desk { min-height: 100vh; background: var(--ej-desk); }
+.ej-desk-grid { background-image: linear-gradient(var(--ej-grid) 1px, transparent 1px), linear-gradient(90deg, var(--ej-grid) 1px, transparent 1px); background-size: 24px 24px; }
+
+/* Header: nameplate row + readout strip */
+.ej-header { position: relative; z-index: 1; background: var(--ej-surface); border-bottom: 1px solid var(--ej-line-strong); box-shadow: var(--ej-shadow-header); }
+.ej-header-row { display: flex; align-items: center; justify-content: space-between; gap: var(--ej-space-3); padding: 10px var(--ej-pad-chrome) 10px 0; }
+.ej-header-meta { display: flex; align-items: center; gap: var(--ej-space-3); min-width: 0; }
+.ej-nameplate { display: inline-block; padding: 7px 18px 7px var(--ej-pad-chrome); background: var(--ej-gold); color: var(--ej-on-gold); font-family: var(--ej-font-display); font-weight: var(--ej-weight-wordmark); font-size: var(--ej-text-h3); letter-spacing: var(--ej-tracking-wordmark); text-transform: uppercase; line-height: 1; white-space: nowrap; clip-path: polygon(0 0, calc(100% - var(--ej-chamfer-lg)) 0, 100% 100%, 0 100%); box-shadow: var(--ej-bevel-gold); }
+.ej-readout { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; padding: 6px var(--ej-pad-chrome); border-top: 1px solid var(--ej-line); background-color: var(--ej-steel-tint); background-image: repeating-linear-gradient(0deg, var(--ej-scan) 0 1px, transparent 1px 3px); box-shadow: var(--ej-shadow-inset); font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; color: var(--ej-steel-text); }
+.ej-readout-sep { color: var(--ej-line-strong); }
+.ej-readout-live { color: var(--ej-gold-text); animation: ej-pulse var(--ej-pulse) var(--ej-ease) infinite; }
+.ej-readout-end { margin-left: auto; }
+.ej-dot { display: inline-block; width: 6px; height: 6px; margin-right: 6px; vertical-align: 1px; background: var(--ej-gold); animation: ej-blink var(--ej-blink) var(--ej-ease) infinite; }
+.ej-controls { display: flex; align-items: center; gap: 6px; flex: none; }
+.ej-ctl { font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); line-height: 1.2; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 4px 7px; cursor: pointer; }
+.ej-ctl:hover { border-color: var(--ej-gold); color: var(--ej-fg); }
+.ej-ctl:disabled { opacity: 0.45; cursor: not-allowed; }
+.ej-footer { display: flex; justify-content: space-between; gap: var(--ej-space-3); margin-top: auto; padding: 8px var(--ej-pad-chrome); border-top: 1px solid var(--ej-line-strong); background: var(--ej-surface); box-shadow: var(--ej-shadow-footer); font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; color: var(--ej-fg-faint); }
+
+/* Title block and content column */
+.ej-titleblock { padding: 24px var(--ej-pad-x) 18px; border-bottom: 1px solid var(--ej-line-strong); }
+.ej-title { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: var(--ej-text-title); line-height: var(--ej-leading-title); letter-spacing: var(--ej-tracking-title); margin: 0; text-wrap: pretty; }
+.ej-subtitle { font-size: var(--ej-text-lead); line-height: var(--ej-leading-lead); color: var(--ej-fg-muted); margin: 12px 0 0; text-wrap: pretty; }
+.ej-byline { display: flex; justify-content: space-between; gap: var(--ej-space-3); margin-top: 16px; padding-top: 10px; border-top: 1px dashed var(--ej-line-strong); font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); text-transform: uppercase; color: var(--ej-fg-faint); }
+.ej-content { display: flex; flex-direction: column; gap: 22px; padding: 20px var(--ej-pad-x) 24px; font-size: var(--ej-text-body); line-height: var(--ej-leading-body); }
+.ej-content > p, .ej-content > ul, .ej-content > ol { margin: 0; }
+.ej-section-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--ej-space-3); }
+.ej-h2 { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: var(--ej-text-h2); line-height: 1.05; margin: 0; }
+
+/* Labels, highlights, figures */
+.ej-label { font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-label); text-transform: uppercase; color: var(--ej-fg-faint); }
+.ej-label-row { display: flex; justify-content: space-between; gap: var(--ej-space-3); margin-bottom: 6px; }
+.ej-hl { color: var(--ej-gold-text); }
+.ej-mono { font-family: var(--ej-font-mono); }
+.ej-muted { color: var(--ej-fg-muted); }
+.ej-figure { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: var(--ej-text-h2); line-height: 1; color: var(--ej-gold-text); text-shadow: 0 0 10px var(--ej-glow); white-space: nowrap; }
+.ej-blink { animation: ej-blink var(--ej-blink) var(--ej-ease) infinite; }
+.ej-pulse { animation: ej-pulse var(--ej-pulse) var(--ej-ease) infinite; }
+
+/* Panel — raised surface with gold corner brackets */
+.ej-panel { position: relative; padding: 14px 16px; background: var(--ej-surface); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-raise), var(--ej-bevel); }
+.ej-panel::before, .ej-panel::after { content: ""; position: absolute; width: var(--ej-bracket); height: var(--ej-bracket); pointer-events: none; }
+.ej-panel::before { left: -1px; top: -1px; border-left: var(--ej-bracket-weight) solid var(--ej-gold); border-top: var(--ej-bracket-weight) solid var(--ej-gold); }
+.ej-panel::after { right: -1px; bottom: -1px; border-right: var(--ej-bracket-weight) solid var(--ej-gold); border-bottom: var(--ej-bracket-weight) solid var(--ej-gold); }
+.ej-panel-plain::before, .ej-panel-plain::after { display: none; }
+.ej-panel-list { padding: 6px 16px 4px; }
+.ej-panel-list > .ej-label { display: block; padding: 8px 0 6px; }
+.ej-panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--ej-space-3); margin-bottom: 10px; }
+.ej-panel-head > .ej-label { margin: 0; }
+.ej-stack { display: flex; flex-direction: column; gap: 10px; }
+
+/* Receipt — the one gold-ground block */
+.ej-receipt { display: flex; justify-content: space-between; align-items: center; gap: var(--ej-space-3); padding: 12px 16px; border: 1px solid var(--ej-gold); background: var(--ej-gold-tint); box-shadow: var(--ej-shadow-raise), inset 0 1px 0 rgba(255,255,255,.5), 0 0 16px -4px var(--ej-glow); }
+.ej-receipt .ej-label { color: var(--ej-gold-text); }
+.ej-receipt-body { margin-top: 2px; }
+.ej-receipt-stamp { font-family: var(--ej-font-mono); font-size: var(--ej-text-stamp); letter-spacing: var(--ej-tracking-mono); color: var(--ej-gold-text); white-space: nowrap; }
+
+/* Buttons */
+.ej-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--ej-font-body); font-weight: var(--ej-weight-btn); font-size: var(--ej-text-btn); letter-spacing: var(--ej-tracking-btn); text-transform: uppercase; line-height: 1.2; padding: 10px 16px; border: 1px solid transparent; border-radius: 0; cursor: pointer; text-decoration: none; color: var(--ej-fg); background: transparent; white-space: nowrap; }
+.ej-btn svg { display: block; width: 14px; height: 14px; }
+.ej-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.ej-btn-primary { color: var(--ej-on-gold); background: var(--ej-gold); padding-right: 20px; clip-path: polygon(0 0, calc(100% - var(--ej-chamfer)) 0, 100% var(--ej-chamfer), 100% 100%, 0 100%); box-shadow: var(--ej-bevel-gold); }
+.ej-btn-primary:hover { background: var(--ej-gold-bright); }
+.ej-btn-primary:active { background: var(--ej-gold-edge); box-shadow: inset 0 2px 0 rgba(0,0,0,.25); }
+.ej-btn-secondary { background: var(--ej-surface); border-color: var(--ej-line-strong); box-shadow: var(--ej-bevel), 0 1px 2px rgba(15,23,32,.1); }
+.ej-btn-secondary:hover { border-color: var(--ej-gold); background: var(--ej-surface-2); }
+.ej-btn-secondary:active { box-shadow: var(--ej-shadow-inset); }
+.ej-btn-ghost { color: var(--ej-steel-text); padding-inline: 8px; }
+.ej-btn-ghost:hover { color: var(--ej-gold-text); background: var(--ej-steel-tint); }
+.ej-btn-sm { padding: 7px 12px; font-size: var(--ej-text-label); }
+.ej-btn-sm.ej-btn-primary { padding-right: 16px; }
+.ej-btn-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Tags */
+.ej-tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; line-height: 1.2; padding: 3px 9px 3px 8px; border: 1px solid var(--ej-line-strong); color: var(--ej-fg-muted); background: var(--ej-surface); white-space: nowrap; clip-path: polygon(0 0, calc(100% - var(--ej-chamfer-sm)) 0, 100% var(--ej-chamfer-sm), 100% 100%, 0 100%); }
+.ej-tag-gold { border-color: var(--ej-gold); color: var(--ej-gold-text); background: var(--ej-gold-tint); }
+.ej-tag-steel { border-color: var(--ej-steel); color: var(--ej-steel-text); background: var(--ej-steel-tint); }
+.ej-tag-ok { border-color: var(--ej-ok); color: var(--ej-ok); background: var(--ej-ok-tint); }
+.ej-tag-alert { border-color: var(--ej-alert); color: var(--ej-alert); background: var(--ej-alert-tint); }
+.ej-tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Forms */
+.ej-field { display: flex; flex-direction: column; gap: 8px; }
+.ej-field-hint { font-size: var(--ej-text-sm); color: var(--ej-fg-muted); margin-top: -2px; }
+.ej-inline { display: flex; gap: 8px; align-items: center; }
+.ej-inline > .ej-input { flex: 1; }
+.ej-input { width: 100%; min-width: 0; min-height: 38px; font: inherit; font-size: var(--ej-text-body); padding: 8px 10px; background: var(--ej-bg); color: var(--ej-fg); border: 1px solid var(--ej-line-strong); border-radius: 0; outline: none; box-shadow: var(--ej-shadow-inset); }
+.ej-input::placeholder { color: var(--ej-fg-faint); }
+.ej-input:hover { border-color: var(--ej-steel); }
+.ej-input:focus { border-color: var(--ej-gold); box-shadow: var(--ej-shadow-inset), 0 0 0 2px var(--ej-gold-tint), 0 0 10px var(--ej-glow); }
+.ej-input:disabled { opacity: 0.45; cursor: not-allowed; }
+textarea.ej-input { min-height: 90px; resize: vertical; line-height: 1.5; }
+select.ej-input { appearance: none; padding-right: 30px; cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, var(--ej-fg-muted) 50%), linear-gradient(135deg, var(--ej-fg-muted) 50%, transparent 50%); background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+.ej-switch-list { display: flex; flex-direction: column; }
+.ej-switch-row { display: flex; align-items: center; justify-content: space-between; gap: var(--ej-space-3); padding: 10px 0; border-top: 1px solid var(--ej-line); }
+.ej-switch { position: relative; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-fg-faint); user-select: none; }
+.ej-switch input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+.ej-switch-state { min-width: 3ch; text-align: right; }
+.ej-switch-state::before { content: "OFF"; }
+.ej-switch input:checked ~ .ej-switch-state::before { content: "ON"; }
+.ej-switch-track { position: relative; display: block; width: 34px; height: 18px; background: var(--ej-line-strong); box-shadow: inset 0 1px 3px rgba(0,0,0,.3); clip-path: polygon(0 0, calc(100% - var(--ej-chamfer-sm)) 0, 100% var(--ej-chamfer-sm), 100% 100%, var(--ej-chamfer-sm) 100%, 0 calc(100% - var(--ej-chamfer-sm))); transition: background var(--ej-fast); }
+.ej-switch-track::after { content: ""; position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; background: #ffffff; box-shadow: 0 1px 2px rgba(0,0,0,.35); transition: left var(--ej-fast); }
+.ej-switch input:checked ~ .ej-switch-track { background: var(--ej-gold); }
+.ej-switch input:checked ~ .ej-switch-track::after { left: 19px; }
+.ej-switch input:focus-visible ~ .ej-switch-track { outline: 2px solid var(--ej-gold); outline-offset: 2px; }
+.ej-switch input:disabled ~ * { opacity: 0.45; }
+
+/* Table */
+.ej-table-wrap { overflow-x: auto; overflow-y: hidden; border: 1px solid var(--ej-line); background: var(--ej-surface); box-shadow: var(--ej-shadow-raise); }
+.ej-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--ej-text-sm); line-height: var(--ej-leading-table); background: var(--ej-surface); }
+.ej-table-wrap > .ej-table { border: 0; box-shadow: none; }
+.ej-table th { text-align: left; font-family: var(--ej-font-mono); font-weight: 400; font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; color: var(--ej-steel-text); background: var(--ej-steel-tint); padding: 6px 8px; border-bottom: 1px solid var(--ej-line-strong); white-space: nowrap; }
+.ej-table td { padding: 9px 8px; border-bottom: 1px solid var(--ej-line); vertical-align: top; }
+.ej-table tbody tr:last-child td { border-bottom: 0; }
+.ej-table tbody tr:hover { background: var(--ej-surface-2); }
+.ej-table .ej-key { font-family: var(--ej-font-mono); color: var(--ej-gold-text); white-space: nowrap; }
+.ej-table .ej-num { font-family: var(--ej-font-mono); text-align: right; white-space: nowrap; }
+.ej-table th.ej-num { text-align: right; }
+
+/* Bars — a small chart */
+.ej-bars { position: relative; display: flex; align-items: flex-end; gap: 4px; height: 72px; padding: 0 6px; border: 1px solid var(--ej-line); border-bottom-color: var(--ej-line-strong); background-color: var(--ej-surface-2); background-image: repeating-linear-gradient(0deg, var(--ej-line) 0 1px, transparent 1px 18px); box-shadow: var(--ej-shadow-inset); }
+.ej-bar { flex: 1 1 0; min-width: 2px; height: var(--v, 50%); background: var(--ej-steel); }
+.ej-bar-hi { background: var(--ej-gold); box-shadow: 0 0 10px var(--ej-glow); }
+.ej-bars-target { position: absolute; left: 0; right: 0; top: var(--v, 50%); border-top: 1px dashed var(--ej-gold); opacity: 0.8; pointer-events: none; }
+.ej-bars-axis { display: flex; justify-content: space-between; margin-top: 6px; font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-fg-faint); }
+
+/* Key / value */
+.ej-kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 16px; margin: 0; font-size: var(--ej-text-sm); line-height: var(--ej-leading-table); }
+.ej-kv dt { font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; color: var(--ej-fg-faint); padding-top: 3px; white-space: nowrap; }
+.ej-kv dd { margin: 0; }
+
+/* Flow — boxes and arrows for architecture and process diagrams */
+.ej-flow { display: flex; align-items: stretch; gap: 8px; }
+.ej-flow-vertical { flex-direction: column; align-items: stretch; }
+.ej-node { position: relative; flex: 1 1 0; min-width: 0; padding: 10px 12px; background: var(--ej-surface); border: 1px solid var(--ej-line-strong); box-shadow: var(--ej-shadow-raise), var(--ej-bevel); font-size: var(--ej-text-sm); line-height: 1.35; }
+.ej-node::before { content: ""; position: absolute; left: -1px; top: -1px; width: 8px; height: 8px; border-left: var(--ej-bracket-weight) solid var(--ej-steel); border-top: var(--ej-bracket-weight) solid var(--ej-steel); }
+.ej-node-title { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: 1.067rem; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.1; }
+.ej-node-sub { font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-fg-faint); margin-top: 4px; }
+.ej-node-hi { border-color: var(--ej-gold); }
+.ej-node-hi::before { border-color: var(--ej-gold); }
+.ej-node-well { background: var(--ej-surface-2); box-shadow: var(--ej-shadow-inset); }
+.ej-arrow { flex: none; align-self: center; font-family: var(--ej-font-mono); font-size: var(--ej-text-body); color: var(--ej-steel); line-height: 1; }
+.ej-flow-vertical > .ej-arrow { align-self: flex-start; padding-left: 12px; }
+
+/* Code */
+.ej-code { margin: 0; padding: 12px 14px; background: var(--ej-surface-2); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-inset); font-family: var(--ej-font-mono); font-size: var(--ej-text-sm); line-height: 1.5; color: var(--ej-fg); overflow-x: auto; white-space: pre; tab-size: 2; }
+
+/* Divider — hazard stripes */
+.ej-divider { height: 5px; border: 0; margin: 0; background: repeating-linear-gradient(135deg, var(--ej-line-strong) 0 6px, transparent 6px 12px); opacity: 0.6; }
+.ej-divider-gold { background: repeating-linear-gradient(135deg, var(--ej-gold) 0 8px, transparent 8px 16px); opacity: 1; }
+.ej-divider-inset { margin: 0 var(--ej-pad-x); }
+
+/* Lists built from <li> opt out of the base li spacing */
+.ej-timeline > li + li, .ej-steps > li + li, .ej-options > li + li { margin-top: 0; }
+
+/* Callout — raised, 3px edge in the variant color. info = steel, warning = alert, decision = gold. */
+.ej-callout { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 14px 16px 14px 18px; background: var(--ej-surface); border: 1px solid var(--ej-line); border-left: 3px solid var(--ej-steel); box-shadow: var(--ej-shadow-raise), var(--ej-bevel); }
+.ej-callout > .ej-label { color: var(--ej-steel-text); }
+.ej-callout-title { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: var(--ej-text-h3); line-height: 1.1; }
+.ej-callout-body { margin: 0; font-size: var(--ej-text-sm); line-height: 1.5; color: var(--ej-fg-muted); text-wrap: pretty; }
+.ej-callout-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.ej-callout-warning { border-left-color: var(--ej-alert); }
+.ej-callout-warning > .ej-label { color: var(--ej-alert); }
+.ej-callout-decision { border-left-color: var(--ej-gold); }
+.ej-callout-decision > .ej-label { color: var(--ej-gold-text); }
+
+/* Stat row — two to four counts in one raised strip, hairlines between. Counts only. */
+.ej-stats { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); gap: 1px; background: var(--ej-line); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-raise); }
+.ej-stat { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding: 12px 14px; background: var(--ej-surface); box-shadow: var(--ej-bevel); }
+.ej-stat-figure { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: 2rem; line-height: 1; letter-spacing: -0.01em; color: var(--ej-fg); white-space: nowrap; }
+.ej-stat-hi .ej-stat-figure { color: var(--ej-gold-text); text-shadow: 0 0 10px var(--ej-glow); }
+.ej-stat-sub { font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-steel-text); }
+
+/* Timeline — dated steps. Vertical by default; .ej-timeline-h runs across (slides). */
+.ej-timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.ej-tl-item { position: relative; display: grid; grid-template-columns: var(--ej-tl-date-w, 60px) 14px minmax(0, 1fr); gap: 0 12px; padding-bottom: 18px; }
+.ej-tl-item:last-child { padding-bottom: 0; }
+.ej-tl-date { font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-fg-faint); padding-top: 3px; white-space: nowrap; }
+.ej-tl-mark { position: relative; }
+.ej-tl-mark::before { content: ""; position: absolute; left: 2px; top: 4px; width: 10px; height: 10px; background: var(--ej-steel); border: 1px solid var(--ej-steel); }
+.ej-tl-mark::after { content: ""; position: absolute; left: 6px; top: 18px; bottom: -2px; border-left: 1px solid var(--ej-line-strong); }
+.ej-tl-item:last-child .ej-tl-mark::after { display: none; }
+.ej-tl-title { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: 1.067rem; line-height: 1.15; }
+.ej-tl-line { font-size: var(--ej-text-sm); line-height: 1.45; color: var(--ej-fg-muted); margin-top: 2px; }
+.ej-tl-next .ej-tl-mark::before { background: var(--ej-gold); border-color: var(--ej-gold); box-shadow: 0 0 8px var(--ej-glow); }
+.ej-tl-next .ej-tl-date { color: var(--ej-gold-text); }
+.ej-tl-open .ej-tl-mark::before { background: transparent; border-color: var(--ej-line-strong); }
+.ej-tl-open .ej-tl-mark::after, .ej-tl-item:has(+ .ej-tl-open) .ej-tl-mark::after { border-style: dashed; }
+.ej-tl-open .ej-tl-title { color: var(--ej-fg-muted); }
+.ej-timeline-h { flex-direction: row; }
+.ej-timeline-h .ej-tl-item { display: flex; flex-direction: column; flex: 1 1 0; min-width: 0; padding: 0 12px 0 0; }
+.ej-timeline-h .ej-tl-date { padding: 0 0 6px; }
+.ej-timeline-h .ej-tl-mark { height: 14px; margin-bottom: 8px; }
+.ej-timeline-h .ej-tl-mark::before { left: 0; top: 2px; }
+.ej-timeline-h .ej-tl-mark::after { left: 16px; right: -12px; top: 7px; bottom: auto; border-left: 0; border-top: 1px solid var(--ej-line-strong); }
+.ej-timeline-h .ej-tl-open .ej-tl-mark::after, .ej-timeline-h .ej-tl-item:has(+ .ej-tl-open) .ej-tl-mark::after { border-top-style: dashed; }
+
+/* Step list — numbered steps with a state tag */
+.ej-steps { list-style: none; margin: 0; padding: 0; counter-reset: ej-step; background: var(--ej-surface); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-raise); }
+.ej-step { counter-increment: ej-step; display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 2px 12px; align-items: start; padding: 10px 14px; border-top: 1px solid var(--ej-line); }
+.ej-step:first-child { border-top: 0; }
+.ej-step-num { font-family: var(--ej-font-mono); font-size: var(--ej-text-sm); letter-spacing: var(--ej-tracking-mono); color: var(--ej-fg-faint); padding-top: 2px; }
+.ej-step-num:empty::before { content: counter(ej-step, decimal-leading-zero); }
+.ej-step-title { font-weight: 600; line-height: 1.4; }
+.ej-step-note { grid-column: 2; font-size: var(--ej-text-sm); line-height: 1.45; color: var(--ej-fg-muted); }
+.ej-step > .ej-tag { grid-column: 3; grid-row: 1; }
+.ej-step-done .ej-step-num { color: var(--ej-steel-text); }
+.ej-step-done .ej-step-title { color: var(--ej-fg-muted); }
+.ej-step-next .ej-step-num { color: var(--ej-gold-text); }
+.ej-step-blocked .ej-step-num { color: var(--ej-alert); }
+
+/* Comparison — two sides; the chosen one wears the gold brackets */
+.ej-compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.ej-compare-stack { grid-template-columns: minmax(0, 1fr); }
+.ej-compare-side { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; background: var(--ej-surface); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-raise), var(--ej-bevel); }
+.ej-compare-side > .ej-label-row { margin: 0; }
+.ej-compare-title { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: var(--ej-text-h3); line-height: 1.1; }
+.ej-compare-body { margin: 0; font-size: var(--ej-text-sm); line-height: 1.5; color: var(--ej-fg-muted); text-wrap: pretty; }
+.ej-compare-body ul, .ej-compare-body ol { margin: 0; padding-left: 1.1em; }
+.ej-compare-chosen { border-color: var(--ej-line-strong); }
+.ej-compare-chosen::before, .ej-compare-chosen::after { content: ""; position: absolute; width: var(--ej-bracket); height: var(--ej-bracket); pointer-events: none; }
+.ej-compare-chosen::before { left: -1px; top: -1px; border-left: var(--ej-bracket-weight) solid var(--ej-gold); border-top: var(--ej-bracket-weight) solid var(--ej-gold); }
+.ej-compare-chosen::after { right: -1px; bottom: -1px; border-right: var(--ej-bracket-weight) solid var(--ej-gold); border-bottom: var(--ej-bracket-weight) solid var(--ej-gold); }
+.ej-compare-chosen > .ej-label-row .ej-label { color: var(--ej-gold-text); }
+
+/* Question panel — one decision, options as rows, the recommended one marked, a note well */
+.ej-question { position: relative; padding: 14px 16px; background: var(--ej-surface); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-raise), var(--ej-bevel); }
+.ej-question-title { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: var(--ej-text-h2); line-height: 1.08; margin: 6px 0 12px; text-wrap: pretty; }
+.ej-options { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--ej-line); }
+.ej-option { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; gap: 0 12px; align-items: start; width: 100%; padding: 10px 2px; border: 0; border-bottom: 1px solid var(--ej-line); border-radius: 0; background: transparent; color: inherit; font: inherit; text-align: left; }
+button.ej-option { cursor: pointer; }
+button.ej-option:hover { background: var(--ej-surface-2); }
+.ej-option-mark { width: 10px; height: 10px; margin-top: 5px; border: 1px solid var(--ej-line-strong); background: transparent; }
+.ej-option-name { font-weight: 600; line-height: 1.4; }
+.ej-option-meaning { grid-column: 2; font-size: var(--ej-text-sm); line-height: 1.45; color: var(--ej-fg-muted); }
+.ej-option > .ej-label { grid-column: 3; grid-row: 1; padding-top: 3px; white-space: nowrap; }
+.ej-option-rec .ej-option-mark { background: var(--ej-gold); border-color: var(--ej-gold); box-shadow: 0 0 8px var(--ej-glow); }
+.ej-option-rec > .ej-label { color: var(--ej-gold-text); }
+.ej-option-selected, .ej-option[aria-pressed="true"] { background: var(--ej-steel-tint); }
+.ej-option-selected .ej-option-mark, .ej-option[aria-pressed="true"] .ej-option-mark { background: var(--ej-steel); border-color: var(--ej-steel); }
+.ej-option-rec.ej-option-selected .ej-option-mark, .ej-option-rec[aria-pressed="true"] .ej-option-mark { background: var(--ej-gold); border-color: var(--ej-gold); }
+.ej-note { margin-top: 12px; padding: 10px 12px; background: var(--ej-surface-2); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-inset); font-size: var(--ej-text-sm); line-height: 1.5; color: var(--ej-fg-muted); }
+.ej-note > .ej-label { display: block; margin-bottom: 4px; }
+
+/* Quote — a recessed well with a steel edge; who said it and where in mono */
+.ej-quote { margin: 0; padding: 14px 18px; background: var(--ej-surface-2); border: 1px solid var(--ej-line); border-left: 3px solid var(--ej-steel); box-shadow: var(--ej-shadow-inset); }
+.ej-quote-text { margin: 0; font-size: var(--ej-text-lead); line-height: var(--ej-leading-lead); color: var(--ej-fg); text-wrap: pretty; }
+.ej-quote-text::before { content: "\201C"; }
+.ej-quote-text::after { content: "\201D"; }
+.ej-quote-cite { display: block; margin-top: 10px; font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); text-transform: uppercase; color: var(--ej-fg-faint); font-style: normal; }
+.ej-quote-cite b { font-weight: 400; color: var(--ej-steel-text); }
+.ej-quote-gold { border-left-color: var(--ej-gold); }
+
+/* Figure — numbered frame for a chart or drawing, steel brackets, a caption that states the point */
+.ej-fig { position: relative; margin: 0; background: var(--ej-surface); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-raise), var(--ej-bevel); }
+.ej-fig::before, .ej-fig::after { content: ""; position: absolute; width: var(--ej-bracket); height: var(--ej-bracket); pointer-events: none; }
+.ej-fig::before { left: -1px; top: -1px; border-left: var(--ej-bracket-weight) solid var(--ej-steel); border-top: var(--ej-bracket-weight) solid var(--ej-steel); }
+.ej-fig::after { right: -1px; bottom: -1px; border-right: var(--ej-bracket-weight) solid var(--ej-steel); border-bottom: var(--ej-bracket-weight) solid var(--ej-steel); }
+.ej-fig-head { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px 8px; }
+.ej-fig-head .ej-label:first-child { color: var(--ej-steel-text); }
+.ej-fig-body { padding: 4px 14px 12px; }
+.ej-fig-caption { margin: 0; padding: 10px 14px; border-top: 1px solid var(--ej-line); font-size: var(--ej-text-sm); line-height: 1.45; color: var(--ej-fg-muted); text-wrap: pretty; }
+.ej-fig-caption b { color: var(--ej-fg); }
+
+/* Charts — optional mono y axis beside a well. Values are counts. */
+.ej-chart { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 8px; }
+.ej-chart-y { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; padding-bottom: 1px; font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-fg-faint); line-height: 1; }
+.ej-chart > .ej-bars-axis { grid-column: 2; }
+/* Line — recessed well, one polyline, square points */
+.ej-line { position: relative; height: 72px; border: 1px solid var(--ej-line); border-bottom-color: var(--ej-line-strong); background-color: var(--ej-surface-2); background-image: repeating-linear-gradient(0deg, var(--ej-line) 0 1px, transparent 1px 18px); box-shadow: var(--ej-shadow-inset); }
+.ej-line-plot { position: absolute; inset: 8px 10px; }
+.ej-line-values .ej-line-plot { top: 24px; }
+.ej-line-svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.ej-line-path { fill: none; stroke: var(--ej-steel); stroke-width: 2; stroke-linejoin: miter; }
+.ej-line-pt { position: absolute; left: var(--x); top: var(--y); width: 7px; height: 7px; margin: -4px 0 0 -4px; background: var(--ej-steel); border: 1px solid var(--ej-surface); }
+.ej-line-pt-hi { width: 9px; height: 9px; margin: -5px 0 0 -5px; background: var(--ej-gold); border-color: var(--ej-gold); box-shadow: 0 0 10px var(--ej-glow); }
+.ej-line-val { position: absolute; left: var(--x); top: var(--y); margin-top: -20px; transform: translateX(-50%); font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-fg-faint); line-height: 1; white-space: nowrap; }
+.ej-line-val-hi { color: var(--ej-gold-text); }
+.ej-line-target { position: absolute; left: 0; right: 0; top: var(--v, 50%); border-top: 1px dashed var(--ej-gold); opacity: 0.8; pointer-events: none; }
+/* Small multiples — one strip, hairlines between, shared scale, one gold multiple at most */
+.ej-multiples { display: grid; grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); gap: 1px; background: var(--ej-line); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-raise); }
+.ej-multiple { min-width: 0; padding: 10px 12px 12px; background: var(--ej-surface); box-shadow: var(--ej-bevel); }
+.ej-multiple > .ej-label-row { margin-bottom: 8px; }
+.ej-multiple .ej-bars, .ej-multiple .ej-line { height: 44px; }
+.ej-multiple .ej-line-plot { inset: 6px 8px; }
+.ej-multiple-count { font-family: var(--ej-font-mono); font-size: var(--ej-text-sm); color: var(--ej-steel-text); }
+.ej-multiple-hi .ej-multiple-count { color: var(--ej-gold-text); }
+
+/* Sequence — actors across the top, messages down, verbs on the arrows */
+.ej-seq { position: relative; display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); row-gap: 14px; padding: 2px 2px 10px; overflow: hidden; }
+.ej-seq-actor { position: relative; grid-row: 1; display: flex; padding: 0 5px; }
+.ej-seq-actor .ej-node { flex: 1; text-align: center; padding: 8px; }
+.ej-seq-actor::after { content: ""; position: absolute; left: 50%; top: 100%; height: 100vh; border-left: 1px dashed var(--ej-line-strong); }
+.ej-seq-msg { position: relative; z-index: 1; padding: 0 calc(50% / var(--k, 1)); }
+.ej-seq-label { display: block; width: max-content; max-width: 100%; margin: 0 auto 4px; padding: 0 6px; background: var(--ej-seq-bg, var(--ej-bg)); font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-steel-text); text-align: center; }
+.ej-panel .ej-seq, .ej-fig .ej-seq, .ej-compare-side .ej-seq { --ej-seq-bg: var(--ej-surface); }
+.ej-seq-arrow { position: relative; height: 0; border-top: 1px solid var(--ej-steel); }
+.ej-seq-arrow::after { content: ""; position: absolute; right: -1px; top: -5px; border: 4.5px solid transparent; border-left: 7px solid var(--ej-steel); border-right: 0; }
+.ej-seq-msg-back .ej-seq-arrow::after { right: auto; left: -1px; border-left: 0; border-right: 7px solid var(--ej-steel); }
+.ej-seq-msg-dashed .ej-seq-arrow { border-top-style: dashed; }
+.ej-seq-msg-hi .ej-seq-arrow { border-top-color: var(--ej-gold); box-shadow: 0 0 8px var(--ej-glow); }
+.ej-seq-msg-hi .ej-seq-arrow::after { border-left-color: var(--ej-gold); }
+.ej-seq-msg-back.ej-seq-msg-hi .ej-seq-arrow::after { border-right-color: var(--ej-gold); }
+.ej-seq-msg-hi .ej-seq-label { color: var(--ej-gold-text); }
+
+/* Layers — stacked bands of boxes; a verb on the arrow between bands */
+.ej-layers { display: flex; flex-direction: column; gap: 6px; }
+.ej-layer { display: grid; grid-template-columns: var(--ej-layer-label-w, 88px) minmax(0, 1fr); gap: 0 12px; }
+.ej-layer > .ej-label { padding-top: 8px; }
+.ej-layer-items { display: flex; flex-wrap: wrap; gap: 8px; }
+.ej-layer-items > .ej-node { flex: 1 1 auto; padding: 8px 10px; }
+.ej-layer-hi > .ej-label { color: var(--ej-gold-text); }
+.ej-layer-hi .ej-node { border-color: var(--ej-gold); }
+.ej-layer-hi .ej-node::before { border-color: var(--ej-gold); }
+.ej-layer-via { display: flex; align-items: center; gap: 8px; padding: 2px 0 2px calc(var(--ej-layer-label-w, 88px) + 12px); font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-steel-text); }
+.ej-layer-via .ej-arrow { font-size: var(--ej-text-body); }
+
+/* Slide — 1920×1080. Literal px; nothing below 24px. data-theme="dark" on the section for an ink slide. */
+.ej-slide { position: relative; width: var(--ej-slide-w, 1920px); height: var(--ej-slide-h, 1080px); display: flex; flex-direction: column; background: var(--ej-bg); color: var(--ej-fg); font-family: var(--ej-font-body); overflow: hidden; }
+.ej-slide-head { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: var(--ej-slide-pad-y, 56px) var(--ej-slide-pad-x, 96px) 0; }
+.ej-slide-head .ej-nameplate { font-size: 32px; padding: 12px 30px 12px 26px; clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 100%, 0 100%); }
+.ej-slide-title { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: 84px; line-height: 1; letter-spacing: -0.01em; margin: 40px var(--ej-slide-pad-x, 96px) 0; max-width: 1480px; text-wrap: pretty; }
+.ej-slide-title-sm { font-size: 64px; }
+.ej-slide-body { flex: 1; min-height: 0; margin: 44px var(--ej-slide-pad-x, 96px) 0; font-size: 30px; line-height: 1.4; }
+.ej-slide-body > p { margin: 0 0 20px; max-width: 1200px; }
+.ej-slide-cols { display: grid; grid-template-columns: minmax(0, 44fr) minmax(0, 56fr); gap: 72px; align-items: start; }
+.ej-slide-cols > p { margin: 0; }
+.ej-slide-foot { display: flex; justify-content: space-between; gap: 32px; margin: 0 var(--ej-slide-pad-x, 96px); padding: 26px 0 52px; border-top: 1px solid var(--ej-line-strong); font-family: var(--ej-font-mono); font-size: 24px; letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; color: var(--ej-fg-faint); }
+.ej-slide-scaler { position: relative; overflow: hidden; box-shadow: var(--ej-shadow-frame); }
+/* Slide-scale overrides — the block classes are UI-scale; on a slide everything is ≥ 24px */
+.ej-slide .ej-label, .ej-slide .ej-tag, .ej-slide .ej-tl-date, .ej-slide .ej-step-num, .ej-slide .ej-bars-axis, .ej-slide .ej-chart-y, .ej-slide .ej-line-val, .ej-slide .ej-seq-label, .ej-slide .ej-layer-via, .ej-slide .ej-quote-cite, .ej-slide .ej-stat-sub, .ej-slide .ej-node-sub, .ej-slide .ej-multiple-count, .ej-slide .ej-receipt-stamp, .ej-slide .ej-kv dt { font-size: 24px; }
+.ej-slide .ej-tag { padding: 6px 14px 6px 12px; }
+.ej-slide .ej-stats { gap: 2px; }
+.ej-slide .ej-stat { padding: 24px 28px; gap: 10px; }
+.ej-slide .ej-stat-figure { font-size: 96px; }
+.ej-slide .ej-callout-title, .ej-slide .ej-compare-title, .ej-slide .ej-tl-title, .ej-slide .ej-node-title { font-size: 36px; }
+.ej-slide .ej-callout-body, .ej-slide .ej-compare-body, .ej-slide .ej-tl-line, .ej-slide .ej-step-note, .ej-slide .ej-option-meaning, .ej-slide .ej-note, .ej-slide .ej-fig-caption, .ej-slide .ej-node, .ej-slide .ej-table, .ej-slide .ej-kv { font-size: 26px; }
+.ej-slide .ej-step-title, .ej-slide .ej-option-name, .ej-slide .ej-receipt-body { font-size: 28px; }
+.ej-slide .ej-question-title { font-size: 48px; }
+.ej-slide .ej-quote-text { font-size: 40px; }
+.ej-slide .ej-callout, .ej-slide .ej-compare-side, .ej-slide .ej-question, .ej-slide .ej-panel, .ej-slide .ej-quote, .ej-slide .ej-note, .ej-slide .ej-receipt { padding: 28px 32px; }
+.ej-slide .ej-callout, .ej-slide .ej-quote { border-left-width: 5px; }
+.ej-slide .ej-compare { gap: 24px; }
+.ej-slide .ej-step { padding: 20px 28px; gap: 4px 20px; grid-template-columns: 56px minmax(0, 1fr) auto; }
+.ej-slide .ej-option { padding: 18px 4px; gap: 0 20px; grid-template-columns: 20px minmax(0, 1fr) auto; }
+.ej-slide .ej-option-mark { width: 16px; height: 16px; margin-top: 10px; }
+.ej-slide .ej-tl-item { grid-template-columns: 130px 24px minmax(0, 1fr); gap: 0 20px; padding-bottom: 32px; }
+.ej-slide .ej-tl-mark::before { width: 16px; height: 16px; left: 4px; top: 8px; }
+.ej-slide .ej-tl-mark::after { left: 11px; top: 30px; }
+.ej-slide .ej-timeline-h .ej-tl-item { padding: 0 20px 0 0; }
+.ej-slide .ej-timeline-h .ej-tl-mark { height: 24px; margin-bottom: 14px; }
+.ej-slide .ej-timeline-h .ej-tl-mark::before { left: 0; top: 4px; }
+.ej-slide .ej-timeline-h .ej-tl-mark::after { left: 26px; right: -20px; top: 12px; }
+.ej-slide .ej-bars, .ej-slide .ej-line { height: 260px; background-size: auto 40px; background-image: repeating-linear-gradient(0deg, var(--ej-line) 0 1px, transparent 1px 40px); }
+.ej-slide .ej-bars { gap: 8px; padding: 0 12px; }
+.ej-slide .ej-line-plot { inset: 16px 20px; }
+.ej-slide .ej-line-values .ej-line-plot { top: 44px; }
+.ej-slide .ej-line-pt { width: 12px; height: 12px; margin: -6px 0 0 -6px; }
+.ej-slide .ej-line-pt-hi { width: 16px; height: 16px; margin: -8px 0 0 -8px; }
+.ej-slide .ej-line-val { margin-top: -36px; }
+.ej-slide .ej-multiple { padding: 20px 24px 24px; }
+.ej-slide .ej-multiple .ej-bars, .ej-slide .ej-multiple .ej-line { height: 140px; }
+.ej-slide .ej-fig-head, .ej-slide .ej-fig-caption { padding: 20px 28px; }
+.ej-slide .ej-fig-body { padding: 8px 28px 24px; }
+.ej-slide .ej-table th { font-size: 24px; padding: 12px 16px; }
+.ej-slide .ej-table td { padding: 16px; }
+.ej-slide .ej-kv { gap: 12px 28px; }
+.ej-slide .ej-seq { row-gap: 28px; }
+.ej-slide .ej-seq-actor .ej-node { padding: 16px; }
+.ej-slide .ej-seq-arrow { border-top-width: 2px; }
+.ej-slide .ej-seq-arrow::after { top: -8px; border-width: 7px 0 7px 12px; }
+.ej-slide .ej-seq-msg-back .ej-seq-arrow::after { border-width: 7px 12px 7px 0; }
+.ej-slide .ej-layers { gap: 12px; }
+.ej-slide .ej-layer { grid-template-columns: 180px minmax(0, 1fr); gap: 0 24px; }
+.ej-slide .ej-layer-via { padding-left: 204px; }
+.ej-slide .ej-layer-items { gap: 16px; }
+.ej-slide .ej-layer-items > .ej-node { padding: 16px 20px; }
+.ej-slide .ej-node::before { width: 14px; height: 14px; }
+
+  /* Page layout only. Every colour, face and size comes from the tokens above. */
+  .ej-panel p { margin: 0; }
+  .ej-content ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+  .opt { cursor: pointer; gap: 12px; }
+  .opt > span { min-width: 0; }
+  .opt input { accent-color: var(--ej-gold); width: 18px; height: 18px; flex: none; cursor: pointer; }
+  .opt small { display: block; color: var(--ej-fg-muted); }
+  .ej-table td, .ej-table th { vertical-align: top; }
+  #out { display: none; }
+  #out.show { display: block; }
+  .q > p + p { margin-top: var(--ej-space-2); }
+  .q > .ej-input { margin: var(--ej-space-1) 0 var(--ej-space-3); }
+  .ej-panel code { overflow-wrap: anywhere; }
+</style>
+<script>
+  // Restore the reader's theme and text-size choices before paint.
+  (function () {
+    try {
+      var t = localStorage.getItem('ej-theme'); if (t) document.documentElement.setAttribute('data-theme', t);
+      var s = localStorage.getItem('ej-size'); if (s) document.documentElement.setAttribute('data-size', s);
+    } catch (e) {}
+  })();
+</script>
+
+<div class="ej-shell" data-key="jos-field-guide-1" data-copy-title="Judgement OS field guide">
+
+  <header class="ej-header">
+    <div class="ej-header-row">
+      <div class="ej-header-meta">
+        <span class="ej-nameplate">For you</span>
+        <span class="ej-label">01 // Field guide</span>
+      </div>
+      <div class="ej-controls">
+        <button type="button" class="ej-ctl" id="ej-size-down" aria-label="Smaller text">A−</button>
+        <button type="button" class="ej-ctl" id="ej-size-up" aria-label="Larger text">A+</button>
+        <button type="button" class="ej-ctl" id="ej-theme">DARK</button>
+      </div>
+    </div>
+    <div class="ej-readout">
+      <span><span class="ej-dot"></span>SYS.DAY</span>
+      <span class="ej-readout-sep">//</span>
+      <span class="ej-readout-live" id="ej-clock">00:00:00</span>
+      <span class="ej-readout-sep">//</span>
+      <span>17 STEPS</span>
+    </div>
+  </header>
+
+  <section class="ej-titleblock">
+    <h1 class="ej-title">Try each part of Judgement OS</h1>
+    <p class="ej-subtitle">Each step says what to type and what you should see. Pick how it went, and add a note if something was off. The page keeps your answers.</p>
+    <div class="ej-byline"><span>Judgement OS · field guide</span><span>2026.10.05</span></div>
+  </section>
+
+  <article class="ej-content">
+
+    <div class="ej-panel ej-stack">
+      <span class="ej-label">PNL.01 // Before you start</span>
+      <dl class="ej-kv">
+        <dt>First</dt><dd>Install the plugins, then open a new chat. Plugins load when a chat starts.</dd>
+        <dt>Talk</dt><dd>Say what you want. Each plugin listens for its own work, and the commands below are shortcuts.</dd>
+        <dt>Account</dt><dd>This edition works from your selfActual vault, so connect the selfActual connector first. Without it, the vault steps say so, and boot reads your project's TASKS.md.</dd>
+        <dt>Order</dt><dd>Step 1 first. The judges read your profile, and several steps change once it's filled in.</dd>
+        <dt>When done</dt><dd>Say <code>guide done</code> to Claude Code (CC on the buttons). It reads your answers off this page.</dd>
+      </dl>
+    </div>
+
+    <div class="ej-section-head"><h2 class="ej-h2">The steps</h2>
+    <span class="ej-label">02 // 17 to try</span>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="1" data-title="Write your profile">
+      <span class="ej-label">Step 1 // Write your profile</span>
+      <p><b>Type</b> <code>/labs:profile</code></p>
+      <p><b>You should see</b> A starter profile, if you have none yet. It never overwrites one. Then five questions, one at a time: who you are, how you work, what you're on, how you like things made, and when a judge should push back. It asks what your pages should call you. It asks once more before it switches your judges on.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Profile filled in, judges on</small></span><input type="radio" name="q1" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q1" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No starter, or no questions</small></span><input type="radio" name="q1" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="2" data-title="Boot">
+      <span class="ej-label">Step 2 // Boot</span>
+      <p><b>Type</b> <code>/day:boot</code>, or say <code>morning</code></p>
+      <p><b>You should see</b> A brief of three lines at most: the date, then the one or two things that matter today.
+
+     It reads your tasks from your vault, and the next steps your last session left.
+The last line names boot's pick of style (bare, project or general) and why. Reply, and it asks your energy; name another style there to change it. With your profile filled in, the judges weigh in when the morning reads two ways, and you see their second opinion only when both disagree with boot's pick.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>A brief, then my energy</small></span><input type="radio" name="q2" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q2" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No brief, or the wrong tasks</small></span><input type="radio" name="q2" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="3" data-title="Habits">
+      <span class="ej-label">Step 3 // Habits</span>
+      <p><b>Type</b> <code>/day:habits</code></p>
+      <p><b>You should see</b> The first time, it sets up your rows with you: what you do each day, which rows are core, and a focus. After that, it shows what's still open today and logs scores you give in plain words, such as <code>walk 2, water 3</code>. From tomorrow, boot offers them until they're logged.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Rows set up, today logged</small></span><input type="radio" name="q3" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q3" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No setup, or nothing logged</small></span><input type="radio" name="q3" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="4" data-title="The daily reading and a phrase">
+      <span class="ej-label">Step 4 // The daily reading and a phrase</span>
+      <p><b>Type</b> <code>/day:daily</code></p>
+      <p><b>You should see</b> The first time, it asks which you want: a reading each day, a phrase in a language you're learning, or both. It sets each one up with you and shows day 1. From tomorrow, boot shows the reading first and the phrase last.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Set up, and day 1 shown</small></span><input type="radio" name="q4" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q4" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No setup, or nothing shown</small></span><input type="radio" name="q4" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="5" data-title="A page">
+      <span class="ej-label">Step 5 // A page</span>
+      <p><b>Type</b> <code>/sexyhtml a page of this week's plan</code>, or ask for a page in your own words</p>
+      <p><b>You should see</b> A finished page in your look, as a private link. The default look is ECHO-JAY: gold and steel, with For you on the nameplate, or your name once you've given it in step 1. Games come out in Seren.
+     selfActual work comes out in the selfActual look.
+When a request reads two ways, the judges weigh in on the style. A−/A+ and DARK/LIGHT both work.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>My look, a private link</small></span><input type="radio" name="q5" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q5" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No page, or the wrong look</small></span><input type="radio" name="q5" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="6" data-title="A form in the chat">
+      <span class="ej-label">Step 6 // A form in the chat</span>
+      <p><b>Type</b> <code>/make ask me in chat which plugin to try next</code></p>
+      <p><b>You should see</b> A form in the chat, with the recommended option first, an Other box and a notes box last. It keeps Claude's own look on purpose. Continue sends your answers back as your next message. With no form tool in the session, it asks with a picker instead.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>A form, and my answers came back</small></span><input type="radio" name="q6" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q6" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No form, or my answers were lost</small></span><input type="radio" name="q6" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="7" data-title="A gear">
+      <span class="ej-label">Step 7 // A gear</span>
+      <p><b>Say</b> <code>scout this: I want to start a newsletter next month</code>, or type
+
+     <code>/sa:gear</code>
+for the menu</p>
+      <p><b>You should see</b> One line naming the gear, such as → scout. Then it runs the gear and finds what your plan is missing. Typed alone, the command lists the gears, loops and modes, one line each.
+     Your gears come from your vault, with a bundled set for when it isn't there.
+</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Named the gear, then ran it</small></span><input type="radio" name="q7" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q7" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No gear, or the wrong one</small></span><input type="radio" name="q7" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="8" data-title="The send gate">
+      <span class="ej-label">Step 8 // The send gate</span>
+      <p><b>Ask</b> for a test message to yourself through a messaging connector you have, such as <code>send me a Slack DM saying gate test</code>. Don't type <code>send</code> yet.</p>
+      <p><b>You should see</b> Claude says the send gate stopped it, and shows you the exact text and who it goes to. Nothing goes out until you type <code>send</code> as your whole message. That opens the gate for one send. With no messaging connector there is nothing to gate, so leave this one unpicked and say so in the note.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Stopped until I typed send</small></span><input type="radio" name="q8" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q8" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>It went out without my send</small></span><input type="radio" name="q8" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="9" data-title="Humanify a draft">
+      <span class="ej-label">Step 9 // Humanify a draft</span>
+      <p><b>Type</b> <code>/comms:humanify</code>, then paste a draft you wrote with AI's help</p>
+      <p><b>You should see</b> One line naming the register, picked from where the draft is going, or a question if it can't tell. An audit table comes first, before any edit. Then the cleaned draft and a report: the register, the signals before and after, and how much changed. A line saying AI helped stays as it is.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Fewer tics, same voice</small></span><input type="radio" name="q9" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q9" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>Rewritten, or no report</small></span><input type="radio" name="q9" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="10" data-title="Poll a Slack channel">
+      <span class="ej-label">Step 10 // Poll a Slack channel</span>
+      <p><b>Type</b> <code>/comms:poll</code></p>
+      <p><b>You should see</b> The first time, it asks which workspace and channels to read, and shows the file it will write before it writes it. Then it says what's new since your last post, thread by thread, with a draft where a reply is owed. Nothing posts until you approve a reply's exact text and type <code>send</code>. With no Slack connector, it says so and stops.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Channels saved, the new posts summed up</small></span><input type="radio" name="q10" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q10" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No setup, or it posted</small></span><input type="radio" name="q10" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+
+    <div class="ej-panel ej-panel-list q" data-q="11" data-title="Dice">
+      <span class="ej-label">Step 11 // Dice</span>
+      <p><b>Type</b> <code>/dice:roll 2d20kh1</code></p>
+      <p><b>You should see</b> Two d20s with the higher one kept, which is advantage. The total is in bold, both dice show, and the dropped one is struck through. A script rolls every die, and Claude never makes a number up.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Real dice, shown in full</small></span><input type="radio" name="q11" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q11" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>A made-up roll</small></span><input type="radio" name="q11" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="12" data-title="Judge the judges, blind">
+      <span class="ej-label">Step 12 // Judge the judges, blind</span>
+      <p><b>Type</b> <code>/labs:try today</code></p>
+      <p><b>You should see</b> Two answers on today's style pick, as Judge 1 and Judge 2, in an order the code drew. You pick the better one before you know which model wrote it. Then it tells you. If the rule stays out, say <code>ask anyway</code>.
+     For the full test, type <code>/labs:guide</code>.
+</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>A blind pick, then the reveal</small></span><input type="radio" name="q12" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q12" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No judges, or names shown early</small></span><input type="radio" name="q12" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="13" data-title="The clock and the check-ins">
+      <span class="ej-label">Step 13 // The clock and the check-ins</span>
+      <p><b>Ask</b> <code>what time is it?</code>, then type <code>/day:checkin</code></p>
+      <p><b>You should see</b> The time in your time zone, from the clock on every message. After 13:00, Claude offers the mid-day check-in once, in one plain line, after it answers you. After 16:00 it offers the end-of-day one. <code>/day:checkin</code> runs one now: anything you held at boot, the habits still open, then your overdue and due-today tasks, one question each.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>The right time, and a check-in ran</small></span><input type="radio" name="q13" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q13" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>The wrong time, or no check-in</small></span><input type="radio" name="q13" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="14" data-title="Open a session">
+      <span class="ej-label">Step 14 // Open a session</span>
+      <p><b>Type</b> <code>/sa:open</code></p>
+      <p><b>You should see</b> A short orientation: the session's number, your first name and the local time. Any P0 that's overdue or due today comes first, then the rest of your P0 and P1 tasks. It only reads. Nothing is written to your vault.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Oriented, nothing written</small></span><input type="radio" name="q14" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q14" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No board, or it wrote something</small></span><input type="radio" name="q14" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="15" data-title="Close a session">
+      <span class="ej-label">Step 15 // Close a session</span>
+      <p><b>Type</b> <code>/sa:close</code>, at the end of a chat where you made or changed something</p>
+      <p><b>You should see</b> A git check first, which flags anything uncommitted. Then the session log goes to your vault. Then two plain questions: should what you committed to become tasks, and should your profile change? Nothing else is written without your yes. A chat that only read things gets no log, and it says so.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Logged, and it asked first</small></span><input type="radio" name="q15" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q15" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>No log, or it wrote unasked</small></span><input type="radio" name="q15" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="16" data-title="Vault messages">
+      <span class="ej-label">Step 16 // Vault messages</span>
+      <p><b>Type</b> <code>/comms:messages</code></p>
+      <p><b>You should see</b> Your vault messages, newest first, one line each. Opening one shows it in full. To send one, Claude shows you the exact text and who it goes to, and asks. Then the send gate stops it until you type <code>send</code>. That makes two locks, on purpose.</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>Read them, and it asked before sending</small></span><input type="radio" name="q16" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q16" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>Nothing listed, or it sent unasked</small></span><input type="radio" name="q16" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-panel-list q" data-q="17" data-title="A selfActual page">
+      <span class="ej-label">Step 17 // A selfActual page</span>
+      <p><b>Type</b> <code>/sexyhtml:sa a one-page summary of what I shipped this week</code></p>
+      <p><b>You should see</b> A page in the selfActual look: paper and ink grounds with a hard cut between them, Caprasimo headlines, and an evidence tag on every claim (shipped, measured, building or hypothesis).</p>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Works</b> <small>selfActual's look, every claim tagged</small></span><input type="radio" name="q17" value="works"></label>
+        <label class="ej-switch-row opt"><span><b>Works, with a catch</b> <small>Say what in the note</small></span><input type="radio" name="q17" value="works, with a catch"></label>
+        <label class="ej-switch-row opt"><span><b>Broken</b> <small>The wrong look, or untagged claims</small></span><input type="radio" name="q17" value="broken"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="What you saw"></textarea>
+    </div>
+
+    <div class="ej-panel ej-stack">
+      <span class="ej-label">03 // Anything else</span>
+      <textarea class="ej-input" id="extra" rows="3" placeholder="Anything about the guide, or something you want it to cover"></textarea>
+      <span class="ej-label" id="sync" aria-live="polite"></span>
+      <div class="ej-btn-row">
+        <button type="button" class="ej-btn ej-btn-primary" id="copy">Copy answers for CC</button>
+      </div>
+      <textarea class="ej-input" id="out" rows="8" readonly aria-label="Answers to copy"></textarea>
+    </div>
+
+  </article>
+
+  <footer class="ej-footer"><span>DAY // FIELD GUIDE</span><span>END OF FILE</span></footer>
+</div>
+
+<script>
+  // Controls: theme (light / dark / follow host) and text size. Both persist.
+  (function () {
+    var root = document.documentElement, themeBtn = document.getElementById('ej-theme');
+    var isDark = function () { var t = root.getAttribute('data-theme'); return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
+    var paint = function () { themeBtn.textContent = isDark() ? 'LIGHT' : 'DARK'; };
+    themeBtn.addEventListener('click', function () { var next = isDark() ? 'light' : 'dark'; root.setAttribute('data-theme', next); try { localStorage.setItem('ej-theme', next); } catch (e) {} paint(); });
+    var size = function (d) { var n = Math.max(-1, Math.min(1, Number(root.getAttribute('data-size') || 0) + d)); root.setAttribute('data-size', String(n)); try { localStorage.setItem('ej-size', String(n)); } catch (e) {} };
+    document.getElementById('ej-size-down').addEventListener('click', function () { size(-1); });
+    document.getElementById('ej-size-up').addEventListener('click', function () { size(1); });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);
+    paint();
+    var clock = document.getElementById('ej-clock'), p = function (n) { return String(n).padStart(2, '0'); };
+    var tick = function () { var d = new Date(); clock.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds()); };
+    tick(); setInterval(tick, 1000);
+  })();
+
+  // MultiChoice report: picks and notes kept in this browser, copied back as plain text.
+  // The shell's data-key names the storage; data-copy-title heads the copied text.
+  // Published with capabilities {db, user}, the answers also save into the page itself
+  // (answers/<reader id>--<data-key>), one write per pause, so Claude reads them back with no paste.
+  // One document per data-key: republished with a new key, the page starts clean.
+  (function () {
+    var shell = document.querySelector('.ej-shell');
+    var KEY = shell.getAttribute('data-key') || 'ej-multichoice', HEAD = shell.getAttribute('data-copy-title') || document.title, state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+    var sync = document.getElementById('sync'), store = null, timer = null, writing = false, again = false;
+    var btn = document.getElementById('copy'), out = document.getElementById('out');
+    function say(t) { if (sync) sync.textContent = t; }
+    // While the page saves itself the copy button steps down to "Copy anyway", and the line above it
+    // says no paste is needed (found in use: answers got pasted that the page had already kept).
+    function selfSaving(on) {
+      btn.className = 'ej-btn ' + (on ? 'ej-btn-secondary' : 'ej-btn-primary');
+      btn.textContent = on ? 'Copy anyway' : 'Copy answers for CC';
+    }
+    function push() {
+      if (!store) return;
+      if (writing) { again = true; return; }
+      writing = true; say('Saving to this page');
+      store.set({ title: HEAD, key: KEY, answers: JSON.parse(JSON.stringify(state)), text: buildText(), updatedAt: new Date().toISOString() })
+        .then(function () { say('Saved to this page // tell CC you are done, no paste needed'); }, function () { store = null; selfSaving(false); say('Not saved to the page // copy and paste instead'); })
+        .then(function () { writing = false; if (again) { again = false; push(); } });
+    }
+    function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} clearTimeout(timer); timer = setTimeout(push, 800); }
+    var qs = Array.prototype.slice.call(document.querySelectorAll('.q')), extra = document.getElementById('extra');
+    function paint() {
+      qs.forEach(function (q) {
+        var s = state[q.getAttribute('data-q')] || {}, ta = q.querySelector('textarea');
+        q.querySelectorAll('input[type=radio]').forEach(function (r) { r.checked = r.value === s.pick; });
+        if (ta) ta.value = s.note || '';
+      });
+      if (extra) extra.value = state.extra || '';
+    }
+    qs.forEach(function (q) {
+      var n = q.getAttribute('data-q');
+      var radios = Array.prototype.slice.call(q.querySelectorAll('input[type=radio]')), ta = q.querySelector('textarea');
+      radios.forEach(function (r) { r.addEventListener('change', function () { state[n] = Object.assign({}, state[n], { pick: r.value }); save(); }); });
+      if (ta) ta.addEventListener('input', function () { state[n] = Object.assign({}, state[n], { note: ta.value }); save(); });
+    });
+    if (extra) extra.addEventListener('input', function () { state.extra = extra.value; save(); });
+    paint();
+    (async function () {
+      try {
+        if (!window.claude || !window.claude.use) return;
+        var db = await window.claude.use('db'), user = await window.claude.use('user');
+        var uid = user && await user.id();
+        if (!db || !uid) return;
+        var ref = db.doc('answers/' + uid + '--' + KEY.replace(/[^A-Za-z0-9_.~:@+-]/g, '-')), snap = await ref.get();
+        if (snap.exists && !Object.keys(state).length && (snap.data() || {}).answers) { state = snap.data().answers; paint(); try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+        store = ref; selfSaving(true);
+        if (Object.keys(state).length && !snap.exists) push();
+        else say(snap.exists ? 'Saved to this page // tell CC you are done, no paste needed' : 'Picks save to this page as you go // no paste needed');
+      } catch (e) { store = null; selfSaving(false); }
+    })();
+    function buildText() {
+      var d = new Date().toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+      var lines = [HEAD + ' · answers · ' + d];
+      qs.forEach(function (q) {
+        var n = q.getAttribute('data-q'), s = state[n] || {}, note = (s.note || '').trim();
+        lines.push('Q' + n + ' ' + q.getAttribute('data-title') + ': ' + (s.pick || '(no pick)') + (note ? ' — ' + note : ''));
+      });
+      var x = (state.extra || '').trim();
+      if (x) lines.push('Anything else: ' + x);
+      return lines.join('\n');
+    }
+    btn.addEventListener('click', function () {
+      var txt = buildText();
+      function fallback() { out.value = txt; out.classList.add('show'); out.focus(); out.select(); btn.textContent = 'Select all and copy below'; }
+      try { navigator.clipboard.writeText(txt).then(function () { btn.textContent = 'Copied. Paste it to CC'; }, fallback); }
+      catch (e) { fallback(); }
+      setTimeout(function () { btn.textContent = store ? 'Copy anyway' : 'Copy answers for CC'; }, 2600);
+    });
+  })();
+</script>

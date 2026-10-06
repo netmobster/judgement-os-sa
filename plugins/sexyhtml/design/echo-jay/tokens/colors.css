@@ -1,0 +1,104 @@
+/* ECHO-JAY — color tokens. Light is the default ground (cool steel white); dark is a second ground, switched with data-theme="dark" on <html> or any container; data-theme="light" pins a light island. Gold is attention and liveness; steel blue is data and structure. */
+:root, [data-theme="light"] {
+  --ej-desk: #d6dde5;
+  --ej-bg: #eef2f6;
+  --ej-surface: #ffffff;
+  --ej-surface-2: #f5f7fa;
+  --ej-line: #c8d3de;
+  --ej-line-strong: #94a6b8;
+  --ej-fg: #0f1720;
+  --ej-fg-muted: #4f6076;
+  --ej-fg-faint: #627186;
+  --ej-gold-100: #fbf3d7;
+  --ej-gold-200: #f5e5a8;
+  --ej-gold-300: #ecc84a;
+  --ej-gold-400: #c9a227;
+  --ej-gold-500: #a7841c;
+  --ej-gold-600: #7a5c0e;
+  --ej-gold-700: #574108;
+  --ej-steel-100: #e1ebf5;
+  --ej-steel-200: #c3d6ea;
+  --ej-steel-300: #6f9fd0;
+  --ej-steel-400: #3f6b96;
+  --ej-steel-500: #2b5276;
+  --ej-steel-600: #1d3a55;
+  --ej-ok: #2e7d4f;
+  --ej-ok-tint: #e3f3ea;
+  --ej-alert: #b3261e;
+  --ej-alert-tint: #fbe6e4;
+  --ej-grid: rgba(63,107,150,.09);
+  --ej-scan: rgba(15,23,32,.045);
+  --ej-glow: rgba(236,200,74,.55);
+  --ej-shadow-raise: 0 1px 2px rgba(15,23,32,.08), 0 12px 28px -14px rgba(43,82,118,.5);
+  --ej-shadow-inset: inset 0 2px 5px rgba(15,23,32,.14);
+  --ej-shadow-frame: 0 32px 70px -26px rgba(15,23,32,.6), 0 2px 6px rgba(15,23,32,.12);
+  --ej-shadow-header: inset 0 1px 0 rgba(255,255,255,.8), 0 8px 18px -10px rgba(15,23,32,.4);
+  --ej-shadow-footer: 0 -8px 18px -12px rgba(15,23,32,.35);
+  --ej-bevel: inset 0 1px 0 rgba(255,255,255,.8);
+  --ej-bevel-gold: inset 0 1px 0 rgba(255,255,255,.38), inset 0 -2px 0 rgba(0,0,0,.2);
+
+  /* Semantic aliases — write these in components; the ramps above are the source. */
+  --ej-gold: var(--ej-gold-400);          /* fills: nameplate, primary button, live bar */
+  --ej-gold-bright: var(--ej-gold-300);   /* hover, glow source */
+  --ej-gold-text: var(--ej-gold-600);     /* gold as text — readable on the ground */
+  --ej-gold-tint: var(--ej-gold-100);     /* receipt ground, focus halo */
+  --ej-gold-edge: var(--ej-gold-500);     /* pressed state */
+  --ej-on-gold: #1a1300;                  /* text on a gold fill, both grounds */
+  --ej-steel: var(--ej-steel-400);        /* data bars, node brackets, hover borders */
+  --ej-steel-text: var(--ej-steel-500);   /* readout text, table heads, links */
+  --ej-steel-tint: var(--ej-steel-100);   /* readout strip, table head */
+  --ej-steel-bright: var(--ej-steel-300);
+  --ej-surface-page: var(--ej-bg);
+  --ej-surface-card: var(--ej-surface);
+  --ej-surface-well: var(--ej-surface-2);
+  --ej-text-body-color: var(--ej-fg);
+  --ej-text-muted-color: var(--ej-fg-muted);
+  --ej-text-label-color: var(--ej-fg-faint);
+  --ej-border-default: var(--ej-line);
+  --ej-border-strong: var(--ej-line-strong);
+}
+
+[data-theme="dark"] {
+  --ej-desk: #06090d;
+  --ej-bg: #0d1319;
+  --ej-surface: #131b24;
+  --ej-surface-2: #182230;
+  --ej-line: #26333f;
+  --ej-line-strong: #44566a;
+  --ej-fg: #e7edf3;
+  --ej-fg-muted: #a9b6c4;
+  --ej-fg-faint: #7a8aa0;
+  --ej-gold-100: #2a2410;
+  --ej-gold-200: #4a3d12;
+  --ej-gold-300: #ffd45e;
+  --ej-gold-400: #e2b93b;
+  --ej-gold-500: #f0c75e;
+  --ej-gold-600: #f0c75e;
+  --ej-gold-700: #f7dd8a;
+  --ej-steel-100: #15283a;
+  --ej-steel-200: #1f3a52;
+  --ej-steel-300: #8fb8e8;
+  --ej-steel-400: #6f9fd0;
+  --ej-steel-500: #9dc0e6;
+  --ej-steel-600: #bcd6f2;
+  --ej-ok: #5fcf8a;
+  --ej-ok-tint: #10281a;
+  --ej-alert: #ff7b72;
+  --ej-alert-tint: #3a1512;
+  --ej-grid: rgba(111,159,208,.12);
+  --ej-scan: rgba(255,255,255,.035);
+  --ej-glow: rgba(255,212,94,.6);
+  --ej-shadow-raise: 0 1px 2px rgba(0,0,0,.45), 0 12px 28px -14px rgba(0,0,0,.8);
+  --ej-shadow-inset: inset 0 2px 6px rgba(0,0,0,.55);
+  --ej-shadow-frame: 0 32px 70px -26px rgba(0,0,0,.95), 0 0 0 1px rgba(255,255,255,.03);
+  --ej-shadow-header: inset 0 1px 0 rgba(255,255,255,.06), 0 8px 18px -10px rgba(0,0,0,.7);
+  --ej-shadow-footer: 0 -8px 18px -12px rgba(0,0,0,.6);
+  --ej-bevel: inset 0 1px 0 rgba(255,255,255,.06);
+  --ej-bevel-gold: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -2px 0 rgba(0,0,0,.28);
+  /* Aliases repeated so they re-resolve against the dark ramps on this element (var() resolves where it is declared). */
+  --ej-gold: var(--ej-gold-400); --ej-gold-bright: var(--ej-gold-300); --ej-gold-text: var(--ej-gold-600); --ej-gold-tint: var(--ej-gold-100); --ej-gold-edge: var(--ej-gold-500);
+  --ej-steel: var(--ej-steel-400); --ej-steel-text: var(--ej-steel-500); --ej-steel-tint: var(--ej-steel-100); --ej-steel-bright: var(--ej-steel-300);
+  --ej-surface-page: var(--ej-bg); --ej-surface-card: var(--ej-surface); --ej-surface-well: var(--ej-surface-2);
+  --ej-text-body-color: var(--ej-fg); --ej-text-muted-color: var(--ej-fg-muted); --ej-text-label-color: var(--ej-fg-faint);
+  --ej-border-default: var(--ej-line); --ej-border-strong: var(--ej-line-strong);
+}

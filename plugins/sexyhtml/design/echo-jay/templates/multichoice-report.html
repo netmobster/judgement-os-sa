@@ -1,0 +1,229 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>ECHO-JAY — MultiChoice report starter</title>
+<link rel="stylesheet" href="../styles.css">
+<!--
+  MultiChoice report: findings with the reader's decisions in them.
+  The report comes first, then one .q panel per decision (picks and a text box), then one copy
+  button that turns the answers into plain text to paste back to Claude.
+
+  - Every .q needs data-q (its number) and data-title (a short name for its copied line).
+  - A radio's value is what lands in the copied text, so write it to read on its own.
+  - Mark the recommended pick in its <small>, first in the list.
+  - Set data-key on .ej-shell to a key unique to this page, so two reports never share answers.
+  - The nameplate: the style skill says what it reads.
+  - Replace every piece of slot text. None of it ships as written.
+  - Publish it with capabilities {db: {}, user: {}}: the answers also save into the page itself, one
+    document per reader at answers/<their id>, so Claude reads them back with no paste. Without the
+    capability (or outside the claude.ai viewer) the page works exactly as before, copy button and all.
+  Built five times by hand before this file existed: concept rounds 1 and 2, the gear picker,
+  the LABS guide, and the Judgement OS eval (JUDGEMENT-OS/docs/labs/candidates.html).
+-->
+<script>
+  // Restore the reader's theme and text-size choices before paint.
+  (function () {
+    try {
+      var t = localStorage.getItem('ej-theme'); if (t) document.documentElement.setAttribute('data-theme', t);
+      var s = localStorage.getItem('ej-size'); if (s) document.documentElement.setAttribute('data-size', s);
+    } catch (e) {}
+  })();
+</script>
+<style>
+  /* Layout only. Every colour, face and size comes from styles.css. */
+  .ej-panel p { margin: 0; }
+  .ej-content ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+  .opt { cursor: pointer; gap: 12px; }
+  .opt > span { min-width: 0; }
+  .opt input { accent-color: var(--ej-gold); width: 18px; height: 18px; flex: none; cursor: pointer; }
+  .opt small { display: block; color: var(--ej-fg-muted); }
+  .ej-table td, .ej-table th { vertical-align: top; }
+  #out { display: none; }
+  #out.show { display: block; }
+</style>
+
+<div class="ej-shell" data-key="slot-report-key-v1" data-copy-title="Title">
+
+  <header class="ej-header">
+    <div class="ej-header-row">
+      <div class="ej-header-meta">
+        <span class="ej-nameplate">FOR NAME</span>
+        <span class="ej-label">01 // Label</span>
+      </div>
+      <div class="ej-controls">
+        <button type="button" class="ej-ctl" id="ej-size-down" aria-label="Smaller text">A−</button>
+        <button type="button" class="ej-ctl" id="ej-size-up" aria-label="Larger text">A+</button>
+        <button type="button" class="ej-ctl" id="ej-theme">DARK</button>
+      </div>
+    </div>
+    <div class="ej-readout">
+      <span><span class="ej-dot"></span>SYS.LABEL</span>
+      <span class="ej-readout-sep">//</span>
+      <span class="ej-readout-live" id="ej-clock">00:00:00</span>
+      <span class="ej-readout-sep">//</span>
+      <span>READOUT.LABEL</span>
+    </div>
+  </header>
+
+  <section class="ej-titleblock">
+    <h1 class="ej-title">Title</h1>
+    <p class="ej-subtitle">Subtitle: what the report found, and what the reader decides at the end.</p>
+    <div class="ej-byline"><span>Byline · MultiChoice report</span><span>YYYY.MM.DD</span></div>
+  </section>
+
+  <article class="ej-content">
+
+    <div class="ej-panel ej-stack">
+      <span class="ej-label">PNL.01 // Label</span>
+      <dl class="ej-kv">
+        <dt>Key</dt><dd>Value</dd>
+        <dt>Key</dt><dd>Value</dd>
+      </dl>
+    </div>
+
+    <div class="ej-section-head"><h2 class="ej-h2">Findings</h2><span class="ej-label">02 // Label</span></div>
+    <p>Paragraph.</p>
+
+    <div>
+      <div class="ej-label-row"><span class="ej-label">TBL.01 // Label</span><span class="ej-label">Note</span></div>
+      <div class="ej-table-wrap">
+        <table class="ej-table">
+          <thead><tr><th>Column</th><th>Column</th></tr></thead>
+          <tbody>
+            <tr><td class="ej-key">Row</td><td>Cell</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <hr class="ej-divider">
+
+    <div class="ej-section-head"><h2 class="ej-h2">Your call</h2><span class="ej-label">03 // N questions</span></div>
+
+    <div class="ej-panel ej-panel-list q" data-q="1" data-title="Short name">
+      <span class="ej-label">03.1 // The question?</span>
+      <div class="ej-switch-list">
+        <label class="ej-switch-row opt"><span><b>Option</b> <small>Recommended. Why</small></span><input type="radio" name="q1" value="option, as it should read when pasted"></label>
+        <label class="ej-switch-row opt"><span><b>Option</b> <small>What it means</small></span><input type="radio" name="q1" value="option two"></label>
+        <label class="ej-switch-row opt"><span><b>Option</b> <small>What it means</small></span><input type="radio" name="q1" value="option three"></label>
+      </div>
+      <textarea class="ej-input" rows="2" placeholder="Prompt for a note"></textarea>
+    </div>
+
+    <div class="ej-panel ej-stack">
+      <span class="ej-label">03.N // Anything else</span>
+      <textarea class="ej-input" id="extra" rows="3" placeholder="Free text"></textarea>
+      <span class="ej-label" id="sync" aria-live="polite"></span>
+      <div class="ej-btn-row">
+        <button type="button" class="ej-btn ej-btn-primary" id="copy">Copy answers for CC</button>
+      </div>
+      <textarea class="ej-input" id="out" rows="8" readonly aria-label="Answers to copy"></textarea>
+    </div>
+
+    <div class="ej-receipt">
+      <div>
+        <div class="ej-label">Receipt // Label</div>
+        <div class="ej-receipt-body">Receipt text, or delete this block.</div>
+      </div>
+      <span class="ej-receipt-stamp">CC · MM.DD</span>
+    </div>
+
+  </article>
+
+  <footer class="ej-footer"><span>FOOTER // LABEL</span><span>END OF FILE</span></footer>
+</div>
+
+<script>
+  // Controls: theme (light / dark / follow host) and text size. Both persist.
+  (function () {
+    var root = document.documentElement, themeBtn = document.getElementById('ej-theme');
+    var isDark = function () { var t = root.getAttribute('data-theme'); return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; };
+    var paint = function () { themeBtn.textContent = isDark() ? 'LIGHT' : 'DARK'; };
+    themeBtn.addEventListener('click', function () { var next = isDark() ? 'light' : 'dark'; root.setAttribute('data-theme', next); try { localStorage.setItem('ej-theme', next); } catch (e) {} paint(); });
+    var size = function (d) { var n = Math.max(-1, Math.min(1, Number(root.getAttribute('data-size') || 0) + d)); root.setAttribute('data-size', String(n)); try { localStorage.setItem('ej-size', String(n)); } catch (e) {} };
+    document.getElementById('ej-size-down').addEventListener('click', function () { size(-1); });
+    document.getElementById('ej-size-up').addEventListener('click', function () { size(1); });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', paint);
+    paint();
+    var clock = document.getElementById('ej-clock'), p = function (n) { return String(n).padStart(2, '0'); };
+    var tick = function () { var d = new Date(); clock.textContent = p(d.getHours()) + ':' + p(d.getMinutes()) + ':' + p(d.getSeconds()); };
+    tick(); setInterval(tick, 1000);
+  })();
+
+  // MultiChoice report: picks and notes kept in this browser, copied back as plain text.
+  // The shell's data-key names the storage; data-copy-title heads the copied text.
+  // Published with capabilities {db, user}, the answers also save into the page itself
+  // (answers/<reader id>--<data-key>), one write per pause, so Claude reads them back with no paste.
+  // One document per data-key: republished with a new key, the page starts clean.
+  (function () {
+    var shell = document.querySelector('.ej-shell');
+    var KEY = shell.getAttribute('data-key') || 'ej-multichoice', HEAD = shell.getAttribute('data-copy-title') || document.title, state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { state = {}; }
+    var sync = document.getElementById('sync'), store = null, timer = null, writing = false, again = false;
+    var btn = document.getElementById('copy'), out = document.getElementById('out');
+    function say(t) { if (sync) sync.textContent = t; }
+    // While the page saves itself the copy button steps down to "Copy anyway", and the line above it
+    // says no paste is needed (found in use: answers got pasted that the page had already kept).
+    function selfSaving(on) {
+      btn.className = 'ej-btn ' + (on ? 'ej-btn-secondary' : 'ej-btn-primary');
+      btn.textContent = on ? 'Copy anyway' : 'Copy answers for CC';
+    }
+    function push() {
+      if (!store) return;
+      if (writing) { again = true; return; }
+      writing = true; say('Saving to this page');
+      store.set({ title: HEAD, key: KEY, answers: JSON.parse(JSON.stringify(state)), text: buildText(), updatedAt: new Date().toISOString() })
+        .then(function () { say('Saved to this page // tell CC you are done, no paste needed'); }, function () { store = null; selfSaving(false); say('Not saved to the page // copy and paste instead'); })
+        .then(function () { writing = false; if (again) { again = false; push(); } });
+    }
+    function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} clearTimeout(timer); timer = setTimeout(push, 800); }
+    var qs = Array.prototype.slice.call(document.querySelectorAll('.q')), extra = document.getElementById('extra');
+    function paint() {
+      qs.forEach(function (q) {
+        var s = state[q.getAttribute('data-q')] || {}, ta = q.querySelector('textarea');
+        q.querySelectorAll('input[type=radio]').forEach(function (r) { r.checked = r.value === s.pick; });
+        if (ta) ta.value = s.note || '';
+      });
+      if (extra) extra.value = state.extra || '';
+    }
+    qs.forEach(function (q) {
+      var n = q.getAttribute('data-q');
+      var radios = Array.prototype.slice.call(q.querySelectorAll('input[type=radio]')), ta = q.querySelector('textarea');
+      radios.forEach(function (r) { r.addEventListener('change', function () { state[n] = Object.assign({}, state[n], { pick: r.value }); save(); }); });
+      if (ta) ta.addEventListener('input', function () { state[n] = Object.assign({}, state[n], { note: ta.value }); save(); });
+    });
+    if (extra) extra.addEventListener('input', function () { state.extra = extra.value; save(); });
+    paint();
+    (async function () {
+      try {
+        if (!window.claude || !window.claude.use) return;
+        var db = await window.claude.use('db'), user = await window.claude.use('user');
+        var uid = user && await user.id();
+        if (!db || !uid) return;
+        var ref = db.doc('answers/' + uid + '--' + KEY.replace(/[^A-Za-z0-9_.~:@+-]/g, '-')), snap = await ref.get();
+        if (snap.exists && !Object.keys(state).length && (snap.data() || {}).answers) { state = snap.data().answers; paint(); try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+        store = ref; selfSaving(true);
+        if (Object.keys(state).length && !snap.exists) push();
+        else say(snap.exists ? 'Saved to this page // tell CC you are done, no paste needed' : 'Picks save to this page as you go // no paste needed');
+      } catch (e) { store = null; selfSaving(false); }
+    })();
+    function buildText() {
+      var d = new Date().toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+      var lines = [HEAD + ' · answers · ' + d];
+      qs.forEach(function (q) {
+        var n = q.getAttribute('data-q'), s = state[n] || {}, note = (s.note || '').trim();
+        lines.push('Q' + n + ' ' + q.getAttribute('data-title') + ': ' + (s.pick || '(no pick)') + (note ? ' — ' + note : ''));
+      });
+      var x = (state.extra || '').trim();
+      if (x) lines.push('Anything else: ' + x);
+      return lines.join('\n');
+    }
+    btn.addEventListener('click', function () {
+      var txt = buildText();
+      function fallback() { out.value = txt; out.classList.add('show'); out.focus(); out.select(); btn.textContent = 'Select all and copy below'; }
+      try { navigator.clipboard.writeText(txt).then(function () { btn.textContent = 'Copied. Paste it to CC'; }, fallback); }
+      catch (e) { fallback(); }
+      setTimeout(function () { btn.textContent = store ? 'Copy anyway' : 'Copy answers for CC'; }, 2600);
+    });
+  })();
+</script>

@@ -1,0 +1,20 @@
+{
+  "description": "Send gate: every outbound message is blocked until you type \"send\" yourself; one send per yes.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__.*",
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/send-gate.js\"", "timeout": 5 }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/send-gate.js\" --prompt", "timeout": 5 }
+        ]
+      }
+    ]
+  }
+}

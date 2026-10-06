@@ -1,0 +1,15 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Slide" subtitle="1920×1080 chrome on both grounds — kicker, argument, folio" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css"><style>body{padding:20px}.lbl{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 8px}.sec{margin-bottom:18px}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script></head><body><div id="root"></div><script type="text/babel">
+const DS = window.SelfActualDesignSystem_f093ce;
+const { Slide, Hl } = DS;
+function Fit({children}){ const r=React.useRef(); const [s,setS]=React.useState(0.3); React.useEffect(()=>{const f=()=>setS(r.current.clientWidth/1920);f();addEventListener('resize',f);return()=>removeEventListener('resize',f)},[]); return <div ref={r} style={{width:'100%',aspectRatio:'16/9',overflow:'hidden',borderRadius:6,border:'1px solid var(--color-divider)'}}><div style={{transform:'scale('+s+')',transformOrigin:'top left'}}>{children}</div></div>; }
+const logo='../../assets/selfactual-logo.png';
+function App(){ return <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:12}}>
+<Fit><Slide ink display={<>Choose your AI.<br/><Hl>Keep yourself.</Hl></>} lead="Use whatever models, tools, agents and infrastructure you want. selfActual is the operator layer that stays yours." date="Internal · 7 Sept 2026" number="01" logo={logo} /></Fit>
+<Fit><Slide kicker="02 · The problem" date="7 Sept 2026" number="02" logo={logo} title={<>Every time your AI changes,<br/><Hl>you start over.</Hl></>} lead="New model, new tool, new agent, new teammate. Each one begins with you re-explaining how you think." /></Fit>
+</div>; }
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);</script></body></html>

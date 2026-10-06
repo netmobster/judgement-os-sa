@@ -1,0 +1,15 @@
+{
+  "name": "sa",
+  "version": "0.3.1",
+  "description": "selfActual in Claude Code: your gears, loops and modes, fetched from your vault through one router, with the General Edition's set as files for when the vault isn't there, and the vault session commands: open, close, board and task.",
+  "author": {
+    "name": "Jay Wright"
+  },
+  "keywords": [
+    "selfactual",
+    "imprint",
+    "gears",
+    "vault"
+  ],
+  "homepage": "https://netmobster.github.io/unstuck-games/judgement-os/"
+}

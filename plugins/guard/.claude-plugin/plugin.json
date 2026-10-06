@@ -1,0 +1,14 @@
+{
+  "name": "guard",
+  "version": "0.2.2",
+  "description": "Hard rules as hooks: deploys are printed for you to run, destructive commands and secrets ask first, state files change only through their scripts, writes to someone else's vault ask, and a session is archived only when you say so.",
+  "author": {
+    "name": "Jay Wright"
+  },
+  "keywords": [
+    "safety",
+    "hooks",
+    "guard"
+  ],
+  "homepage": "https://netmobster.github.io/unstuck-games/judgement-os/"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "sexyhtml",
+  "version": "0.15.2",
+  "description": "House styles for finished HTML pages. /sexyhtml picks the style (ECHO-JAY by default, selfActual for work, Seren for games) and the shape, with the Judgement OS weighing in when a request reads two ways; or name one: /sexyhtml:jay, /sexyhtml:sa, /sexyhtml:seren, /sexyhtml:judgement-os.",
+  "author": {
+    "name": "Jay Wright"
+  },
+  "keywords": [
+    "html",
+    "design",
+    "artifacts",
+    "styles",
+    "selfactual"
+  ],
+  "homepage": "https://netmobster.github.io/unstuck-games/judgement-os/"
+}

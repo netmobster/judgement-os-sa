@@ -1,0 +1,32 @@
+/* ECHO-JAY — geometry. A 4px scale, no radii (chamfers and brackets instead), one artifact width. Shadows live with the colors because they change per ground. */
+:root {
+  --ej-space-1: 4px;
+  --ej-space-2: 8px;
+  --ej-space-3: 12px;
+  --ej-space-4: 16px;
+  --ej-space-5: 20px;
+  --ej-space-6: 24px;
+  --ej-space-8: 32px;
+
+  --ej-artifact-width: 500px;  /* the sidebar */
+  --ej-pad-x: 20px;            /* content gutter inside the shell */
+  --ej-pad-chrome: 16px;       /* header, readout, footer gutter */
+
+  --ej-radius: 0;              /* nothing is rounded */
+  --ej-chamfer-sm: 5px;        /* tags, controls, switch */
+  --ej-chamfer: 8px;           /* primary button */
+  --ej-chamfer-lg: 10px;       /* nameplate */
+  --ej-bracket: 12px;          /* panel corner brackets */
+  --ej-bracket-weight: 2px;
+  --ej-hairline: 1px;
+
+  --ej-slide-w: 1920px;        /* slides: literal px, 24px text floor */
+  --ej-slide-h: 1080px;
+  --ej-slide-pad-x: 96px;
+  --ej-slide-pad-y: 56px;
+
+  --ej-blink: 2s;
+  --ej-pulse: 3s;
+  --ej-ease: ease-in-out;
+  --ej-fast: 0.15s;
+}

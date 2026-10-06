@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seren — blocks</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { padding: 44px var(--gutter) 112px; }
+  .wrap { display: flex; flex-direction: column; gap: 72px; }
+  .blk { display: flex; flex-direction: column; gap: 22px; }
+  .blk > .label-wide { padding-bottom: 14px; border-bottom: 1px solid var(--hair); }
+  .fit { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--edge); }
+  .fit .sr-slide { position: absolute; left: 0; top: 0; transform: scale(var(--s, .5)); transform-origin: top left; }
+  @media (max-width: 900px) { body { padding-top: 24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="blk"><p class="label-wide">01 &middot; Callout</p><div class="sr-callout">
+<span class="sr-callout-label">The rule at the table</span>
+<p>A roll is read aloud once and written down once. <b>If it is not in the ledger, it did not happen.</b></p>
+</div>
+<div class="sr-callout sr-callout-fail" style="margin-top:28px">
+<span class="sr-callout-label">What it lost</span>
+<p>Two rolls were narrated and never written. The validator passed the ledger both times, because a missing entry is not an invalid entry.</p>
+</div></section>
+<section class="blk"><p class="label-wide">02 &middot; Timeline</p><ol class="sr-tl">
+<li class="sr-tl-row"><div class="sr-tl-when"><b>Session 2</b><span>Day 14</span></div><p class="sr-tl-what">The ferry burned at the north crossing. Nine witnesses, one name taken down.<span class="sr-tl-note">3 facts written · 2 rolls</span></p></li>
+<li class="sr-tl-row is-lost"><div class="sr-tl-when"><b>Session 3</b><span>Day 29</span></div><p class="sr-tl-what">Pieter Dunn was restored. The wand's DC rose to 22 and stayed there.<span class="sr-tl-note">5 facts written · 1 roll lost</span></p></li>
+<li class="sr-tl-row is-live"><div class="sr-tl-when"><b>Session 4</b><span>Day 31</span></div><p class="sr-tl-what">The party reached the mill before the collectors did. The sheep has not yet been named out loud.<span class="sr-tl-note">Running · 2 facts so far</span></p></li>
+<li class="sr-tl-row is-open"><div class="sr-tl-when"><b>Session 5</b><span>Day —</span></div><p class="sr-tl-what">Not yet played.</p></li>
+</ol></section>
+<section class="blk"><p class="label-wide">03 &middot; Step list</p><ol class="sr-steps">
+<li class="sr-step is-held"><span class="sr-step-n"></span><p class="sr-step-text">Load the world bible and the secret ledger.<span class="sr-step-note">54 facts, 6 secrets. Nothing the player should not know was shown.</span></p><span class="sr-tag sr-tag-held">Held</span></li>
+<li class="sr-step is-held"><span class="sr-step-n"></span><p class="sr-step-text">Roll in the open and print the working.</p><span class="sr-tag sr-tag-held">Held</span></li>
+<li class="sr-step is-lost"><span class="sr-step-n"></span><p class="sr-step-text">Write every roll to the ledger as it lands.<span class="sr-step-note">Two were narrated and never written.</span></p><span class="sr-tag sr-tag-lost">Lost</span></li>
+<li class="sr-step is-open"><span class="sr-step-n"></span><p class="sr-step-text">Reconcile the transcript against the ledger after the session.</p><span class="sr-tag sr-tag-open">Open</span></li>
+</ol></section>
+<section class="blk"><p class="label-wide">04 &middot; Comparison</p><div class="sr-compare sr-compare-arrowed">
+<div class="sr-compare-side">
+<div class="sr-compare-head">The script</div>
+<h3 class="sr-compare-title">Scenes written in advance, played in order.</h3>
+<div class="sr-compare-body"><p>The ferry burns on page four whether or not anyone is there to see it.</p><p>A death is undone when the plot needs the character back.</p></div>
+</div>
+<div class="sr-compare-arrow" aria-hidden="true">&rarr;</div>
+<div class="sr-compare-side is-chosen">
+<div class="sr-compare-head">The world</div>
+<h3 class="sr-compare-title">Facts written as they happen, and kept.</h3>
+<div class="sr-compare-body"><p>The ferry burns because someone lit it, and nine people saw who.</p><p>A death in session four is still a death in session forty.</p></div>
+</div>
+</div></section>
+<section class="blk"><p class="label-wide">05 &middot; Question panel</p><div class="sr-question">
+<div class="eyebrow-bare">Decision &middot; Session 4</div>
+<h3 class="sr-question-q">The collectors ask what the party is carrying. Who answers?</h3>
+<ul class="sr-options">
+<li class="sr-option"><span class="sr-option-name">Grumble names the category.</span><p class="sr-option-meaning">He says "livestock" in front of witnesses. The lie is on the record and can be asked about later.</p></li>
+<li class="sr-option is-rec"><span class="sr-option-name">Say nothing. Make them name it.</span><span class="sr-option-mark">Recommended</span><p class="sr-option-meaning">Whatever they call it, they have told nine people what they think they are collecting.</p></li>
+<li class="sr-option"><span class="sr-option-name">Ser'en casts and reads them first.</span><p class="sr-option-meaning">Costs the slot she has been saving. An Insight roll against DC 15 either way.</p></li>
+</ul>
+<div class="sr-note"><span class="sr-note-label">Note</span><p>The DM will not help them name it. If the player stays quiet, the scene runs on their silence.</p></div>
+</div></section>
+<section class="blk"><p class="label-wide">06 &middot; Figure</p><figure class="sr-fig">
+<div class="sr-fig-head"><span class="sr-fig-n">Fig. 01</span><span>Rolls per session</span><span class="sr-tag sr-tag-held">Held</span></div>
+<div class="sr-fig-body"><div class="sr-chart">
+<div class="sr-bars">
+<div class="sr-bar" data-n="3" style="--v:38%"></div>
+<div class="sr-bar" data-n="4" style="--v:50%"></div>
+<div class="sr-bar is-lost" data-n="5" style="--v:62%"></div>
+<div class="sr-bar is-hi" data-n="8" style="--v:100%"></div>
+</div>
+<div class="sr-axis"><span>Session 1</span><span>Session 4</span></div>
+</div></div>
+<figcaption class="sr-fig-cap"><b>Eighteen rolls over four sessions, eight of them in the last.</b> The one in oxblood is the session that lost a roll.</figcaption>
+</figure></section>
+<section class="blk"><p class="label-wide">07 &middot; Charts</p><div style="display:grid;gap:36px"><div class="sr-chart">
+<div class="sr-chart-head"><span class="sr-chart-count">18</span><span class="sr-chart-label">ledger entries, four sessions</span><span class="sr-tag sr-tag-held">Held</span></div>
+<div class="sr-bars">
+<div class="sr-bar" data-n="3" style="--v:38%"></div>
+<div class="sr-bar" data-n="4" style="--v:50%"></div>
+<div class="sr-bar is-lost" data-n="5" style="--v:62%"></div>
+<div class="sr-bar is-hi" data-n="8" style="--v:100%"></div>
+</div>
+<div class="sr-axis"><span>Session 1</span><span>Session 4</span></div>
+</div><div class="sr-chart">
+<div class="sr-chart-head"><span class="sr-chart-count">54</span><span class="sr-chart-label">facts recorded</span><span class="sr-tag sr-tag-live">Live</span></div>
+<div class="sr-line"><div class="sr-line-plot">
+<svg class="sr-line-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline class="sr-line-path" vector-effect="non-scaling-stroke" points="0,83.3 25,61.1 50,38.9 75,22.2 100,0"/></svg>
+<span class="sr-line-pt" data-n="9" style="--x:0%;--y:83.3%"></span>
+<span class="sr-line-pt" data-n="21" style="--x:25%;--y:61.1%"></span>
+<span class="sr-line-pt" data-n="33" style="--x:50%;--y:38.9%"></span>
+<span class="sr-line-pt" data-n="42" style="--x:75%;--y:22.2%"></span>
+<span class="sr-line-pt is-hi" data-n="54" style="--x:100%;--y:0%"></span>
+</div></div>
+<div class="sr-axis"><span>Day 1</span><span>Day 31</span></div>
+</div></div></section>
+<section class="blk"><p class="label-wide">08 &middot; Drawings</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;align-items:center">
+<figure class="sr-fig" style="margin:0"><div class="sr-fig-head"><span class="sr-fig-n">Fig. 02</span><span>A script</span></div><div class="sr-fig-body"><svg class="sr-draw" viewBox="0 0 320 96" aria-hidden="true">
+<line class="rule" x1="0" y1="24" x2="320" y2="24"/><line class="rule" x1="0" y1="48" x2="320" y2="48"/><line class="rule" x1="0" y1="72" x2="320" y2="72"/>
+<circle class="dot" cx="32" cy="24" r="3"/><circle class="dot" cx="96" cy="24" r="3"/><circle class="dot" cx="160" cy="24" r="3"/><circle class="dot" cx="224" cy="24" r="3"/><circle class="dot" cx="288" cy="24" r="3"/>
+<circle class="dot" cx="32" cy="48" r="3"/><circle class="dot" cx="96" cy="48" r="3"/><circle class="dot" cx="160" cy="48" r="3"/><circle class="dot" cx="224" cy="48" r="3"/><circle class="dot" cx="288" cy="48" r="3"/>
+<circle class="dot" cx="32" cy="72" r="3"/><circle class="dot" cx="96" cy="72" r="3"/><circle class="dot" cx="160" cy="72" r="3"/><circle class="dot" cx="224" cy="72" r="3"/><circle class="dot" cx="288" cy="72" r="3"/>
+</svg></div><figcaption class="sr-fig-cap"><b>Dots on rules.</b> Every beat placed before anyone sat down.</figcaption></figure>
+<figure class="sr-fig" style="margin:0"><div class="sr-fig-head"><span class="sr-fig-n">Fig. 03</span><span>A world</span></div><div class="sr-fig-body"><svg class="sr-draw" viewBox="0 0 320 96" aria-hidden="true">
+<path class="copper" d="M0,74 C80,74 120,14 200,14 S280,58 320,58"/>
+<path class="verdigris" d="M0,22 C72,22 104,82 176,82 S288,30 320,30"/>
+<path class="bone" d="M0,48 C64,6 128,90 192,48 S288,22 320,74"/>
+</svg></div><figcaption class="sr-fig-cap"><b>Three crossing curves.</b> The player, the world, the record, answering each other.</figcaption></figure>
+<figure class="sr-fig" style="margin:0"><div class="sr-fig-head"><span class="sr-fig-n">Fig. 04</span><span>The orbit</span></div><div class="sr-fig-body" style="display:flex;justify-content:center"><svg class="sr-draw sr-orbit" viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10.5"/><circle class="orbit" cx="12" cy="12" r="6.6"/><circle class="sat" cx="18.6" cy="12" r=".9"/><circle class="core" cx="12" cy="12" r="2.5"/></svg></div><figcaption class="sr-fig-cap"><b>The mark, turning once every 72 seconds.</b> Under reduced motion it holds.</figcaption></figure>
+</div></section>
+<section class="blk"><p class="label-wide">09 &middot; Status tags</p><div class="sr-tags">
+<span class="sr-tag sr-tag-live">Live</span>
+<span class="sr-tag sr-tag-held">Held</span>
+<span class="sr-tag sr-tag-open">Open</span>
+<span class="sr-tag sr-tag-lost">Lost</span>
+</div></section>
+<section class="blk"><p class="label-wide">10 &middot; Slide frame</p><div class="fit"><section class="sr-slide">
+<div class="sr-slide-head"><div class="sr-slide-mark"><svg class="sr-draw sr-orbit-sm" viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="10.5"/><circle class="orbit" cx="12" cy="12" r="6.6"/><circle class="sat" cx="18.6" cy="12" r=".9"/><circle class="core" cx="12" cy="12" r="2.5"/></svg><span>Seren&nbsp;AI</span></div><span class="sr-slide-label">The playtest &middot; 02</span></div>
+<h1 class="sr-slide-title">The world knows<br><em class="text">what happened.</em></h1>
+<div class="sr-slide-body"><div class="sr-slide-cols">
+<p>Four sessions, one character, eighteen rolls read aloud. Every one of them printed its working. Sixteen made it to the ledger the moment they landed.</p>
+<div class="sr-chart">
+<div class="sr-chart-head"><span class="sr-chart-count">18</span><span class="sr-chart-label">rolls, four sessions</span><span class="sr-tag sr-tag-lost">2 lost</span></div>
+<div class="sr-bars"><div class="sr-bar" data-n="3" style="--v:38%"></div><div class="sr-bar" data-n="4" style="--v:50%"></div><div class="sr-bar is-lost" data-n="5" style="--v:62%"></div><div class="sr-bar is-hi" data-n="8" style="--v:100%"></div></div>
+<div class="sr-axis"><span>Session 1</span><span>Session 4</span></div>
+</div>
+</div></div>
+<footer class="sr-slide-foot"><span>Seren &middot; the playtest</span><span>02 / 09</span></footer>
+</section></div></section>
+</div>
+<script>
+  function fit(p) { if (!p.clientWidth) return; p.style.setProperty('--s', (p.clientWidth / 1920).toFixed(4)); }
+  document.querySelectorAll('.fit').forEach(function (p) { fit(p); new ResizeObserver(function () { fit(p); }).observe(p); });
+  addEventListener('load', function () { document.querySelectorAll('.fit').forEach(fit); });
+</script>
+</body>
+</html>

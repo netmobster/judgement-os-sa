@@ -1,0 +1,17 @@
+{
+  "name": "make",
+  "version": "0.8.1",
+  "description": "Say what you want made, and it lands in the right place, in your look: a page, a form or card in the chat, a deck, a design, a living doc, a file or a design system. /make picks where it lands, with the Judgement OS weighing in when a request reads two ways, then hands it to the right maker. Pages go to sexyhtml, selfActual work in the selfActual design system.",
+  "author": {
+    "name": "Jay Wright"
+  },
+  "keywords": [
+    "make",
+    "artifacts",
+    "pages",
+    "decks",
+    "forms",
+    "selfactual"
+  ],
+  "homepage": "https://netmobster.github.io/unstuck-games/judgement-os/"
+}

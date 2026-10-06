@@ -1,0 +1,203 @@
+<title>Claude Code and the Vault</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Layout only. Everything visual comes from styles.css (the selfActual design system). */
+  .wrap { max-width: 1080px; margin: 0 auto; padding-inline: var(--space-6); }
+  .section { padding-block: 72px; }
+  .masthead { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); padding-block: var(--space-6); border-bottom: 1px solid var(--color-divider); flex-wrap: wrap; }
+  .hero { display: grid; grid-template-columns: minmax(0, 44fr) minmax(0, 56fr); gap: 56px; align-items: center; }
+  .lede { font-size: 18px; line-height: 1.5; color: var(--color-neutral-700); max-width: 44ch; margin: var(--space-4) 0 0; }
+  .ledger-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-6); margin-bottom: var(--space-4); flex-wrap: wrap; }
+  .group-label { margin: var(--space-8, 32px) 0 var(--space-3); }
+  .report .ev-row { grid-template-columns: 112px minmax(0, 1fr) 150px; }
+  .report .stack-row { grid-template-columns: 96px 150px minmax(0, 1fr); }
+  .stack-row-items > span { display: inline-block; margin: 2px 10px 2px 0; }
+  .stack-row-keep .stack-row-items > span { white-space: normal; }
+  .table-wrap { overflow-x: auto; margin-top: var(--space-4); }
+  .close { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: end; }
+  .next { margin: 0; padding-left: 18px; color: var(--color-ink-muted); line-height: 1.6; }
+  .footer { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); padding-block: var(--space-6); flex-wrap: wrap; }
+  @media (max-width: 820px) {
+    .hero, .close { grid-template-columns: 1fr; gap: 40px; }
+    .section { padding-block: 52px; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding-inline: 16px; }
+    h1 { font-size: 34px; }
+    .report .ev-row { grid-template-columns: 72px minmax(0, 1fr); }
+    .report .ev-row .ev { grid-column: 2; justify-self: start; text-align: left; }
+    .report .stack-row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  }
+</style>
+
+<div class="report">
+
+  <header class="wrap masthead">
+    <img src="assets/selfactual-logo.png" alt="selfActual" style="height:22px;width:auto">
+    <span class="card-kicker">Claude Code · vault report · 1 Oct 2026</span>
+  </header>
+
+  <!-- the argument -->
+  <section class="section">
+    <div class="wrap hero">
+      <div>
+        <h1>The vault answers from Claude Code.<br><span class="hl">The gates are code now.</span></h1>
+        <p class="lede">Where the vault connection, the profile and the send path stand after one working day. The rules that lived in instructions now run as hooks. Every number below says how true it is.</p>
+      </div>
+      <div>
+        <div class="stack-row">
+          <div class="stack-row-label">Read</div>
+          <div class="stack-row-verb">Ask the vault</div>
+          <div class="stack-row-items">
+            <span>Tasks · sessions · gears <span class="ev ev-shipped">shipped</span></span>
+            <span>Messages <span class="ev ev-shipped">shipped</span></span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-row-label">Write</div>
+          <div class="stack-row-verb">Change the vault</div>
+          <div class="stack-row-items">
+            <span>Tasks <span class="ev ev-shipped">shipped</span></span>
+            <span>Someone else's vault asks first <span class="ev ev-shipped">shipped</span></span>
+          </div>
+        </div>
+        <div class="stack-row">
+          <div class="stack-row-label">Profile</div>
+          <div class="stack-row-verb">Load who you are</div>
+          <div class="stack-row-items">
+            <span>Local digest · 3 tiers <span class="ev ev-shipped">shipped</span></span>
+            <span>Just-in-time from the vault <span class="ev ev-building">building</span></span>
+          </div>
+        </div>
+        <div class="stack-row stack-row-keep">
+          <div class="stack-row-label">Send</div>
+          <div class="stack-row-verb">Stays human</div>
+          <div class="stack-row-items"><span>Nothing leaves until you type send. <b>One yes, one message.</b></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- the ledger -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="ledger-head">
+        <h2 style="margin:0">Small numbers. <span class="hl">All of them from today.</span></h2>
+        <div class="ev-legend">
+          <span class="ev ev-shipped">shipped</span>
+          <span class="ev ev-measured">measured</span>
+          <span class="ev ev-building">building</span>
+          <span class="ev ev-hypothesis">hypothesis</span>
+        </div>
+      </div>
+
+      <div class="card-kicker group-label">Running</div>
+      <div class="ev-row">
+        <div class="ev-row-figure">1</div>
+        <div class="ev-row-claim">Vault connection, through the claude.ai connector. The local <span class="mono">selfactual</span> server timed out and was removed the same day</div>
+        <span class="ev ev-shipped">shipped</span>
+      </div>
+      <div class="ev-row">
+        <div class="ev-row-figure">93</div>
+        <div class="ev-row-claim">Active tasks read at boot (Inbox, Next, Doing, Waiting), 75 to a page</div>
+        <span class="ev ev-measured">measured · 1 Oct</span>
+      </div>
+      <div class="ev-row">
+        <div class="ev-row-figure">53,959</div>
+        <div class="ev-row-claim">Characters in the 200-task page that overflowed on 27 Sep. A page over 200 tasks, or one with no status filter, is now refused</div>
+        <span class="ev ev-measured">measured · 27 Sep</span>
+      </div>
+      <div class="ev-row">
+        <div class="ev-row-figure">31</div>
+        <div class="ev-row-claim">Guard tests, all passing: deploys, main branch, destructive commands, state files, secrets, silo, the profile leak, task overflow, writes to someone else's vault</div>
+        <span class="ev ev-measured">measured</span>
+      </div>
+      <div class="ev-row">
+        <div class="ev-row-figure">21</div>
+        <div class="ev-row-claim">Send-gate tests, all passing. Every outbound message is refused until you type send. It held in a live test on 1 Oct</div>
+        <span class="ev ev-measured">measured · live</span>
+      </div>
+      <div class="ev-row">
+        <div class="ev-row-figure">19</div>
+        <div class="ev-row-claim">Team Docs tools loading in a fresh session. the team's Outline, replacing Notion</div>
+        <span class="ev ev-measured">measured</span>
+      </div>
+
+      <div class="card-kicker group-label">Found today</div>
+      <div class="ev-row">
+        <div class="ev-row-figure">2</div>
+        <div class="ev-row-claim">Gears live in the product pod but missing from <span class="mono">os</span>: ANON and CHROME, published 19 Sep</div>
+        <span class="ev ev-measured">measured</span>
+      </div>
+      <div class="ev-row">
+        <div class="ev-row-figure">2</div>
+        <div class="ev-row-claim">Sessions that both gave themselves the same number. Numbers are read at open and can collide; the close re-reads them</div>
+        <span class="ev ev-measured">measured</span>
+      </div>
+
+      <div class="card-kicker group-label">Not there yet</div>
+      <div class="ev-row ev-row-open">
+        <div class="ev-row-figure">SAI-532</div>
+        <div class="ev-row-claim">The profile leak is still on the server: <span class="mono">list_profile_sections</span> returns gated bodies. Claude Code refuses the call; the fix is server-side</div>
+        <span class="ev ev-building">building</span>
+      </div>
+      <div class="ev-row ev-row-open">
+        <div class="ev-row-figure">JIT</div>
+        <div class="ev-row-claim">Profiles from the vault at the right depth for each surface (SWAP-4)</div>
+        <span class="ev ev-building">building</span>
+      </div>
+      <div class="ev-row ev-row-open">
+        <div class="ev-row-figure">Org</div>
+        <div class="ev-row-claim">claude.ai seeing the selfActual-ai repos. Waits on the Claude GitHub App install</div>
+        <span class="ev ev-building">building</span>
+      </div>
+      <div class="ev-row ev-row-open">
+        <div class="ev-row-figure">Parity</div>
+        <div class="ev-row-claim">Whether the rest of <span class="mono">os</span> matches the pod. Nobody has run the check yet (SWAP-25)</div>
+        <span class="ev ev-hypothesis">hypothesis</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- the connections -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <h2 style="margin:0">Five connections. <span class="hl">One of them is gone.</span></h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Connection</th><th>What it carries</th><th>State</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">SA PROD AUG 21</td><td>The vault: tasks, sessions, messages, gears</td><td><span class="ev ev-shipped">shipped</span></td></tr>
+            <tr><td class="mono">SA Team Docs</td><td>the team's Outline</td><td><span class="ev ev-measured">measured · 19 tools</span></td></tr>
+            <tr><td class="mono">SA MCP Factory</td><td>Calendars, tasks, pages and school work, refreshed hourly</td><td><span class="ev ev-shipped">shipped</span></td></tr>
+            <tr><td class="mono">selfactual (local)</td><td>Timed out 1 Oct → removed the same day</td><td><span class="tag tag-neutral">removed</span></td></tr>
+            <tr><td class="mono">selfActual-ai on GitHub</td><td>Read-only for this machine, all 7 repos</td><td><span class="ev ev-measured">measured</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- the close -->
+  <section class="on-ink section">
+    <div class="wrap close">
+      <div>
+        <h2 style="font-size:40px;margin:0">Most of it runs.<br><span class="hl">The rest is named.</span></h2>
+      </div>
+      <div>
+        <div class="card-kicker" style="margin-bottom:var(--space-3)">Next</div>
+        <ol class="next">
+          <li>The server-side fix for SAI-532</li>
+          <li>Just-in-time profiles for the team</li>
+          <li>A parity check between <span class="mono">os</span> and the pod</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap footer">
+    <img src="assets/selfactual-logo.png" alt="selfActual" style="height:22px;width:auto">
+    <span class="mono text-muted" style="font-size:12px">Internal · 1 Oct 2026 · CC-68</span>
+  </footer>
+
+</div>

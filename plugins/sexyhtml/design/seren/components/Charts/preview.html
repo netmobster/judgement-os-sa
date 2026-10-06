@@ -1,0 +1,30 @@
+<!-- @dsCard group="Data" height=420 subtitle="bars in copper and a line, as counts" -->
+<!doctype html>
+<html>
+<head><link rel="stylesheet" href="../../styles.css"><meta charset="utf-8"><title>Charts — preview</title></head>
+<body>
+<div style="padding:20px">
+<div style="display:grid;gap:36px"><div class="sr-chart">
+<div class="sr-chart-head"><span class="sr-chart-count">18</span><span class="sr-chart-label">ledger entries, four sessions</span><span class="sr-tag sr-tag-held">Held</span></div>
+<div class="sr-bars">
+<div class="sr-bar" data-n="3" style="--v:38%"></div>
+<div class="sr-bar" data-n="4" style="--v:50%"></div>
+<div class="sr-bar is-lost" data-n="5" style="--v:62%"></div>
+<div class="sr-bar is-hi" data-n="8" style="--v:100%"></div>
+</div>
+<div class="sr-axis"><span>Session 1</span><span>Session 4</span></div>
+</div><div class="sr-chart">
+<div class="sr-chart-head"><span class="sr-chart-count">54</span><span class="sr-chart-label">facts recorded</span><span class="sr-tag sr-tag-live">Live</span></div>
+<div class="sr-line"><div class="sr-line-plot">
+<svg class="sr-line-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline class="sr-line-path" vector-effect="non-scaling-stroke" points="0,83.3 25,61.1 50,38.9 75,22.2 100,0"/></svg>
+<span class="sr-line-pt" data-n="9" style="--x:0%;--y:83.3%"></span>
+<span class="sr-line-pt" data-n="21" style="--x:25%;--y:61.1%"></span>
+<span class="sr-line-pt" data-n="33" style="--x:50%;--y:38.9%"></span>
+<span class="sr-line-pt" data-n="42" style="--x:75%;--y:22.2%"></span>
+<span class="sr-line-pt is-hi" data-n="54" style="--x:100%;--y:0%"></span>
+</div></div>
+<div class="sr-axis"><span>Day 1</span><span>Day 31</span></div>
+</div></div>
+</div>
+</body>
+</html>

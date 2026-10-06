@@ -1,0 +1,21 @@
+<!-- @dsCard group="Components" viewport="1080x520" name="Charts" subtitle="Bars, a line and small multiples — every figure a tagged count out of a total" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css"><style>body{padding:20px}.lbl{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-600);margin:0 0 10px}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script></head><body><div id="root"></div><script type="text/babel">
+const DS = window.SelfActualDesignSystem_f093ce;
+const { Ground } = DS;
+function Both({ children }) { return <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}><Ground style={{ padding: 16, borderRadius: 16 }}><p className="lbl">Paper</p>{children}</Ground><Ground ink style={{ padding: 16, borderRadius: 16 }}><p className="lbl">Ink</p>{children}</Ground></div>; }
+const { Bars, LineChart, SmallMultiples } = DS;
+const demo = <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+  <Bars figure="33 of 34" label="what was counted" state="measured" tagLabel="measured · context" values={[28, 30, 29, 31, 33, 32, 33, 33, 34, 33]} max={34} axis={['Run 01', 'Run 10']} />
+  <LineChart figure="7 of 7" label="what was counted" state="measured" values={[3, 5, 5, 6, 7, 7, 7]} max={7} axis={['Mon', 'Sun']} />
+  <SmallMultiples max={14} items={[
+    { label: 'One', figure: '14 of 35', state: 'measured', values: [10, 12, 13, 14, 14] },
+    { label: 'Two', figure: '12 of 35', state: 'measured', values: [8, 9, 11, 12, 12] },
+    { label: 'Three', figure: '0 of 35', state: 'hypothesis', values: [0, 0, 0, 0, 0], highlight: -1 },
+  ]} />
+</div>;
+function App() { return <Both>{demo}</Both>; }
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);</script></body></html>
